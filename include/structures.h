@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2020/10/04 20:50:09 by cvernius         ###   ########.fr       */
+/*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
+/*   Updated: 2020/10/04 20:51:13 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scop.h"
-
-int		main(void)
+typedef struct	s_triangle
 {
-	t_scop *scop;
+	float		*array_vertex;
+}				t_triangle;
 
-	if (!(scop = malloc(sizeof(t_scop))))
-		return (0);
-	if (init_gl(&scop->opengl) == 0)
-		return (0);
-	while (scop_gl_loop(scop))
-		;
-}
+typedef struct	s_opengl
+{
+	GLFWwindow	*window;
+}				t_opengl;
+
+typedef struct	s_scop
+{
+	t_opengl	opengl;
+	GLuint		vertex_buffer;
+}				t_scop;

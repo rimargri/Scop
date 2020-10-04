@@ -6,11 +6,18 @@
 #    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/17 19:22:37 by f0rsunka          #+#    #+#              #
-#    Updated: 2020/10/02 18:57:30 by cvernius         ###   ########.fr        #
+#    Updated: 2020/10/04 20:38:08 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = test_OpenGL
+PINK = \033[38;2;200;150;200m
+BLUE = \033[38;2;200;200;250m
+RED = \033[38;2;200;30;70m
+YELLOW = \033[38;2;200;200;50m
+GREEN = \033[38;2;0;200;0m
+
+
+NAME = scop
 
 SRC_DIR = ./sources
 
@@ -20,20 +27,24 @@ INCL_DIR = ./include
 
 INCLUDES = -I $(INCL_DIR)
 
-C_FILES = main.c
+C_FILES =	main.c \
+			opengl_inside.c \
+			create_triangle.c
 
 OBJ_FILES = $(C_FILES:.c=.o)
 
 RAW_OBJ_FILES = $(addprefix $(OBJ_DIR)/,$(OBJ_FILES))
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra 
+
+# CFLAGS += -Werror
 
 OS = $(shell uname -s)
 
 ifeq ($(OS),Linux)
 	LIBS	:= -lGL -lglfw -lepoxy
 else
-	LIBS	:= -framework OpenGL -framework GLUT -I ~/.brew/lib
+	LIBS	:= -lm -L ~/.brew/lib -lglfw -lglew -framework OpenGL
 	INCLUDES += -I ~/.brew/include
 endif
 
@@ -50,7 +61,7 @@ $(NAME): $(RAW_OBJ_FILES)
 #### К о м п и л я ц и я ####
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCL_DIR)/*.h
-	@gcc $(CFLAGS) $(INCLUDES) -I ./MinilibX -I ./libft -c $< -o $@
+	@gcc $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
 	@rm -rf $(RAW_OBJ_FILES)

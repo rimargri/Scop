@@ -6,11 +6,24 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 19:33:37 by f0rsunka          #+#    #+#             */
-/*   Updated: 2020/10/02 18:56:19 by cvernius         ###   ########.fr       */
+/*   Updated: 2020/10/04 20:22:51 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <GL/glew.h>
+#ifdef __APPLE_CC__
+#define GL_SILENCE_DEPRECATION
 #include <GLUT/glut.h>
+#else
+#include <GL/glut.h>
+#endif
+
 #include <GLFW/glfw3.h>
-// #include </Users/cvernius/.brew/Cellar/glm/0.9.9.8/include/glm/glm.h>
+
+
+#include <stdlib.h>
+#include <stdio.h> //!---------------------------------------------------
+
+#include "structures.h"
+#include "prototypes.h"
+
+#define COUNT_VERTEX 9

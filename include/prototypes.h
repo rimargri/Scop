@@ -1,25 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   prototypes.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2020/10/04 20:50:09 by cvernius         ###   ########.fr       */
+/*   Created: 2020/10/04 20:05:07 by cvernius          #+#    #+#             */
+/*   Updated: 2020/10/04 20:37:41 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scop.h"
-
-int		main(void)
-{
-	t_scop *scop;
-
-	if (!(scop = malloc(sizeof(t_scop))))
-		return (0);
-	if (init_gl(&scop->opengl) == 0)
-		return (0);
-	while (scop_gl_loop(scop))
-		;
-}
+int		init_gl(t_opengl *opengl);
+int		scop_gl_loop(t_scop *scop);
+void	create_triangle(t_scop *s);
