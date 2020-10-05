@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 19:33:37 by f0rsunka          #+#    #+#             */
-/*   Updated: 2020/10/04 20:22:51 by cvernius         ###   ########.fr       */
+/*   Updated: 2020/10/05 14:16:50 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,3 +27,4 @@
 #include "prototypes.h"
 
 #define COUNT_VERTEX 9
+

@@ -6,7 +6,7 @@
 #    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/17 19:22:37 by f0rsunka          #+#    #+#              #
-#    Updated: 2020/10/04 20:38:08 by cvernius         ###   ########.fr        #
+#    Updated: 2020/10/05 18:24:46 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,9 @@ INCL_DIR = ./include
 INCLUDES = -I $(INCL_DIR)
 
 C_FILES =	main.c \
-			opengl_inside.c \
+			opengl_init.c \
+			create_shaders.c \
+			opengl_main_loop.c \
 			create_triangle.c
 
 OBJ_FILES = $(C_FILES:.c=.o)
