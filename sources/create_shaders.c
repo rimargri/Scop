@@ -6,11 +6,19 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 18:21:26 by cvernius          #+#    #+#             */
-/*   Updated: 2020/10/05 18:24:23 by cvernius         ###   ########.fr       */
+/*   Updated: 2020/10/05 18:40:10 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scop.h"
+
+void	sc_create_program(t_scop *scop)
+{
+	scop->opengl.shader_programme = glCreateProgram();
+	glAttachShader(scop->opengl.shader_programme, scop->opengl.fragm_shader);
+	glAttachShader(scop->opengl.shader_programme, scop->opengl.vert_shader);
+	glLinkProgram(scop->opengl.shader_programme);
+}
 
 void	create_shaders(t_scop *scop)
 {
@@ -35,8 +43,5 @@ void	create_shaders(t_scop *scop)
 	glShaderSource(scop->opengl.fragm_shader, 1, &fragment_shader, NULL);
 	glCompileShader(scop->opengl.fragm_shader);
 
-	scop->opengl.shader_programme = glCreateProgram();
-	glAttachShader(scop->opengl.shader_programme, scop->opengl.fragm_shader);
-	glAttachShader(scop->opengl.shader_programme, scop->opengl.vert_shader);
-	glLinkProgram(scop->opengl.shader_programme);
+	sc_create_program(scop);
 }

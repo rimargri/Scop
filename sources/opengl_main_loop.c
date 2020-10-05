@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 17:24:49 by cvernius          #+#    #+#             */
-/*   Updated: 2020/10/05 18:25:34 by cvernius         ###   ########.fr       */
+/*   Updated: 2020/10/05 19:16:53 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,8 @@
 // glfwSwapBuffers(scop->opengl.window) - put the stuff we've been drawing
 // onto the display
 
-int		sc_gl_loop(t_scop *scop)
+void	sc_gl_loop(t_scop *scop)
 {
-	GLuint VertexArrayID;
-	glGenVertexArrays(1, &VertexArrayID);
-	glBindVertexArray(VertexArrayID);
-	glEnableVertexAttribArray(0);
-	glBindBuffer(GL_ARRAY_BUFFER, scop->vertex_buffer);
-		glVertexAttribPointer(
-			0,
-			3,
-			GL_FLOAT,
-			GL_FALSE,
-			0,
-			(void*)0
-		);
-
 	while (glfwGetKey(scop->opengl.window, GLFW_KEY_ESCAPE) != GLFW_PRESS
 						&& glfwWindowShouldClose(scop->opengl.window) == 0)
 	{
@@ -44,5 +30,5 @@ int		sc_gl_loop(t_scop *scop)
 		glfwPollEvents();
 		glfwSwapBuffers(scop->opengl.window);
 	}
-	return (0);
+	exit(0);
 }

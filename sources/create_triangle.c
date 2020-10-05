@@ -6,16 +6,16 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:12:11 by cvernius          #+#    #+#             */
-/*   Updated: 2020/10/05 18:18:13 by cvernius         ###   ########.fr       */
+/*   Updated: 2020/10/05 18:39:08 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scop.h"
 
-int	sc_get_vertex_triangle(t_triangle  *triangle)
+void	sc_get_vertex_triangle(t_triangle  *triangle)
 {
 	if (!(triangle->array_vertex = malloc(sizeof(float) * COUNT_VERTEX)))
-		return (0);
+		error_processing(MLX_ERROR);
 	triangle->array_vertex[0] = -1.0f;
 	triangle->array_vertex[1] = -1.0f;
 	triangle->array_vertex[2] = 0.0f;
@@ -25,7 +25,6 @@ int	sc_get_vertex_triangle(t_triangle  *triangle)
 	triangle->array_vertex[6] = 0.0f;
 	triangle->array_vertex[7] = 1.0f;
 	triangle->array_vertex[8] = 0.0f;
-	return (1);
 }
 
 void	init_vertex_array_object(t_opengl *gl, float *array_vertex)

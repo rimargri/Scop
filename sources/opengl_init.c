@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:03:54 by cvernius          #+#    #+#             */
-/*   Updated: 2020/10/05 17:25:10 by cvernius         ###   ########.fr       */
+/*   Updated: 2020/10/05 19:13:51 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,21 +21,18 @@ void	sc_gl_property(void)
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 }
 
-int		init_gl(t_opengl *opengl)
+/*
+** glfwSetInputMode(opengl->window, GLFW_STICKY_KEYS, GL_TRUE) - esc work
+*/
+
+void		init_gl(t_opengl *opengl)
 {
 	if (!glfwInit())
-	{
-		printf("failed to inicialize glfw!\n");
-		return (-1);
-	}
+		error_processing(FAIL_GLFW);
 	sc_gl_property();
 	opengl->window = glfwCreateWindow(700, 500, "scop", NULL, NULL);
 	if (!opengl->window)
-	{
-		printf("Failed to open GLFW opengl window.\n");
-		return (-1);
-	}
+		error_processing(FAIL_WIN_GLFW);
 	glfwMakeContextCurrent(opengl->window);
-	glfwSetInputMode(opengl->window, GLFW_STICKY_KEYS, GL_TRUE); // esc work
-	return (1);
+	glfwSetInputMode(opengl->window, GLFW_STICKY_KEYS, GL_TRUE);
 }
