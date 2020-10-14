@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
+#    By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/17 19:22:37 by f0rsunka          #+#    #+#              #
-#    Updated: 2020/10/05 18:43:03 by cvernius         ###   ########.fr        #
+#    Updated: 2020/10/14 18:57:17 by f0rsunka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,15 @@ CFLAGS = -Wall -Wextra
 OS = $(shell uname -s)
 
 ifeq ($(OS),Linux)
-	LIBS	:= -lGL -lglfw -lepoxy
+	# LIBS	:= -lGL -lglfw -lglut -lGLU
+	# LIBS	:= -lepoxy -lGL -lglfw -lglut -lGLU `pkg-config --static --libs glfw3` `pkg-config --static --libs gl`
+
+
+# without glut
+	LIBS	:= -lepoxy -lGL -lglfw `pkg-config --static --libs glfw3` `pkg-config --static --libs gl`
+
+
+	# LIBS := -lglut -lGLU -lGL
 else
 	LIBS	:= -lm -L ~/.brew/lib -lglfw -lglew -framework OpenGL
 	INCLUDES += -I ~/.brew/include

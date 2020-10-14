@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   scop.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
+/*   By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 19:33:37 by f0rsunka          #+#    #+#             */
-/*   Updated: 2020/10/05 19:12:13 by cvernius         ###   ########.fr       */
+/*   Updated: 2020/10/14 19:00:21 by f0rsunka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,16 @@
 #define GL_SILENCE_DEPRECATION
 #include <GLUT/glut.h>
 #else
-#include <GL/glut.h>
+// #include <GL/glut.h>
+
+#define GL_GLEXT_PROTOTYPES
+#include <GL/gl.h>
+#include <GL/glu.h>
+#include <GL/glx.h>
+#include <GL/glext.h>
 #endif
 
 #include <GLFW/glfw3.h>
-
 
 #include <stdlib.h>
 #include <stdio.h> //!---------------------------------------------------
