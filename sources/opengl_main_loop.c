@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   opengl_main_loop.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
+/*   By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 17:24:49 by cvernius          #+#    #+#             */
-/*   Updated: 2020/10/05 19:16:53 by cvernius         ###   ########.fr       */
+/*   Updated: 2020/10/17 19:11:43 by f0rsunka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,22 @@ void	sc_gl_loop(t_scop *scop)
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glUseProgram(scop->opengl.shader_programme);
-		glBindVertexArray(scop->opengl.vao);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		// glDrawArrays(GL_TRIANGLES, 0, 6);
+		 glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glfwPollEvents();
 		glfwSwapBuffers(scop->opengl.window);
 	}
+
+	glDeleteProgram(scop->opengl.shader_programme);
+	glDeleteShader(scop->opengl.fragm_shader);
+	glDeleteShader(scop->opengl.vert_shader);
+
+	glDeleteBuffers(1, &scop->opengl.ebo);
+	glDeleteBuffers(1, &scop->opengl.vbo);
+
+	glDeleteVertexArrays(1, &scop->opengl.vao);
+
+	// scop->opengl.window.close();
+
 	exit(0);
 }
