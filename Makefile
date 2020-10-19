@@ -6,7 +6,7 @@
 #    By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/17 19:22:37 by f0rsunka          #+#    #+#              #
-#    Updated: 2020/10/19 18:59:50 by f0rsunka         ###   ########.fr        #
+#    Updated: 2020/10/19 23:43:08 by f0rsunka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,12 +27,12 @@ INCL_DIR = ./include
 
 INCLUDES = -I $(INCL_DIR)
 
-C_FILES =	main.cpp \
-			opengl_init.cpp \
-			create_shaders.cpp \
-			opengl_main_loop.cpp \
-			create_shape.cpp \
-			error_processing.cpp
+C_FILES =	Errors.cpp \
+			GLContext.cpp \
+			GLObject.cpp \
+			Shaders.cpp \
+			Shape.cpp \
+			main.cpp
 
 OBJ_FILES = $(C_FILES:.cpp=.o)
 
