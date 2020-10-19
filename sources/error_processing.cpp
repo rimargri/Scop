@@ -14,22 +14,22 @@
 
 void	error_processing(int code, void *param)
 {
-	if (code == 0)
-		printf("mlx was destroyed\n");
-	if (code == 1)
+	if (code == MALLOC_ERROR)
+		printf("MALLOC was destroyed\n");
+	if (code == INIT_GL_ERROR)
 		printf("init gl error\n");
-	if (code == 2)
+	if (code == FAIL_GLFW)
 		printf("failed to inicialize glfw!\n");
-	if (code == 3)
+	if (code == FAIL_WIN_GLFW)
 		printf("Failed to open GLFW opengl window.\n");
-	if (code == 4)
+	if (code == ERROR_VERT_SHADER_INDEX)
 		printf("ERROR: vertex shader index %u did not compile\n", *(GLuint*)(param));
-	if (code == 5)
+	if (code == ERROR_FRAGM_SHADER_INDEX)
 		printf("ERROR: fragment shader index %u did not compile\n", *(GLuint*)(param));
-	if (code == 6)
+	if (code == LINK_ERROR)
 		printf("ERROR: could not link shader program GL index %u\n", *(GLuint*)(param));
-	
-	
+	if (code == FAIL_GLEW)
+		printf("GLEW error\n");
 	exit (0);
 }
 

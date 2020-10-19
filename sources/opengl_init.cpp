@@ -35,4 +35,7 @@ void		init_gl(t_opengl *opengl)
 		error_processing(FAIL_WIN_GLFW, 0);
 	glfwMakeContextCurrent(opengl->window);
 	glfwSetInputMode(opengl->window, GLFW_STICKY_KEYS, GL_TRUE);
+	glewExperimental = GL_TRUE; 
+	if (glewInit() != 0)
+		error_processing(FAIL_GLEW, 0);
 }

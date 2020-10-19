@@ -10,16 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#define COUNT_VERTEX 12
+
 typedef struct	s_shape
 {
-	float		*array_vertex;
+	std::array<float, COUNT_VERTEX> array_vertex;
 }				t_shape;
 
 typedef struct	s_opengl
 {
 	GLFWwindow	*window;
-	GLuint		vbo;
 	GLuint		vao;
+	GLuint		vbo;
 	GLuint		ebo;
 	GLuint		vert_shader;
 	GLuint		fragm_shader;

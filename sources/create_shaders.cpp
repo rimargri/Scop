@@ -46,12 +46,14 @@ void	sc_create_program(t_scop *scop)
 
 	lparams = -1;
 	scop->opengl.shader_programme = glCreateProgram();
-	glAttachShader(scop->opengl.shader_programme, scop->opengl.fragm_shader);
 	glAttachShader(scop->opengl.shader_programme, scop->opengl.vert_shader);
+	glAttachShader(scop->opengl.shader_programme, scop->opengl.fragm_shader);
+    // glBindFragDataLocation(shaderProgram, 0, "outColor");
 	glLinkProgram(scop->opengl.shader_programme);
-	glDeleteShader(scop->opengl.vert_shader);
-	glDeleteShader(scop->opengl.fragm_shader);
+	// glDeleteShader(scop->opengl.vert_shader);
+	// glDeleteShader(scop->opengl.fragm_shader);
 	glGetShaderiv(scop->opengl.shader_programme, GL_LINK_STATUS, &lparams);
+	glUseProgram(scop->opengl.shader_programme);
 	// printf("%u %d\n", GL_TRUE, lparams);
 	// if (GL_TRUE != lparams)
 		// error_processing(LINK_ERROR, &scop->opengl.shader_programme);
