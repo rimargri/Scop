@@ -6,7 +6,7 @@
 /*   By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2020/10/19 23:41:16 by f0rsunka         ###   ########.fr       */
+/*   Updated: 2020/10/20 00:06:50 by f0rsunka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,11 @@
 #include "Shaders.hpp"
 
 int main(void) {
-	GLContext();
-	GLContext	openglContext;
-
-	Shape();
-	Shape		rectangle;
-
-	GLObject();
-	GLObject	obj;
-
-	Shaders();
-	Shaders		shaders;
-
+	ErrorsProcess 	err;
+	GLContext		openglContext(err);
+	Shape			rectangle;
+	GLObject		obj;
+	Shaders			shaders;
 
 	const char* vertex_shader =
 	"#version 400\n"
@@ -89,10 +82,11 @@ int main(void) {
 	obj.initVertexArrayObject();
 	obj.initVertexBufferObject(rectangle.arrayVertex);
 	obj.initElementsBufferObject();
-	shaders.createVertexShader(vertex_shader);
-	shaders.createFragmentShader(fragment_shader);
+	shaders.createVertexShader(vertex_shader, err);
+	shaders.createFragmentShader(fragment_shader, err);
 	shaders.createProgram();
 	openglContext.glLoop();
 	obj.~GLObject();
 	shaders.~Shaders();
+	return (0);
 }

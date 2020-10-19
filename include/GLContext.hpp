@@ -6,7 +6,7 @@
 /*   By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 21:59:07 by f0rsunka          #+#    #+#             */
-/*   Updated: 2020/10/19 23:31:55 by f0rsunka         ###   ########.fr       */
+/*   Updated: 2020/10/19 23:58:29 by f0rsunka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,11 @@
 
 #include <GLFW/glfw3.h>
 
+#include "Errors.hpp"
+
 class GLContext {
 	public:
-		GLContext();
+		GLContext(ErrorsProcess err);
 		void		glLoop(void);
 	private:
 		GLFWwindow	*window;

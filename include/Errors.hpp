@@ -6,9 +6,12 @@
 /*   By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 22:08:30 by f0rsunka          #+#    #+#             */
-/*   Updated: 2020/10/19 22:21:46 by f0rsunka         ###   ########.fr       */
+/*   Updated: 2020/10/20 00:05:36 by f0rsunka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#ifndef ERRORS_HPP
+# define ERRORS_HPP
 
 #include <iostream>
 #include <GLFW/glfw3.h>
@@ -29,3 +32,5 @@ class ErrorsProcess
 		};
 		void	printErrAndExit(int code, void *param);
 };
+
+#endif

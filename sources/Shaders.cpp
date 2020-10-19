@@ -6,13 +6,13 @@
 /*   By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 21:01:36 by f0rsunka          #+#    #+#             */
-/*   Updated: 2020/10/19 23:29:33 by f0rsunka         ###   ########.fr       */
+/*   Updated: 2020/10/19 23:50:54 by f0rsunka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Shaders.hpp"
 
-void		Shaders::createVertexShader(const char * vertShaderString) {
+void		Shaders::createVertexShader(const char * vertShaderString, ErrorsProcess err) {
 	int lparams;
 
 	lparams = -1;
@@ -20,11 +20,11 @@ void		Shaders::createVertexShader(const char * vertShaderString) {
 	glShaderSource(vertShader, 1, &vertShaderString, NULL);
 	glCompileShader(vertShader);
 	glGetShaderiv(vertShader, GL_COMPILE_STATUS, &lparams);
-	// if (GL_TRUE != lparams)
-	// 	ErrorsProcess::printErrAndExit(ErrorsProcess::Errors::ERROR_VERT_SHADER_INDEX, &vertShader);
+	if (GL_TRUE != lparams)
+		err.printErrAndExit(err.Errors::ERROR_VERT_SHADER_INDEX, &vertShader);
 }
 
-void		Shaders::createFragmentShader(const char * fragmShaderString) {
+void		Shaders::createFragmentShader(const char * fragmShaderString, ErrorsProcess err) {
 	int lparams;
 
 	lparams = -1;
@@ -32,8 +32,8 @@ void		Shaders::createFragmentShader(const char * fragmShaderString) {
 	glShaderSource(fragmShader, 1, &fragmShaderString, NULL);
 	glCompileShader(fragmShader);
 	glGetShaderiv(fragmShader, GL_COMPILE_STATUS, &lparams);
-	// if (GL_TRUE != lparams)
-	// 	error_processing(ERROR_FRAGM_SHADER_INDEX, &fragmShader);
+	if (GL_TRUE != lparams)
+		err.printErrAndExit(err.Errors::ERROR_FRAGM_SHADER_INDEX, &fragmShader);
 }
 
 void		Shaders::createProgram(void) {

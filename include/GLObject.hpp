@@ -6,7 +6,7 @@
 /*   By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 21:45:38 by f0rsunka          #+#    #+#             */
-/*   Updated: 2020/10/19 23:39:21 by f0rsunka         ###   ########.fr       */
+/*   Updated: 2020/10/19 23:46:01 by f0rsunka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@
 
 class GLObject {
 	public:
-		// void		deleteGlObject(GLuint shaderProgramme, GLuint fragmShader, GLuint vertShader);
-		// void		deleteGlObject(Shaders::~Shaders());
 		void		initVertexArrayObject(void);
 		void		initVertexBufferObject(std::array<float, COUNT_VERTEX> arrayVertex);
 		void		initElementsBufferObject(void);
