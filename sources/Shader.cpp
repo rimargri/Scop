@@ -31,24 +31,6 @@ std::string Shader::readShader(const char* filePath) {
 	return (shaderCode);
 }
 
-// std::string Shader::readShader(const char* filePath) {
-// 	std::string content;
-// 	std::ifstream fileStream(filePath, std::ios::in);
-// 	std::string line;
-
-// 	line = "";
-// 	if (!fileStream.is_open()) {
-//         std::cerr << "Could not read file " << filePath << ". File does not exist." << std::endl;
-//         return "";
-// 	}
-// 	while (!fileStream.eof()) {
-// 		std::getline(fileStream, line);
-// 		content.append(line + "\n");
-// 	}
-// 	fileStream.close();
-// 	return (content);
-// }
-
 void		Shader::createShaders(ErrorsProcess err, const char *vertShadFile, const char *fragmShadFile) {
 	
 	std::string tmp;
@@ -97,7 +79,7 @@ void		Shader::createProgram(ErrorsProcess err) {
 	((shaderProgramme == 0) ? (err.printErrAndExit(err.Errors::FAIL_CREATE_SHADER_PROGRAMME, 0)) : void());
 	glAttachShader(shaderProgramme, vertShader);
 	glAttachShader(shaderProgramme, fragmShader);
-    // glBindFragDataLocation(shaderProgram, 0, "outColor");
+	// glBindFragDataLocation(shaderProgramme, 0, "out_color");
 	glLinkProgram(shaderProgramme);
 	glGetShaderiv(shaderProgramme, GL_LINK_STATUS, &success);
 	if (success == GL_FALSE) {
@@ -106,14 +88,19 @@ void		Shader::createProgram(ErrorsProcess err) {
 		glDeleteShader(vertShader);
 		err.printErrAndExit(err.Errors::LINK_ERROR, &shaderProgramme);
 	}
-
 	glUseProgram(shaderProgramme);
 
+	// Specify the layout of the vertex data
+	// GLint posAttrib = glGetAttribLocation(shaderProgramme, "vertex_point");
+	// glEnableVertexAttribArray(posAttrib);
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 
+	// GLint uniformColor = glGetUniformLocation(shaderProgramme, "input_color");
+
 	glDeleteShader(vertShader);
 	glDeleteShader(fragmShader);
+
 }
 
 Shader::Shader() {

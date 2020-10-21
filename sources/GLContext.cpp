@@ -6,7 +6,7 @@
 /*   By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/19 22:00:09 by f0rsunka          #+#    #+#             */
-/*   Updated: 2020/10/20 00:00:33 by f0rsunka         ###   ########.fr       */
+/*   Updated: 2020/10/21 18:29:56 by f0rsunka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,12 +33,22 @@ GLContext::GLContext(ErrorsProcess err) {
 		err.printErrAndExit(err.Errors::FAIL_GLEW, 0);
 }
 
-void	GLContext::glLoop(void) {
+void	GLContext::glLoop(GLuint shaderProgramme, GLuint vao) {
+	// GLint uniformColor = glGetUniformLocation(shaderProgramme, "input_color");
 	while (glfwGetKey(window, GLFW_KEY_ESCAPE) != GLFW_PRESS
 					&& glfwWindowShouldClose(window) == 0)
 	{
 		// glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+		// glUseProgram(shaderProgramme);
+
+		// GLfloat timeValue = glfwGetTime();
+		// GLfloat greenValue = (sin(timeValue) / 2) + 0.5;
+		// std::cout << "aa\n" << std::endl;
+		// GLint vertexColorLocation = glGetUniformLocation(shaderProgramme, "out_color");
+		// glUniform4f(uniformColor, 0.0f, greenValue, 0.0f, 1.0f);
+		// glBindVertexArray(vao);
+		// glBindVertexArray(0);
 		// glDrawArrays(GL_TRIANGLES, 0, 6);
 		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glfwPollEvents();

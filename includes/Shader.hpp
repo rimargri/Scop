@@ -29,8 +29,7 @@
 
 class Shader {
 	public:
-		// void		createVertexShader(ErrorsProcess err);
-		// void		createFragmentShader(ErrorsProcess err);
+		GLuint		shaderProgramme;
 		void		createShaders(ErrorsProcess err, const char *vertShadFile, const char *fragmShadFile);
 		void		compileShaders(ErrorsProcess err);
 		void		createProgram(ErrorsProcess err);
@@ -39,7 +38,6 @@ class Shader {
 	private:
 		GLuint		vertShader;
 		GLuint		fragmShader;
-		GLuint		shaderProgramme;
 		const char* vertexShaderStr;
 		const char* fragmentShaderStr;
 		std::string	readShader(const char* filePath);

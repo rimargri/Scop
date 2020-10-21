@@ -6,7 +6,7 @@
 /*   By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2020/10/21 15:45:00 by f0rsunka         ###   ########.fr       */
+/*   Updated: 2020/10/21 17:52:02 by f0rsunka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,32 +39,15 @@ int main(void) {
 	GLContext		openglContext(err);
 	Shape			rectangle;
 	GLObject		obj;
-	// Shader			shader("../shaders/vertShader.vert", "../shaders/fragmShader.frag");
 	Shader			shader;
-
-	// const char* vertex_shader =
-	// "#version 400\n"
-	// "in vec3 vp;"
-	// "void main() {"
-	// "  gl_Position = vec4(vp, 1.0);"
-	// "}";
-
-	// const char* fragment_shader =
-	// "#version 400\n"
-	// "out vec4 frag_colour;"
-	// "void main() {"
-	// "  frag_colour = vec4(0.5, 0.4, 0.5, 1.0);"
-	// "}";
 
 	obj.initVertexArrayObject();
 	obj.initVertexBufferObject(rectangle.arrayVertex);
 	obj.initElementsBufferObject();
 	shader.createShaders(err, "shaders/vertShader.vert", "shaders/fragShader.frag");
 	shader.compileShaders(err);
-	// shader.createVertexShader(err);
-	// shader.createFragmentShader(err);
 	shader.createProgram(err);
-	openglContext.glLoop();
+	openglContext.glLoop(shader.shaderProgramme, obj.vao);
 	obj.~GLObject();
 	shader.~Shader();
 	return (0);
