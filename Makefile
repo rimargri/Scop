@@ -6,7 +6,7 @@
 #    By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/17 19:22:37 by f0rsunka          #+#    #+#              #
-#    Updated: 2020/10/19 23:43:08 by f0rsunka         ###   ########.fr        #
+#    Updated: 2020/10/21 13:33:28 by f0rsunka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,18 +19,18 @@ GREEN = \033[38;2;0;200;0m
 
 NAME = scop
 
-SRC_DIR = ./sources
+SRC_DIR =	./sources
 
 OBJ_DIR = ./obj
 
-INCL_DIR = ./include
+INCL_DIR = ./includes
 
 INCLUDES = -I $(INCL_DIR)
 
 C_FILES =	Errors.cpp \
 			GLContext.cpp \
 			GLObject.cpp \
-			Shaders.cpp \
+			Shader.cpp \
 			Shape.cpp \
 			main.cpp
 
