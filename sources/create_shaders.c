@@ -12,7 +12,7 @@
 
 #include "scop.h"
 
-int	create_vertex_shader(t_scop *scop, const char *vertex_shader)
+int		scp_create_vertex_shader(t_scop *scop, const char *vertex_shader)
 {
 	int lparams;
 
@@ -26,7 +26,7 @@ int	create_vertex_shader(t_scop *scop, const char *vertex_shader)
 	return (0);
 }
 
-int create_fragment_shader(t_scop *scop, const char *fragment_shader)
+int		scp_create_fragment_shader(t_scop *scop, const char *fragment_shader)
 {
 	int lparams;
 
@@ -40,7 +40,7 @@ int create_fragment_shader(t_scop *scop, const char *fragment_shader)
 	return (0);
 }
 
-void	sc_create_program(t_scop *scop)
+void	scp_create_program(t_scop *scop)
 {
 	int lparams;
 
@@ -73,7 +73,7 @@ void	create_shaders(t_scop *scop)
 	"  frag_colour = vec4(0.5, 0.4, 0.5, 1.0);"
 	"}";
 
-	create_vertex_shader(scop, vertex_shader);
-	create_fragment_shader(scop, fragment_shader);
-	sc_create_program(scop);
+	scp_create_vertex_shader(scop, vertex_shader);
+	scp_create_fragment_shader(scop, fragment_shader);
+	scp_create_program(scop);
 }

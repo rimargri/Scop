@@ -12,7 +12,7 @@
 
 void	init_gl(t_opengl *opengl);
 void	create_shaders(t_scop *scop);
-void	sc_gl_loop(t_scop *scop);
+void	scp_gl_loop(t_scop *scop);
 void	create_shape(t_scop *s);
 
 void	error_processing(int code, void *param);

@@ -55,7 +55,8 @@ ifeq ($(OS),Linux)
 
 	# LIBS := -lglut -lGLU -lGL
 else
-	LIBS	:= -lm -L ~/.brew/lib -lglfw -lglew -framework OpenGL
+	# LIBS	:= -lm -L ~/.brew/lib -lglfw -lglew -framework OpenGL
+	LIBS	:= -lm -L ~/.brew/lib -lglfw  -framework OpenGL
 	INCLUDES += -I ~/.brew/include
 endif
 

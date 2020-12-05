@@ -25,8 +25,8 @@ void	sc_gl_loop(t_scop *scop)
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glUseProgram(scop->opengl.shader_programme);
-		// glDrawArrays(GL_TRIANGLES, 0, 6);
-		 glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		glDrawArrays(GL_TRIANGLES, 0, 12 * 3);
+		//  glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glfwPollEvents();
 		glfwSwapBuffers(scop->opengl.window);
 	}

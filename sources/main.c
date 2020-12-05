@@ -32,3 +32,5 @@ int		main(void)
 	create_shaders(scop);
 	sc_gl_loop(scop);
 }
+
+http://www.opengl-tutorial.org/ru/beginners-tutorials/tutorial-2-the-first-triangle/
