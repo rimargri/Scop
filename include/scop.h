@@ -31,7 +31,8 @@
 #include "structures.h"
 #include "prototypes.h"
 
-#define COUNT_VERTEX 36
+// #define COUNT_VERTEX 3
+#define COUNT_VERTEX 12 * 3
 
 
 

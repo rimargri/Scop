@@ -10,12 +10,12 @@
 #                                                                              #
 # **************************************************************************** #
 
+NORMAL = \033[0m
 PINK = \033[38;2;200;150;200m
 BLUE = \033[38;2;200;200;250m
-RED = \033[38;2;200;30;70m
-YELLOW = \033[38;2;200;200;50m
-GREEN = \033[38;2;0;200;0m
-
+# RED = \033[38;2;200;30;70m
+# YELLOW = \033[38;2;200;200;50m
+# GREEN = \033[38;2;0;200;0m
 
 NAME = scop
 
@@ -31,16 +31,19 @@ C_FILES =	main.c \
 			opengl_init.c \
 			create_shaders.c \
 			opengl_main_loop.c \
-			create_triangle.c \
+			create_shape.c \
 			error_processing.c
 
 OBJ_FILES = $(C_FILES:.c=.o)
 
 RAW_OBJ_FILES = $(addprefix $(OBJ_DIR)/,$(OBJ_FILES))
 
+
 CFLAGS = -Wall -Wextra 
 
 # CFLAGS += -Werror
+
+LIBVECTOR_FLAGS = -L ./libvector -lvector
 
 OS = $(shell uname -s)
 
@@ -56,7 +59,7 @@ ifeq ($(OS),Linux)
 	# LIBS := -lglut -lGLU -lGL
 else
 	# LIBS	:= -lm -L ~/.brew/lib -lglfw -lglew -framework OpenGL
-	LIBS	:= -lm -L ~/.brew/lib -lglfw  -framework OpenGL
+	LIBS	:= -lm -L ~/.brew/lib -lglfw -framework OpenGL
 	INCLUDES += -I ~/.brew/include
 endif
 
@@ -67,8 +70,10 @@ $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)
 
 $(NAME): $(RAW_OBJ_FILES)
-	@gcc $(RAW_OBJ_FILES) $(LIBS) -o $(NAME)
-	@echo "$(PINK)(*≧ω≦*)  $(BLUE)Mama, ya peresobralsya  $(PINK)(*≧ω≦*)\033[0m"
+	@echo "$(BLUE)(*≧ω≦*) $(PINK)Libvector's build was done $(BLUE)(*≧ω≦*) $(NORMAL)"
+	@make -C ./libvector
+	@gcc $(RAW_OBJ_FILES) $(LIBS) $(LIBVECTOR_FLAGS) -o $(NAME)
+	@echo "$(BLUE)(*≧ω≦*) $(PINK)Build was done $(BLUE)(*≧ω≦*) $(NORMAL)"
 
 #### К о м п и л я ц и я ####
 

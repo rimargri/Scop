@@ -12,7 +12,7 @@
 
 #include "scop.h"
 
-void	sc_gl_property(void)
+void	scp_gl_property(void)
 {
 	glfwWindowHint(GLFW_SAMPLES, 4);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
@@ -29,7 +29,7 @@ void		init_gl(t_opengl *opengl)
 {
 	if (!glfwInit())
 		error_processing(FAIL_GLFW, 0);
-	sc_gl_property();
+	scp_gl_property();
 	opengl->window = glfwCreateWindow(700, 500, "scop", NULL, NULL);
 	if (!opengl->window)
 		error_processing(FAIL_WIN_GLFW, 0);

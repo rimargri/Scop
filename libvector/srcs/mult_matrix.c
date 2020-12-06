@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structures.h                                       :+:      :+:    :+:   */
+/*   mult_matrix.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2020/10/17 19:24:22 by f0rsunka         ###   ########.fr       */
+/*   Created: 2020/06/08 00:44:03 by f0rsunka          #+#    #+#             */
+/*   Updated: 2020/06/10 11:09:59 by f0rsunka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// typedef struct	s_shape
-// {
-// 	float		*array_vertex;
-// }				t_shape;
+#include "libvector.h"
 
-typedef struct	s_opengl
+t_vec3	mult_matrix(t_vec3 a, t_vec3 b)
 {
-	GLFWwindow	*window;
-	GLuint		buffer_vertex;
-	GLuint		array_vertex_id;
-	// GLuint		ebo;
-	GLuint		vert_shader;
-	GLuint		fragm_shader;
-	GLuint		shader_programme;
-}				t_opengl;
+	t_vec3 c;
 
-typedef struct	s_scop
-{
-	t_opengl	opengl;
-}				t_scop;
+	c.x = a.y * b.z - a.z * b.y;
+	c.y = a.z * b.x - a.x * b.z;
+	c.z = a.x * b.y - a.y * b.x;
+	return (c);
+}

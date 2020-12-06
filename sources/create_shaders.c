@@ -61,9 +61,9 @@ void	create_shaders(t_scop *scop)
 {
 	const char* vertex_shader =
 	"#version 400\n"
-	"in vec3 vp;"
+	"layout(location = 0) in vec3 vertex_pos;"
 	"void main() {"
-	"  gl_Position = vec4(vp, 1.0);"
+	"  gl_Position = vec4(vertex_pos, 1.0);"
 	"}";
 
 	const char* fragment_shader =

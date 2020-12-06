@@ -30,7 +30,8 @@ int		main(void)
 	init_gl(&scop->opengl);
 	create_shape(scop);
 	create_shaders(scop);
-	sc_gl_loop(scop);
+	scp_gl_loop(scop);
 }
 
-http://www.opengl-tutorial.org/ru/beginners-tutorials/tutorial-2-the-first-triangle/
+// http://www.opengl-tutorial.org/ru/beginners-tutorials/tutorial-2-the-first-triangle/
+// http://www.opengl-tutorial.org/ru/beginners-tutorials/tutorial-3-matrices/

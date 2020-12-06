@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   structures.h                                       :+:      :+:    :+:   */
+/*   vec_diff.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2020/10/17 19:24:22 by f0rsunka         ###   ########.fr       */
+/*   Created: 2020/03/16 16:48:59 by cvernius          #+#    #+#             */
+/*   Updated: 2020/06/10 11:09:41 by f0rsunka         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// typedef struct	s_shape
-// {
-// 	float		*array_vertex;
-// }				t_shape;
+#include "libvector.h"
 
-typedef struct	s_opengl
+t_vec3	vec_diff(t_vec3 v1, t_vec3 v2)
 {
-	GLFWwindow	*window;
-	GLuint		buffer_vertex;
-	GLuint		array_vertex_id;
-	// GLuint		ebo;
-	GLuint		vert_shader;
-	GLuint		fragm_shader;
-	GLuint		shader_programme;
-}				t_opengl;
+	t_vec3 diff;
 
-typedef struct	s_scop
-{
-	t_opengl	opengl;
-}				t_scop;
+	diff.x = v1.x - v2.x;
+	diff.y = v1.y - v2.y;
+	diff.z = v1.z - v2.z;
+	return (diff);
+}
