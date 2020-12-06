@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
+#    By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/16 16:38:28 by cvernius          #+#    #+#              #
-#    Updated: 2020/12/06 20:45:46 by cvernius         ###   ########.fr        #
+#    Updated: 2020/06/12 14:50:04 by f0rsunka         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ OBJ_DIR = ./obj
 
 INCL_DIR = ./include
 
-C_FILES =  vec_add.c \
+C_FILES =   vec_add.c \
 			mult_vec_const.c \
 			vec_diff.c \
 			dot_product.c \

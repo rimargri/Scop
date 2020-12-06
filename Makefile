@@ -86,7 +86,7 @@ clean:
 fclean: clean
 	@rm -rf $(NAME)
 	@rm -rf $(OBJ_DIR)
-	@rm -rf /libvector/libvector.a
+	$(MAKE) -C ./libvector fclean
 
 re: fclean all
 
