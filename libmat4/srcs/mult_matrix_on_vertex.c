@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mult_matrix.c                                      :+:      :+:    :+:   */
+/*   mult_matrix_on_vertex.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 20:14:03 by cvernius          #+#    #+#             */
-/*   Updated: 2020/12/06 20:42:44 by cvernius         ###   ########.fr       */
+/*   Updated: 2020/12/07 13:52:00 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "mat4.h"
 
-t_vec4	mult_matrix_vertex(t_mat4 matrix, t_vec4 vertex)
+t_vec4	mult_matrix_on_vertex(t_mat4 matrix, t_vec4 vertex)
 {
 	t_vec4 transform_vertex;
 
@@ -25,7 +25,7 @@ t_vec4	mult_matrix_vertex(t_mat4 matrix, t_vec4 vertex)
 						matrix.g * vertex.z +
 						matrix.h * vertex.w;
 	transform_vertex.z = matrix.i * vertex.x +
-						matrix.g * vertex.y +
+						matrix.j * vertex.y +
 						matrix.k * vertex.z +
 						matrix.l * vertex.w;
 	transform_vertex.w = matrix.m * vertex.x +

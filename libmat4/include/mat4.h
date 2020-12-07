@@ -6,13 +6,14 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 16:32:28 by cvernius          #+#    #+#             */
-/*   Updated: 2020/12/06 20:42:58 by cvernius         ###   ########.fr       */
+/*   Updated: 2020/12/07 16:59:42 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBVECTOR_H
-# define LIBVECTOR_H
+#ifndef MAT4_H
+# define MAT4_H
 # include <math.h>
+#include "libvector.h"
 
 typedef struct		s_vec4
 {
@@ -33,7 +34,7 @@ typedef struct		s_mat4
 	float			g;
 	float			h;
 	float			i;
-	float			g;
+	float			j;
 	float			k;
 	float			l;
 	float			m;
@@ -50,24 +51,6 @@ typedef struct		s_ivec4
 	int				w;
 }					t_ivec4;
 
-typedef struct		s_vec3
-{
-	float			x;
-	float			y;
-	float			z;
-}					t_vec3;
-
-typedef struct		s_vec2
-{
-	float			x;
-	float			y;
-}					t_vec2;
-
-typedef struct		s_ivec2
-{
-	int				x;
-	int				y;
-}					t_ivec2;
 
 /*
 ** *********************************** **
@@ -77,6 +60,10 @@ typedef struct		s_ivec2
 ** *********************************** **
 */
 
-t_vec4	mult_matrix_vertex(t_mat4 matrix, t_vec4 vertex);
+t_vec4	mult_matrix_on_vertex(t_mat4 matrix, t_vec4 vertex);
+t_mat4	mult_matrix(t_mat4 mat1, t_mat4 mat2);
+t_vec4	scale_matrix(t_vec3 scale_value, t_vec4 vertex);
+t_vec4	rotation_matrix(t_vec3 angle, t_vec4 vertex);
+t_vec4	translate_matrix(t_vec3 shift, t_vec4 vertex);
 
 #endif

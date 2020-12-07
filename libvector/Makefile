@@ -6,7 +6,7 @@
 #    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/16 16:38:28 by cvernius          #+#    #+#              #
-#    Updated: 2020/12/06 20:45:46 by cvernius         ###   ########.fr        #
+#    Updated: 2020/12/07 14:22:27 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,15 +18,14 @@ OBJ_DIR = ./obj
 
 INCL_DIR = ./include
 
-C_FILES =  vec_add.c \
+C_FILES =   vec_add.c \
 			mult_vec_const.c \
 			vec_diff.c \
 			dot_product.c \
 			vec_length.c \
 			vec_normalize.c \
 			mult_vec.c \
-			division_vec.c \
-			mult_matrix.c
+			division_vec.c
 
 OBJ_FILES = $(C_FILES:.c=.o)
 

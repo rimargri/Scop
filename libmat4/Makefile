@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+         #
+#    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/16 16:38:28 by cvernius          #+#    #+#              #
-#    Updated: 2020/06/12 14:50:04 by f0rsunka         ###   ########.fr        #
+#    Updated: 2020/12/07 17:22:05 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libvector.a
+NAME = libmat4.a
 
 SRC_DIR = ./srcs
 
@@ -18,15 +18,11 @@ OBJ_DIR = ./obj
 
 INCL_DIR = ./include
 
-C_FILES =   vec_add.c \
-			mult_vec_const.c \
-			vec_diff.c \
-			dot_product.c \
-			vec_length.c \
-			vec_normalize.c \
-			mult_vec.c \
-			division_vec.c \
-			mult_matrix.c
+C_FILES =   mult_matrix_on_vertex.c \
+			mult_matrix.c \
+			rotation_matrix.c \
+			scale_matrix.c \
+			translate_matrix.c
 
 OBJ_FILES = $(C_FILES:.c=.o)
 
@@ -40,7 +36,7 @@ $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCL_DIR)/*.h
-	gcc $(CFLAGS_FINAL) -c $< -I $(INCL_DIR) -o $@
+	gcc $(CFLAGS_FINAL) -I ../libvector/include/ -I $(INCL_DIR) -c $< -o $@
 
 $(NAME): $(RAW_OBJ_FILES)
 	ar rc $(NAME) $(RAW_OBJ_FILES)

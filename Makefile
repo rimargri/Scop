@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+         #
+#    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/17 19:22:37 by f0rsunka          #+#    #+#              #
-#    Updated: 2020/10/14 18:57:17 by f0rsunka         ###   ########.fr        #
+#    Updated: 2020/12/07 17:22:41 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,6 +45,8 @@ CFLAGS = -Wall -Wextra
 
 LIBVECTOR_FLAGS = -L ./libvector -lvector
 
+MAT4_FLAGS = -lmat4 -L ./libmat4
+
 OS = $(shell uname -s)
 
 ifeq ($(OS),Linux)
@@ -70,9 +72,12 @@ $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)
 
 $(NAME): $(RAW_OBJ_FILES)
-	@echo "$(BLUE)(*≧ω≦*) $(PINK)Libvector's build was done $(BLUE)(*≧ω≦*) $(NORMAL)"
-	@make -C ./libvector
-	@gcc $(RAW_OBJ_FILES) $(LIBS) $(LIBVECTOR_FLAGS) -o $(NAME)
+	# @make -C ./libvector
+	# @echo "$(BLUE)(*≧ω≦*) $(PINK)Libvector's build was done $(BLUE)(*≧ω≦*) $(NORMAL)"
+	@make -C ./libmat4
+	@echo "$(BLUE)(*≧ω≦*) $(PINK)Mat4's build was done $(BLUE)(*≧ω≦*) $(NORMAL)"
+	# @gcc $(RAW_OBJ_FILES) $(LIBS) $(LIBVECTOR_FLAGS) $(MAT4_FLAGS) -o $(NAME)
+	@gcc $(RAW_OBJ_FILES) $(LIBS) $(MAT4_FLAGS) -o $(NAME)
 	@echo "$(BLUE)(*≧ω≦*) $(PINK)Build was done $(BLUE)(*≧ω≦*) $(NORMAL)"
 
 #### К о м п и л я ц и я ####
@@ -86,7 +91,8 @@ clean:
 fclean: clean
 	@rm -rf $(NAME)
 	@rm -rf $(OBJ_DIR)
-	$(MAKE) -C ./libvector fclean
+	# $(MAKE) -C ./libvector fclean
+	$(MAKE) -C ./libmat4 fclean
 
 re: fclean all
 

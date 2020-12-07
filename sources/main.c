@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2020/10/17 19:24:35 by f0rsunka         ###   ########.fr       */
+/*   Updated: 2020/12/07 21:08:46 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,3 +35,9 @@ int		main(void)
 
 // http://www.opengl-tutorial.org/ru/beginners-tutorials/tutorial-2-the-first-triangle/
 // http://www.opengl-tutorial.org/ru/beginners-tutorials/tutorial-3-matrices/
+
+
+
+// http://learnwebgl.brown37.net/08_projections/projections_perspective.html
+
+// https://learnopengl.com/Getting-started/Coordinate-Systems
