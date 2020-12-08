@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2020/10/17 19:24:22 by f0rsunka         ###   ########.fr       */
+/*   Updated: 2020/12/08 17:08:43 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,3 +30,11 @@ typedef struct	s_scop
 {
 	t_opengl	opengl;
 }				t_scop;
+
+typedef struct	s_frustum
+{
+	float		left;
+	float		right;
+	float		top;
+	float		bottom;
+}				t_frustum;

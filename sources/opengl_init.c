@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   opengl_init.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:03:54 by cvernius          #+#    #+#             */
-/*   Updated: 2020/10/16 21:54:10 by f0rsunka         ###   ########.fr       */
+/*   Updated: 2020/12/08 22:24:12 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ void		init_gl(t_opengl *opengl)
 	if (!glfwInit())
 		error_processing(FAIL_GLFW, 0);
 	scp_gl_property();
-	opengl->window = glfwCreateWindow(700, 500, "scop", NULL, NULL);
+	opengl->window = glfwCreateWindow(WIN_W, WIN_H, "scop", NULL, NULL);
 	if (!opengl->window)
 		error_processing(FAIL_WIN_GLFW, 0);
 	glfwMakeContextCurrent(opengl->window);
 	glfwSetInputMode(opengl->window, GLFW_STICKY_KEYS, GL_TRUE);
+	GLuint MatrixID = glGetUniformLocation(programID, "MVP");
 }

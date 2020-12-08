@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2020/12/07 21:08:46 by cvernius         ###   ########.fr       */
+/*   Updated: 2020/12/08 15:00:38 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,3 +41,5 @@ int		main(void)
 // http://learnwebgl.brown37.net/08_projections/projections_perspective.html
 
 // https://learnopengl.com/Getting-started/Coordinate-Systems
+
+// http://learnwebgl.brown37.net/08_projections/projections_perspective.html

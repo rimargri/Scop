@@ -6,7 +6,7 @@
 #    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/16 16:38:28 by cvernius          #+#    #+#              #
-#    Updated: 2020/12/07 17:22:05 by cvernius         ###   ########.fr        #
+#    Updated: 2020/12/08 17:15:34 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,8 @@ C_FILES =   mult_matrix_on_vertex.c \
 			mult_matrix.c \
 			rotation_matrix.c \
 			scale_matrix.c \
-			translate_matrix.c
+			translate_matrix.c \
+			identity_matrix.c
 
 OBJ_FILES = $(C_FILES:.c=.o)
 
