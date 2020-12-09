@@ -6,14 +6,14 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 16:32:28 by cvernius          #+#    #+#             */
-/*   Updated: 2020/12/08 20:02:38 by cvernius         ###   ########.fr       */
+/*   Updated: 2020/12/09 19:02:12 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MAT4_H
 # define MAT4_H
 # include <math.h>
-#include "libvector.h"
+#include "../../libvector/include/libvector.h"
 
 typedef struct		s_vec4
 {
@@ -23,8 +23,30 @@ typedef struct		s_vec4
 	float			w;
 }					t_vec4;
 
+
+	// mat[0][0]
+	// mat[0][1]
+	// mat[0][2]
+	// mat[0][3]
+
+	// mat[1][0]
+	// mat[1][1]
+	// mat[1][2]
+	// mat[1][3]
+
+	// mat[2][0]
+	// mat[2][1]
+	// mat[2][2]
+	// mat[2][3]
+
+	// mat[3][0]
+	// mat[3][1]
+	// mat[3][2]
+	// mat[3][3]
+
 typedef struct		s_mat4
 {
+	// float			mat[4][4];
 	float			a;
 	float			b;
 	float			c;

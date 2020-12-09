@@ -6,11 +6,13 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2020/12/08 15:00:38 by cvernius         ###   ########.fr       */
+/*   Updated: 2020/12/09 20:01:46 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scop.h"
+
+#include <stdio.h>
 
 //  https://antongerdelan.net/opengl/hellotriangle.html
 
@@ -30,6 +32,7 @@ int		main(void)
 	init_gl(&scop->opengl);
 	create_shape(scop);
 	create_shaders(scop);
+	create_model_view_projection_mat(scop);
 	scp_gl_loop(scop);
 }
 
@@ -43,3 +46,6 @@ int		main(void)
 // https://learnopengl.com/Getting-started/Coordinate-Systems
 
 // http://learnwebgl.brown37.net/08_projections/projections_perspective.html
+
+
+// https://github.com/opengl-tutorials/ogl

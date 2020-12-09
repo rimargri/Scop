@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 19:33:37 by f0rsunka          #+#    #+#             */
-/*   Updated: 2020/12/08 17:16:51 by cvernius         ###   ########.fr       */
+/*   Updated: 2020/12/09 17:52:39 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,12 @@
 
 #include "structures.h"
 #include "prototypes.h"
-#include "mat4.h"
+#include "../libmat4/include/mat4.h"
+#include "../libvector/include/libvector.h"
 
-// #define COUNT_VERTEX 3
+// #define COUNT_VERTEX 12 * 3
 
-#define COUNT_VERTEX 12 * 3
+#define COUNT_VERTEX 3
 
 #define WIN_W 700
 #define WIN_H 500

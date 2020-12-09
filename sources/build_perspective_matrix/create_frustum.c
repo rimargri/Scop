@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_perspective.c                               :+:      :+:    :+:   */
+/*   create_frustum.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 15:42:03 by cvernius          #+#    #+#             */
-/*   Updated: 2020/12/08 18:56:30 by cvernius         ###   ########.fr       */
+/*   Updated: 2020/12/09 19:23:31 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	create_perspective_parameters(void)
 		exit(99);
 
 }
-
-
 
 t_mat4	move_frustum_apex_to_origin(t_frustum frustum)
 {
@@ -54,7 +52,7 @@ t_mat4	move_frustum_apex_to_origin(t_frustum frustum)
 	return (mat_apex);
 }
 
-void	create_frustum(t_mat4 *perspective_matrix, t_frustum frustum)
+t_mat4	create_frustum(t_frustum frustum)
 {
 	t_mat4 mat_apex;
 
@@ -63,4 +61,5 @@ void	create_frustum(t_mat4 *perspective_matrix, t_frustum frustum)
 	// 	*perspective_matrix = identity_matrix();
 
 	mat_apex = move_frustum_apex_to_origin(frustum);
+	return (mat_apex);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   opengl_main_loop.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 17:24:49 by cvernius          #+#    #+#             */
-/*   Updated: 2020/10/17 19:11:43 by f0rsunka         ###   ########.fr       */
+/*   Updated: 2020/12/09 20:08:12 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,32 +23,29 @@ void	scp_gl_loop(t_scop *scop)
 	while (glfwGetKey(scop->opengl.window, GLFW_KEY_ESCAPE) != GLFW_PRESS
 						&& glfwWindowShouldClose(scop->opengl.window) == 0)
 	{
+
+
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-		glUseProgram(scop->opengl.shader_programme);
+		glUseProgram(scop->opengl.program_id);
 	
+		glUniformMatrix4fv(scop->opengl.matrix_id, 1, GL_FALSE, &scop->opengl.mvp[0][0]);
+
 		glEnableVertexAttribArray(0);
 		glBindBuffer(GL_ARRAY_BUFFER, scop->opengl.buffer_vertex);
 		glVertexAttribPointer(0, COUNT_VERTEX, GL_FLOAT, GL_FALSE, 0, NULL);
 
-	
 		glDrawArrays(GL_TRIANGLES, 0, COUNT_VERTEX);
-
 		glDisableVertexAttribArray(0);
 		//  glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
 		glfwPollEvents();
 		glfwSwapBuffers(scop->opengl.window);
 	}
 
-	glDeleteProgram(scop->opengl.shader_programme);
+	glDeleteBuffers(1, &scop->opengl.buffer_vertex);
+	glDeleteProgram(scop->opengl.program_id);
+	glDeleteVertexArraysAPPLE(1, &scop->opengl.array_vertex_id);
 	glDeleteShader(scop->opengl.fragm_shader);
 	glDeleteShader(scop->opengl.vert_shader);
-
-	// glDeleteBuffers(1, &scop->opengl.ebo);
-	// glDeleteBuffers(1, &scop->opengl.vbo);
-
-	// glDeleteVertexArrays(1, &scop->opengl.vao);
-
-	// scop->opengl.window.close();
-
-	exit(0);
+	glfwTerminate();
+	// exit(0);
 }

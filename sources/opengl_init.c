@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:03:54 by cvernius          #+#    #+#             */
-/*   Updated: 2020/12/08 22:24:12 by cvernius         ###   ########.fr       */
+/*   Updated: 2020/12/09 12:34:01 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,4 @@ void		init_gl(t_opengl *opengl)
 		error_processing(FAIL_WIN_GLFW, 0);
 	glfwMakeContextCurrent(opengl->window);
 	glfwSetInputMode(opengl->window, GLFW_STICKY_KEYS, GL_TRUE);
-	GLuint MatrixID = glGetUniformLocation(programID, "MVP");
 }

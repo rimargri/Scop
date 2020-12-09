@@ -6,7 +6,7 @@
 #    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/16 16:38:28 by cvernius          #+#    #+#              #
-#    Updated: 2020/12/08 17:15:34 by cvernius         ###   ########.fr        #
+#    Updated: 2020/12/09 13:29:39 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(INCL_DIR)/*.h
-	gcc $(CFLAGS_FINAL) -I ../libvector/include/ -I $(INCL_DIR) -c $< -o $@
+	gcc $(CFLAGS_FINAL) -I ../libvector/include -I $(INCL_DIR) -c $< -o $@
 
 $(NAME): $(RAW_OBJ_FILES)
 	ar rc $(NAME) $(RAW_OBJ_FILES)

@@ -1,16 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_view_map.c                                  :+:      :+:    :+:   */
+/*   create_view_mat.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 21:57:43 by cvernius          #+#    #+#             */
-/*   Updated: 2020/12/08 22:13:54 by cvernius         ###   ########.fr       */
+/*   Updated: 2020/12/09 17:58:58 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scop.h"
+
+#include "../libvector/include/libvector.h"
 
 // https://stackoverflow.com/questions/21830340/understanding-glmlookat
 
@@ -24,8 +26,8 @@ t_mat4	create_view_mat(t_vec3 eye, t_vec3 center, t_vec3 up)
 	z_axis = vec_diff(eye, center);
 	vec_normalize(z_axis);
 	y_axis = up;
-	x_axis = vec_cross(y_axis, z_axis);
-	y_axis = vec_cross(z_axis, x_axis);
+	x_axis = cross(y_axis, z_axis);
+	y_axis = cross(z_axis, x_axis);
 	vec_normalize(x_axis);
 	vec_normalize(y_axis);
 	view_mat.a = x_axis.x;

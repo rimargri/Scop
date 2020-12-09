@@ -6,7 +6,7 @@
 #    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/16 16:38:28 by cvernius          #+#    #+#              #
-#    Updated: 2020/12/07 14:22:27 by cvernius         ###   ########.fr        #
+#    Updated: 2020/12/09 17:53:10 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,8 @@ C_FILES =   vec_add.c \
 			vec_length.c \
 			vec_normalize.c \
 			mult_vec.c \
-			division_vec.c
+			division_vec.c \
+			cross.c
 
 OBJ_FILES = $(C_FILES:.c=.o)
 

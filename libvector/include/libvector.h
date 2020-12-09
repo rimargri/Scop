@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 16:32:28 by cvernius          #+#    #+#             */
-/*   Updated: 2020/12/07 17:00:03 by cvernius         ###   ########.fr       */
+/*   Updated: 2020/12/09 16:10:02 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ t_vec3				mult_vec_const(t_vec3 v, float n);
 float				vec_length(t_vec3 v);
 t_vec3				mult_vec(t_vec3 v1, t_vec3 v2);
 t_vec3				division_vec(t_vec3 v1, t_vec3 v2);
+t_vec3				cross(t_vec3 v1, t_vec3 v2);
 
 #endif

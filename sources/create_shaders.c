@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_shaders.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 18:21:26 by cvernius          #+#    #+#             */
-/*   Updated: 2020/10/17 19:22:26 by f0rsunka         ###   ########.fr       */
+/*   Updated: 2020/12/09 20:02:07 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,25 +45,27 @@ void	scp_create_program(t_scop *scop)
 	int lparams;
 
 	lparams = -1;
-	scop->opengl.shader_programme = glCreateProgram();
-	glAttachShader(scop->opengl.shader_programme, scop->opengl.fragm_shader);
-	glAttachShader(scop->opengl.shader_programme, scop->opengl.vert_shader);
-	glLinkProgram(scop->opengl.shader_programme);
+	scop->opengl.program_id = glCreateProgram();
+	glAttachShader(scop->opengl.program_id, scop->opengl.fragm_shader);
+	glAttachShader(scop->opengl.program_id, scop->opengl.vert_shader);
+	glLinkProgram(scop->opengl.program_id);
 	glDeleteShader(scop->opengl.vert_shader);
 	glDeleteShader(scop->opengl.fragm_shader);
-	glGetShaderiv(scop->opengl.shader_programme, GL_LINK_STATUS, &lparams);
+	glGetShaderiv(scop->opengl.program_id, GL_LINK_STATUS, &lparams);
 	// printf("%u %d\n", GL_TRUE, lparams);
 	// if (GL_TRUE != lparams)
-		// error_processing(LINK_ERROR, &scop->opengl.shader_programme);
+		// error_processing(LINK_ERROR, &scop->opengl.program_id);
 }
 
 void	create_shaders(t_scop *scop)
 {
 	const char* vertex_shader =
 	"#version 400\n"
-	"layout(location = 0) in vec3 vertex_pos;"
+	"layout(location = 0) in vec3 vertex_pos_modelspace;"
+	"uniform mat4 MVP;"
 	"void main() {"
-	"  gl_Position = vec4(vertex_pos, 1.0);"
+	"  gl_Position = MVP * vec4(vertex_pos_modelspace, 1.0);"
+	// "  gl_Position = vec4(vertex_pos_modelspace, 1.0);"
 	"}";
 
 	const char* fragment_shader =
@@ -76,4 +78,5 @@ void	create_shaders(t_scop *scop)
 	scp_create_vertex_shader(scop, vertex_shader);
 	scp_create_fragment_shader(scop, fragment_shader);
 	scp_create_program(scop);
+	scop->opengl.matrix_id = glGetUniformLocation(scop->opengl.program_id, "MVP");
 }

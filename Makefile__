@@ -1,0 +1,129 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2020/09/17 19:22:37 by f0rsunka          #+#    #+#              #
+#    Updated: 2020/12/09 15:31:02 by cvernius         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+NORMAL = \033[0m
+PINK = \033[38;2;200;150;200m
+BLUE = \033[38;2;200;200;250m
+
+NAME = scop
+
+SRC_DIR = ./sources
+
+OBJ_DIR = ./obj
+
+INCL_DIR = ./include
+
+INCLUDES = -I $(INCL_DIR) -I ./libmat4/include
+
+C_FILES =	main.c \
+			opengl_init.c \
+			create_shaders.c \
+			opengl_main_loop.c \
+			create_shape.c \
+			error_processing.c
+
+C_FILES_PERSPECTIVE_MAT =   build_perspective_projection.c \
+							create_frustum.c \
+							create_perspective.c \
+							mapping_depth.c \
+							scale_view_window.c 
+
+OBJ_FILES = $(C_FILES:.c=.o)
+OBJ_FILES_PERSPECTIVE = $(C_FILES_PERSPECTIVE_MAT:.c=.o)
+
+RAW_OBJ_FILES = $(addprefix $(OBJ_DIR)/1_,$(OBJ_FILES))
+RAW_OBJ_FILES_PERSPECTIVE = $(addprefix $(OBJ_DIR)/2_,$(OBJ_FILES_PERSPECTIVE))
+
+DEPS = $(RAW_OBJ_FILES:.o =.d)
+DEPS_PERSPECTIVE = $(RAW_OBJ_FILES_PERSPECTIVE:.o =.d)
+
+LIBVECTOR_FLAGS = -L ./libvector -lvector
+
+MAT4_FLAGS = -L ./libmat4 -lmat4
+
+OS = $(shell uname -s)
+
+ifeq ($(OS),Linux)
+	LIBS	:= -lepoxy -lGL -lglfw `pkg-config --static --libs glfw3` `pkg-config --static --libs gl`
+else
+	LIBS	:= -lm -L ~/.brew/lib -lglfw -framework OpenGL
+	INCLUDES += -I ~/.brew/include
+endif
+
+CFLAGS_ERRORS = -Wall -Wextra -Werror
+CFLAGS_OPTIMIZATIONS = -O3 -funroll-loops
+CFLAGS_DEPENDENCIES = -MMD -MP
+CFLAGS_INCLUDES = -I $(INCL_DIR) $(INCLUDES) -I ./libvector/include -I ./libmat4/include
+CFLAGS_DEBUG = -O0 -pg -g -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer
+
+CFLAGS_FINAL =	$(CFLAGS_INTERNAL) \
+				$(CFLAGS_ERRORS) $(CFLAGS_OPTIMIZATIONS) \
+				$(CFLAGS_DEPENDENCIES) $(CFLAGS_INCLUDES) \
+				$(CFLAGS)
+
+LDFLAGS = $(LIBS) $(LIBVECTOR_FLAGS) $(MAT4_FLAGS)
+
+.PHONY: all debug clean clean_libs clean_self fclean re
+
+all:
+	@echo "$(BLUE)" "Making libvector" $(DEFAULT)
+	@echo -n $(DEEP_BLUE)
+	$(MAKE) -C ./libvector
+	@echo -n $(DEFAULT)
+
+	@echo "$(BLUE)" "Making libmat4" $(DEFAULT)
+	@echo -n $(DEEP_BLUE)
+	$(MAKE) -C ./libmat4
+	@echo -n $(DEFAULT)
+
+	@echo "$(BLUE)" "Making scop" $(DEFAULT)
+	@echo -n $(GREEN)
+	$(MAKE) $(NAME)
+	@echo -n $(DEFAULT)
+
+debug: clean_self clean_libs
+	CFLAGS="$(CFLAGS_DEBUG)" $(MAKE) -C ./libvector
+	CFLAGS="$(CFLAGS_DEBUG)" $(MAKE) -C ./limat4
+	CFLAGS="$(CFLAGS_DEBUG)" $(MAKE)
+
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)
+
+$(NAME): ./libvector/libvector.a ./libmat4/libmat4.a $(RAW_OBJ_FILES) $(RAW_OBJ_FILES_PERSPECTIVE)
+	gcc -o $(NAME) $(RAW_OBJ_FILES) $(RAW_OBJ_FILES_PERSPECTIVE) $(LDFLAGS)
+	@echo "$(PINK)(*≧ω≦*)  $(BLUE)Build was done $(PINK)(*≧ω≦*)"
+
+#### К о м п и л я ц и я ####
+
+-include $(DEPS)
+$(OBJ_DIR)/1_%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+	gcc $(CFLAGS_FINAL) -c $< -o $@
+
+-include $(DEPS)
+$(OBJ_DIR)/2_%.o: $(SRC_DIR)/build_perspective_matrix/%.c | $(OBJ_DIR)
+	gcc $(CFLAGS_FINAL) -c $< -o $@
+
+clean: clean_libs clean_self
+
+clean_libs:
+	$(MAKE) -C ./libmat4 clean
+	$(MAKE) -C ./libvector clean
+
+clean_self:
+	rm -rfv $(OBJ_DIR)
+
+fclean: clean
+	rm -rf $(NAME)
+	$(MAKE) -C ./libmat4 fclean
+	$(MAKE) -C ./libvector fclean
+
+re: fclean all
