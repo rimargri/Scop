@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 17:24:49 by cvernius          #+#    #+#             */
-/*   Updated: 2020/12/09 20:08:12 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/01/23 18:18:03 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,31 @@
 
 // glfwSwapBuffers(scop->opengl.window) - put the stuff we've been drawing
 // onto the display
+#include <stdio.h>
 
 void	scp_gl_loop(t_scop *scop)
 {
+	// const GLfloat mvp[] = {
+	// 	1.0f, 0.0f, 0.0f, 0.0f,
+	// 	0.0f, 1.0f, 0.0f, 0.0f,
+	// 	0.0f, 0.0f, 1.0f, 0.0f,
+	// 	0.0f, 0.0f, 0.0f, 1.0f		
+	// };
+
+	// scop->opengl.matrix_id = glGetUniformLocation(scop->opengl.program_id, "mvp");
+
+	// glUniformMatrix4fv(scop->opengl.matrix_id, 1, GL_FALSE, modelviewmatrix);
+	
+	for (int i = 0; i < 16; i++)
+		printf("%f\n", scop->opengl.mvp[i]);
+
 	while (glfwGetKey(scop->opengl.window, GLFW_KEY_ESCAPE) != GLFW_PRESS
 						&& glfwWindowShouldClose(scop->opengl.window) == 0)
 	{
-
-
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glUseProgram(scop->opengl.program_id);
-	
-		glUniformMatrix4fv(scop->opengl.matrix_id, 1, GL_FALSE, &scop->opengl.mvp[0][0]);
+
+		glUniformMatrix4fv(scop->opengl.matrix_id, 1, GL_FALSE, scop->opengl.mvp);
 
 		glEnableVertexAttribArray(0);
 		glBindBuffer(GL_ARRAY_BUFFER, scop->opengl.buffer_vertex);

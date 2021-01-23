@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2020/12/09 19:18:48 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/01/08 17:25:41 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ typedef struct	s_opengl
 	GLuint		fragm_shader;
 	GLuint		program_id;
 	GLuint		matrix_id;
-	float		**mvp;
+	float		*mvp;
 }				t_opengl;
 
 

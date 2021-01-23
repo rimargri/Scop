@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 18:21:26 by cvernius          #+#    #+#             */
-/*   Updated: 2020/12/09 20:02:07 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/01/08 19:08:17 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ void	create_shaders(t_scop *scop)
 	const char* vertex_shader =
 	"#version 400\n"
 	"layout(location = 0) in vec3 vertex_pos_modelspace;"
-	"uniform mat4 MVP;"
+	"uniform mat4 mvp;"
 	"void main() {"
-	"  gl_Position = MVP * vec4(vertex_pos_modelspace, 1.0);"
+	"  gl_Position = mvp * vec4(vertex_pos_modelspace, 1.0);"
 	// "  gl_Position = vec4(vertex_pos_modelspace, 1.0);"
 	"}";
 
@@ -75,8 +75,8 @@ void	create_shaders(t_scop *scop)
 	"  frag_colour = vec4(0.5, 0.4, 0.5, 1.0);"
 	"}";
 
+	// scop->opengl.matrix_id = glGetUniformLocation(scop->opengl.program_id, "mvp");
 	scp_create_vertex_shader(scop, vertex_shader);
 	scp_create_fragment_shader(scop, fragment_shader);
 	scp_create_program(scop);
-	scop->opengl.matrix_id = glGetUniformLocation(scop->opengl.program_id, "MVP");
 }
