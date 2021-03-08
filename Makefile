@@ -6,7 +6,7 @@
 #    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/17 19:22:37 by f0rsunka          #+#    #+#              #
-#    Updated: 2020/10/05 18:24:46 by cvernius         ###   ########.fr        #
+#    Updated: 2021/03/08 19:04:58 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,9 +44,9 @@ CFLAGS = -Wall -Wextra
 OS = $(shell uname -s)
 
 ifeq ($(OS),Linux)
-	LIBS	:= -lGL -lglfw -lepoxy
+	GL_LIBS	:= -lepoxy -lGL -lglfw `pkg-config --static --libs glfw3` `pkg-config --static --libs gl`
 else
-	LIBS	:= -lm -L ~/.brew/lib -lglfw -lglew -framework OpenGL
+	GL_LIBS	:= -lm -L ~/.brew/lib -lglfw -framework OpenGL
 	INCLUDES += -I ~/.brew/include
 endif
 
@@ -57,7 +57,7 @@ $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)
 
 $(NAME): $(RAW_OBJ_FILES)
-	@gcc $(RAW_OBJ_FILES) $(LIBS) -o $(NAME)
+	@gcc $(RAW_OBJ_FILES) $(GL_LIBS) -o $(NAME)
 	@echo "$(PINK)(*≧ω≦*)  $(BLUE)Mama, ya peresobralsya  $(PINK)(*≧ω≦*)\033[0m"
 
 #### К о м п и л я ц и я ####
