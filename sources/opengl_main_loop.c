@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 17:24:49 by cvernius          #+#    #+#             */
-/*   Updated: 2021/03/13 13:26:39 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/03/14 18:56:51 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,11 @@
 
 int		sc_gl_loop(t_scop *scop)
 {
-	glBindBuffer(GL_ARRAY_BUFFER, scop->vertex_buffer);
-
 	while (glfwGetKey(scop->opengl.window, GLFW_KEY_ESCAPE) != GLFW_PRESS
 						&& glfwWindowShouldClose(scop->opengl.window) == 0)
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glUseProgram(scop->opengl.program_id);
-		glBindVertexArray(scop->opengl.vao);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 		glfwPollEvents();
 		glfwSwapBuffers(scop->opengl.window);
