@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2020/10/05 18:14:58 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/03/13 13:24:55 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct	s_opengl
 	GLuint		vao;
 	GLuint		vert_shader;
 	GLuint		fragm_shader;
-	GLuint		shader_programme;
+	GLuint		program_id;
 }				t_opengl;
 
 typedef struct	s_scop

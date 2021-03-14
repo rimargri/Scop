@@ -1,30 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   dot_product.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/03/13 14:27:53 by cvernius         ###   ########.fr       */
+/*   Created: 2020/03/16 16:36:27 by cvernius          #+#    #+#             */
+/*   Updated: 2020/03/16 16:36:49 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scop.h"
+#include "libvector.h"
 
-int		main(void)
+float	dot_product(t_vec3 v1, t_vec3 v2)
 {
-	t_scop *scop;
+	float dp;
 
-	if (!(scop = malloc(sizeof(t_scop))))
-		return (0);
-	if (init_gl(&scop->opengl) == 0)
-		return (0);
-	create_triangle(scop);
-	create_shaders(scop);
-	sc_gl_loop(scop);
+	dp = v1.x * v2.x + v1.y * v2.y + v1.z * v2.z;
+	return (dp);
 }
-
-// http://www.opengl-tutorial.org/ru/beginners-tutorials/tutorial-3-matrices/
-
-// https://solarianprogrammer.com/2013/05/22/opengl-101-matrices-projection-view-model/

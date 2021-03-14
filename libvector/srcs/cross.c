@@ -1,30 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   cross.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/03/13 14:27:53 by cvernius         ###   ########.fr       */
+/*   Created: 2020/12/09 15:53:45 by cvernius          #+#    #+#             */
+/*   Updated: 2020/12/09 15:57:05 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scop.h"
+#include "libvector.h"
 
-int		main(void)
+t_vec3	cross(t_vec3 v1, t_vec3 v2)
 {
-	t_scop *scop;
+	t_vec3 cross_vec;
 
-	if (!(scop = malloc(sizeof(t_scop))))
-		return (0);
-	if (init_gl(&scop->opengl) == 0)
-		return (0);
-	create_triangle(scop);
-	create_shaders(scop);
-	sc_gl_loop(scop);
+	cross_vec.x = v1.y * v2.z - v1.z * v2.y;
+	cross_vec.y = v1.z * v2.x - v1.x * v2.z;
+	cross_vec.z = v1.x * v2.y - v1.y * v2.x;
+	return (cross_vec);
 }
-
-// http://www.opengl-tutorial.org/ru/beginners-tutorials/tutorial-3-matrices/
-
-// https://solarianprogrammer.com/2013/05/22/opengl-101-matrices-projection-view-model/

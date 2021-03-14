@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   vec_normalize.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/03/13 14:27:53 by cvernius         ###   ########.fr       */
+/*   Created: 2020/03/16 16:35:33 by cvernius          #+#    #+#             */
+/*   Updated: 2020/03/16 16:36:03 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scop.h"
+#include "libvector.h"
 
-int		main(void)
+t_vec3	vec_normalize(t_vec3 v)
 {
-	t_scop *scop;
+	float	length;
+	t_vec3	nor_v;
 
-	if (!(scop = malloc(sizeof(t_scop))))
-		return (0);
-	if (init_gl(&scop->opengl) == 0)
-		return (0);
-	create_triangle(scop);
-	create_shaders(scop);
-	sc_gl_loop(scop);
+	length = vec_length(v);
+	nor_v.x = v.x / length;
+	nor_v.y = v.y / length;
+	nor_v.z = v.z / length;
+	return (nor_v);
 }
-
-// http://www.opengl-tutorial.org/ru/beginners-tutorials/tutorial-3-matrices/
-
-// https://solarianprogrammer.com/2013/05/22/opengl-101-matrices-projection-view-model/

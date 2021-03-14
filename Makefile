@@ -6,7 +6,7 @@
 #    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/17 19:22:37 by f0rsunka          #+#    #+#              #
-#    Updated: 2021/03/08 19:04:58 by cvernius         ###   ########.fr        #
+#    Updated: 2021/03/14 18:37:03 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,9 @@ C_FILES =	main.c \
 			opengl_init.c \
 			create_shaders.c \
 			opengl_main_loop.c \
-			create_triangle.c
+			create_triangle.c \
+			model_matrix.c \
+			projection_matrix.c
 
 OBJ_FILES = $(C_FILES:.c=.o)
 
@@ -40,6 +42,10 @@ RAW_OBJ_FILES = $(addprefix $(OBJ_DIR)/,$(OBJ_FILES))
 CFLAGS = -Wall -Wextra 
 
 # CFLAGS += -Werror
+
+LIBVECTOR_FLAGS = -L ./libvector -lvector
+
+LMAT4_FLAGS = -L ./libmat4 -lmat4
 
 OS = $(shell uname -s)
 
@@ -57,7 +63,7 @@ $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)
 
 $(NAME): $(RAW_OBJ_FILES)
-	@gcc $(RAW_OBJ_FILES) $(GL_LIBS) -o $(NAME)
+	@gcc $(RAW_OBJ_FILES) $(GL_LIBS) $(LIBVECTOR_FLAGS) $(LMAT4_FLAGS) -o $(NAME)
 	@echo "$(PINK)(*≧ω≦*)  $(BLUE)Mama, ya peresobralsya  $(PINK)(*≧ω≦*)\033[0m"
 
 #### К о м п и л я ц и я ####
@@ -73,5 +79,3 @@ fclean: clean
 	@rm -rf $(OBJ_DIR)
 
 re: fclean all
-
-
