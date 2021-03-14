@@ -6,7 +6,7 @@
 #    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/17 19:22:37 by f0rsunka          #+#    #+#              #
-#    Updated: 2021/03/14 18:37:03 by cvernius         ###   ########.fr        #
+#    Updated: 2021/03/14 20:21:02 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ C_FILES =	main.c \
 			opengl_main_loop.c \
 			create_triangle.c \
 			model_matrix.c \
-			projection_matrix.c
+			projection_matrix.c \
+			add_matrix_to_opengl.c
 
 OBJ_FILES = $(C_FILES:.c=.o)
 
