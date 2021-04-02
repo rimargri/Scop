@@ -1,5 +1,6 @@
 {
 	"files.associations": {
-		"libmat4.h": "c"
+		"libmat4.h": "c",
+		"scop.h": "c"
 	}
 }

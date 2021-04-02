@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 18:21:26 by cvernius          #+#    #+#             */
-/*   Updated: 2021/03/14 20:46:11 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/02 20:51:41 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ void	create_vertex_shader(t_scop *scop)
 	// "  gl_Position = vec4(vp, 1.0);"
 	"}";
 
-	scop->opengl.vert_shader = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(scop->opengl.vert_shader, 1, &vertex_shader, NULL);
-	glCompileShader(scop->opengl.vert_shader);
+	scop->opengl->vert_shader = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(scop->opengl->vert_shader, 1, &vertex_shader, NULL);
+	glCompileShader(scop->opengl->vert_shader);
 
 }
 
@@ -46,9 +46,9 @@ void	create_fragment_shader(t_scop *scop)
 	"  frag_colour = vec4(0.5, 0.0, 0.5, 1.0);"
 	"}";
 
-	scop->opengl.fragm_shader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(scop->opengl.fragm_shader, 1, &fragment_shader, NULL);
-	glCompileShader(scop->opengl.fragm_shader);
+	scop->opengl->fragm_shader = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(scop->opengl->fragm_shader, 1, &fragment_shader, NULL);
+	glCompileShader(scop->opengl->fragm_shader);
 
 }
 

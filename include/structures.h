@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2021/03/14 20:50:55 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/02 21:11:29 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@ typedef struct	s_triangle
 	float		*array_vertex;
 }				t_triangle;
 
-
 typedef struct	s_matrix
 {
-	GLfloat		*scale;
+	GLfloat		scale[16];
 	GLfloat		*translate;
 	// float		rotate ?? 
 
@@ -40,11 +39,12 @@ typedef struct	s_opengl
 	GLuint		vert_shader;
 	GLuint		fragm_shader;
 	// t_shader 	shader;
-	t_matrix	matrix;
+	t_matrix	*matrix;
 	GLuint		program_id;
+	GLint 		scale_location;
 }				t_opengl;
 
 typedef struct	s_scop
 {
-	t_opengl	opengl;
+	t_opengl	*opengl;
 }				t_scop;

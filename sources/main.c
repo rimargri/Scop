@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/03/14 20:48:19 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/02 20:49:44 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,19 @@ int		main(void)
 
 	if (!(scop = malloc(sizeof(t_scop))))
 		return (0);
-	if (init_gl(&scop->opengl) == 0)
+	if (!(scop->opengl = malloc(sizeof(t_opengl))))
+		return (0);
+	if (init_gl(scop->opengl) == 0)
 		return (0);
 	create_triangle(scop);
-	scale((t_vec3){2, 0 ,0}, &scop->opengl);
-	add_matrix_to_opengl(&scop->opengl);
+	scale((t_vec3){2, 0 ,0}, scop->opengl);
+	scop->opengl->program_id = glCreateProgram();
+	// add_matrix_to_opengl(&scop->opengl);
 	create_shaders(scop);
-	glAttachShader(scop->opengl.program_id, scop->opengl.fragm_shader);
-	glAttachShader(scop->opengl.program_id, scop->opengl.vert_shader);
-	glLinkProgram(scop->opengl.program_id);
+	glAttachShader(scop->opengl->program_id, scop->opengl->fragm_shader);
+	glAttachShader(scop->opengl->program_id, scop->opengl->vert_shader);
+	glLinkProgram(scop->opengl->program_id);
+	// printf("loc after lilnk %d\n", scop->opengl.scale_location);
 	sc_gl_loop(scop);
 }
 
