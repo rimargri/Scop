@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/04/02 20:49:44 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/03 14:14:46 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int		main(void)
 	glAttachShader(scop->opengl->program_id, scop->opengl->fragm_shader);
 	glAttachShader(scop->opengl->program_id, scop->opengl->vert_shader);
 	glLinkProgram(scop->opengl->program_id);
-	// printf("loc after lilnk %d\n", scop->opengl.scale_location);
+	scop->opengl->scale_location = glGetUniformLocation(scop->opengl->program_id, "scale");
 	sc_gl_loop(scop);
 }
 
