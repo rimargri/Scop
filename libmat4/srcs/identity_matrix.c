@@ -6,34 +6,34 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/08 17:13:15 by cvernius          #+#    #+#             */
-/*   Updated: 2020/12/09 19:02:07 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/03 15:57:42 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mat4.h"
+#include "libmat4.h"
 
-t_mat4	identity_matrix(void)
+float	*identity_matrix(void)
 {
-	t_mat4 identity_mat;
+	float identity_mat[16];
 
-	identity_mat.a = 1.0f;
-	identity_mat.b = 0.0f;
-	identity_mat.c = 0.0f;
-	identity_mat.d = 0.0f;
+	identity_mat[0] = 1.0f;
+	identity_mat[1] = 0.0f;
+	identity_mat[2] = 0.0f;
+	identity_mat[3] = 0.0f;
 
-	identity_mat.e = 0.0f;
-	identity_mat.f = 1.0f;
-	identity_mat.g = 0.0f;
-	identity_mat.h = 0.0f;
+	identity_mat[4] = 0.0f;
+	identity_mat[5] = 1.0f;
+	identity_mat[6] = 0.0f;
+	identity_mat[7] = 0.0f;
 
-	identity_mat.i = 0.0f;
-	identity_mat.j = 0.0f;
-	identity_mat.k = 1.0f;
-	identity_mat.l = 0.0f;
+	identity_mat[8] = 0.0f;
+	identity_mat[9] = 0.0f;
+	identity_mat[10] = 1.0f;
+	identity_mat[11] = 0.0f;
 
-	identity_mat.m = 0.0f;
-	identity_mat.n = 0.0f;
-	identity_mat.o = 0.0f;
-	identity_mat.p = 1.0f;
+	identity_mat[12] = 0.0f;
+	identity_mat[13] = 0.0f;
+	identity_mat[14] = 0.0f;
+	identity_mat[15] = 1.0f;
 	return (identity_mat);
 }

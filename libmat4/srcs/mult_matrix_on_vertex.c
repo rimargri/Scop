@@ -6,11 +6,11 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/06 20:14:03 by cvernius          #+#    #+#             */
-/*   Updated: 2020/12/07 13:52:00 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/03 15:33:22 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mat4.h"
+#include "libmat4.h"
 
 t_vec4	mult_matrix_on_vertex(t_mat4 matrix, t_vec4 vertex)
 {

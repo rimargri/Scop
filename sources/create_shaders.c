@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 18:21:26 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/02 20:51:41 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/03 19:12:23 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@ void	create_vertex_shader(t_scop *scop)
 	const char* vertex_shader =
 	"#version 400\n"
 	"layout (location = 0) in vec3 vp;"
-	"uniform mat4 scale;"
+	// "uniform mat4 translate;"
+	"uniform mat4 rotate;"
 	"void main() {"
-	"  gl_Position = scale * vec4(vp, 1.0);"
+	"  gl_Position = rotate * vec4(vp, 1.0);"
 	// "  gl_Position = vec4(vp, 1.0);"
 	"}";
 
 	scop->opengl->vert_shader = glCreateShader(GL_VERTEX_SHADER);
 	glShaderSource(scop->opengl->vert_shader, 1, &vertex_shader, NULL);
 	glCompileShader(scop->opengl->vert_shader);
-
 }
 
 void	create_fragment_shader(t_scop *scop)
@@ -49,16 +49,10 @@ void	create_fragment_shader(t_scop *scop)
 	scop->opengl->fragm_shader = glCreateShader(GL_FRAGMENT_SHADER);
 	glShaderSource(scop->opengl->fragm_shader, 1, &fragment_shader, NULL);
 	glCompileShader(scop->opengl->fragm_shader);
-
 }
 
 void	create_shaders(t_scop *scop)
 {
 	create_vertex_shader(scop);
 	create_fragment_shader(scop);
-	
-	// scop->opengl.program_id = glCreateProgram();
-	// glAttachShader(scop->opengl.program_id, scop->opengl.fragm_shader);
-	// glAttachShader(scop->opengl.program_id, scop->opengl.vert_shader);
-	// glLinkProgram(scop->opengl.program_id);
 }

@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 19:33:37 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/04/02 19:04:39 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/03 17:52:40 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 
 #include <GLFW/glfw3.h>
 
+# define DEG2RAD (M_PI / 180.f)
 
 #include <stdlib.h>
 #include <stdio.h> //!---------------------------------------------------
@@ -29,3 +30,4 @@
 #define COUNT_VERTEX 9
 // #define COUNT_VERTEX 3
 
+// deg2grad

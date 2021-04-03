@@ -6,7 +6,7 @@
 #    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/17 19:22:37 by f0rsunka          #+#    #+#              #
-#    Updated: 2021/03/14 20:21:02 by cvernius         ###   ########.fr        #
+#    Updated: 2021/04/03 18:54:38 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ C_FILES =	main.c \
 			create_triangle.c \
 			model_matrix.c \
 			projection_matrix.c \
-			add_matrix_to_opengl.c
+			add_matrix_to_opengl.c \
+			rotate.c
 
 OBJ_FILES = $(C_FILES:.c=.o)
 

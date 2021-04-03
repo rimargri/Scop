@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 16:32:28 by cvernius          #+#    #+#             */
-/*   Updated: 2021/03/14 19:24:45 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/03 15:59:37 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,8 +86,8 @@ typedef struct		s_ivec4
 */
 
 t_vec4	mult_matrix_on_vertex(t_mat4 matrix, t_vec4 vertex);
-t_mat4	mult_matrix(t_mat4 mat1, t_mat4 mat2);
-t_mat4	identity_matrix(void);
+float	*mult_matrix(float *mat1, float *mat2);
+float	*identity_matrix(void);
 
 /*
 ** *********************************** **
@@ -110,7 +110,5 @@ t_mat4	identity_matrix(void);
 t_vec4	scale_matrix(t_vec3 scale_value, t_vec4 vertex);
 t_vec4	rotation_matrix(t_vec3 angle, t_vec4 vertex);
 t_vec4	translate_matrix(t_vec3 shift, t_vec4 vertex);
-
-
 
 #endif

@@ -1,6 +1,8 @@
 {
 	"files.associations": {
 		"libmat4.h": "c",
-		"scop.h": "c"
+		"scop.h": "c",
+		"algorithm": "c",
+		"libvector.h": "c"
 	}
 }

@@ -6,7 +6,7 @@
 #    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/03/16 16:38:28 by cvernius          #+#    #+#              #
-#    Updated: 2020/12/09 13:29:39 by cvernius         ###   ########.fr        #
+#    Updated: 2021/04/03 16:43:42 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,18 +18,16 @@ OBJ_DIR = ./obj
 
 INCL_DIR = ./include
 
-C_FILES =   mult_matrix_on_vertex.c \
-			mult_matrix.c \
-			rotation_matrix.c \
-			scale_matrix.c \
-			translate_matrix.c \
+C_FILES =   mult_matrix.c \
 			identity_matrix.c
+			# rotation_matrix.c \
 
 OBJ_FILES = $(C_FILES:.c=.o)
 
 RAW_OBJ_FILES = $(addprefix $(OBJ_DIR)/, $(OBJ_FILES))
 
-CFLAGS_FINAL = -Wall -Wextra -Werror
+CFLAGS_FINAL = -Wall -Wextra
+# CFLAGS_FINAL += -Werror
 
 all: $(OBJ_DIR) $(NAME)
 

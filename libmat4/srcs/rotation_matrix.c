@@ -6,11 +6,11 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/07 12:34:22 by cvernius          #+#    #+#             */
-/*   Updated: 2020/12/07 16:59:49 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/03 15:33:04 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "mat4.h"
+#include "libmat4.h"
 
 void	rotation_x(float angle_x, t_mat4 *rotate_x)
 {
