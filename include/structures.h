@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/03 19:12:39 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/04 15:11:07 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ typedef struct	s_rotate
 
 typedef struct	s_matrix
 {
-	// GLfloat		model_matrix[16];
 	GLfloat		*model_matrix;
 	GLfloat		scale[16];
 	GLfloat		translate[16];
@@ -49,7 +48,7 @@ typedef struct	s_opengl
 	GLuint		vert_shader;
 	GLuint		fragm_shader;
 	// t_shader 	shader;
-	t_matrix	*matrix;
+	t_ocherednoi_costil	*matrix;
 	GLuint		program_id;
 	GLint 		scale_location;
 	GLint 		translate_location;

@@ -16,6 +16,11 @@ float	*mult_matrix(float *mat1, float *mat2)
 {
 	float multed_matrix[16];
 
+	printf("\nmat1\n");
+	for (int i = 0; i < 16; i++) {
+		printf("mat1[%d] = %f\n", i, mat1[i]);
+	}
+
 	multed_matrix[0] = mat1[0] * mat2[0] + mat1[1] * mat2[4] +
 										mat1[2] * mat2[8] + mat1[3] * mat2[12];
 	multed_matrix[1] = mat1[0] * mat2[1] + mat1[1] * mat2[5] +
@@ -51,5 +56,11 @@ float	*mult_matrix(float *mat1, float *mat2)
 										mat1[15] * mat2[10] + mat1[15] * mat2[14];
 	multed_matrix[15] = mat1[12] * mat2[3] + mat1[13] * mat2[7] +
 										mat1[15] * mat2[11] + mat1[15] * mat2[15];
+
+
+	printf("\nmulted_matrix\n");
+	for (int i = 0; i < 16; i++) {
+		printf("multed_matrix[%d] = %f\n", i, multed_matrix[i]);
+	}
 	return (multed_matrix);
 }

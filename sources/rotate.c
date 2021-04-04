@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 17:07:18 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/03 19:11:50 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/04 14:55:53 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,10 @@ void	rotation(t_vec3 angle, t_opengl *opengl)
 	rotation_x(angle.x, opengl->matrix->rotate->x);
 	rotation_y(angle.y, opengl->matrix->rotate->y);
 	rotation_z(angle.z, opengl->matrix->rotate->z);
-	opengl->matrix->rotate->xyzrotate = mult_matrix(mult_matrix(rotation_x, rotation_y), rotation_z);
+	opengl->matrix->rotate->xyzrotate = mult_matrix(opengl->matrix->rotate->x, opengl->matrix->rotate->y);
+	printf("scop\n\n");
+	for (int i = 0; i < 16; i++) {
+		printf("i = %f\n", opengl->matrix->rotate->xyzrotate[i]);
+	}
+	// opengl->matrix->rotate->xyzrotate = mult_matrix(mult_matrix(rotation_x, rotation_y), rotation_z);
 }
