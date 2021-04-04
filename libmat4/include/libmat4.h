@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/03/16 16:32:28 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/04 15:04:14 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/04 19:04:24 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,55 +23,6 @@ typedef struct		s_vec4
 	float			w;
 }					t_vec4;
 
-typedef struct		s_matrix
-{
-	float			matrix[16];
-}					t_matrix;
-
-	// mat[0][0]
-	// mat[0][1]
-	// mat[0][2]
-	// mat[0][3]
-
-	// mat[1][0]
-	// mat[1][1]
-	// mat[1][2]
-	// mat[1][3]
-
-	// mat[2][0]
-	// mat[2][1]
-	// mat[2][2]
-	// mat[2][3]
-
-	// mat[3][0]
-	// mat[3][1]
-	// mat[3][2]
-	// mat[3][3]
-
-// typedef struct		s_mat4
-// {
-// 	// float			mat[4][4];
-// 	float			a;
-// 	float			b;
-// 	float			c;
-// 	float			d;
-
-// 	float			e;
-// 	float			f;
-// 	float			g;
-// 	float			h;
-
-// 	float			i;
-// 	float			j;
-// 	float			k;
-// 	float			l;
-
-// 	float			m;
-// 	float			n;
-// 	float			o;
-// 	float			p;
-// }					t_mat4;
-
 typedef struct		s_ivec4
 {
 	int				x;
@@ -80,6 +31,10 @@ typedef struct		s_ivec4
 	int				w;
 }					t_ivec4;
 
+typedef struct		s_mat4
+{
+	float			value[16];
+}					t_mat4;
 
 /*
 ** *********************************** **
@@ -90,8 +45,8 @@ typedef struct		s_ivec4
 */
 
 // t_vec4	mult_matrix_on_vertex(t_mat4 matrix, t_vec4 vertex);
-float	*mult_matrix(float *mat1, float *mat2);
-float	*identity_matrix(void);
+t_mat4	mult_matrix(t_mat4 m1, t_mat4 m2);
+t_mat4	identity_matrix(void);
 
 /*
 ** *********************************** **
@@ -111,8 +66,5 @@ float	*identity_matrix(void);
 ** *********************************** **
 */
 
-t_vec4	scale_matrix(t_vec3 scale_value, t_vec4 vertex);
-t_vec4	rotation_matrix(t_vec3 angle, t_vec4 vertex);
-t_vec4	translate_matrix(t_vec3 shift, t_vec4 vertex);
 
 #endif

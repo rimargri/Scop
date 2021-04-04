@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 18:21:26 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/03 19:12:23 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/04 18:26:43 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,9 @@ void	create_vertex_shader(t_scop *scop)
 	const char* vertex_shader =
 	"#version 400\n"
 	"layout (location = 0) in vec3 vp;"
-	// "uniform mat4 translate;"
-	"uniform mat4 rotate;"
+	"uniform mat4 modelmat;"
 	"void main() {"
-	"  gl_Position = rotate * vec4(vp, 1.0);"
-	// "  gl_Position = vec4(vp, 1.0);"
+	"  gl_Position = modelmat * vec4(vp, 1.0);"
 	"}";
 
 	scop->opengl->vert_shader = glCreateShader(GL_VERTEX_SHADER);

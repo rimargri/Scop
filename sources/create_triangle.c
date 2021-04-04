@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:12:11 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/02 20:52:14 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/04 16:19:03 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,4 @@ void	create_triangle(t_scop *s)
 	init_vertex_array_object(s->opengl, triangle.array_vertex);
 	init_vertex_buffer_object(s->opengl);
 	init_vertex_attrib();
-
 }

@@ -11,56 +11,51 @@
 /* ************************************************************************** */
 
 #include "libmat4.h"
+#include <stdio.h>
 
-float	*mult_matrix(float *mat1, float *mat2)
+t_mat4	mult_matrix(t_mat4 m1, t_mat4 m2)
 {
-	float multed_matrix[16];
+	t_mat4 mat4;
 
-	printf("\nmat1\n");
-	for (int i = 0; i < 16; i++) {
-		printf("mat1[%d] = %f\n", i, mat1[i]);
-	}
+	mat4.value[0] = m1.value[0] * m2.value[0] + m1.value[1] * m2.value[4] +
+										m1.value[2] * m2.value[8] + m1.value[3] * m2.value[12];
+	mat4.value[1] = m1.value[0] * m2.value[1] + m1.value[1] * m2.value[5] +
+										m1.value[2] * m2.value[9] + m1.value[3] * m2.value[13];
+	mat4.value[2] = m1.value[0] * m2.value[2] + m1.value[1] * m2.value[6] +
+										m1.value[2] * m2.value[10] + m1.value[3] * m2.value[14];
+	mat4.value[3] = m1.value[0] * m2.value[3] + m1.value[1] * m2.value[7] +
+										m1.value[2] * m2.value[11] + m1.value[3] * m2.value[15];
 
-	multed_matrix[0] = mat1[0] * mat2[0] + mat1[1] * mat2[4] +
-										mat1[2] * mat2[8] + mat1[3] * mat2[12];
-	multed_matrix[1] = mat1[0] * mat2[1] + mat1[1] * mat2[5] +
-										mat1[2] * mat2[9] + mat1[3] * mat2[13];
-	multed_matrix[2] = mat1[0] * mat2[2] + mat1[1] * mat2[6] +
-										mat1[2] * mat2[10] + mat1[3] * mat2[14];
-	multed_matrix[3] = mat1[0] * mat2[3] + mat1[1] * mat2[7] +
-										mat1[2] * mat2[11] + mat1[3] * mat2[15];
+	mat4.value[4] = m1.value[4] * m2.value[0] + m1.value[5] * m2.value[4] +
+										m1.value[6] * m2.value[8] + m1.value[7] * m2.value[12];
+	mat4.value[5] = m1.value[4] * m2.value[1] + m1.value[5] * m2.value[5] +
+										m1.value[6] * m2.value[9] + m1.value[7] * m2.value[13];
+	mat4.value[6] = m1.value[4] * m2.value[2] + m1.value[5] * m2.value[6] +
+										m1.value[6] * m2.value[10] + m1.value[7] * m2.value[14];
+	mat4.value[7] = m1.value[4] * m2.value[3] + m1.value[5] * m2.value[7] +
+										m1.value[6] * m2.value[11] + m1.value[7] * m2.value[15];
 
-	multed_matrix[4] = mat1[4] * mat2[0] + mat1[5] * mat2[4] +
-										mat1[6] * mat2[8] + mat1[7] * mat2[12];
-	multed_matrix[5] = mat1[4] * mat2[1] + mat1[5] * mat2[5] +
-										mat1[6] * mat2[9] + mat1[7] * mat2[13];
-	multed_matrix[6] = mat1[4] * mat2[2] + mat1[5] * mat2[6] +
-										mat1[6] * mat2[10] + mat1[7] * mat2[14];
-	multed_matrix[7] = mat1[4] * mat2[3] + mat1[5] * mat2[7] +
-										mat1[6] * mat2[11] + mat1[7] * mat2[15];
+	mat4.value[8] = m1.value[8] * m2.value[0] + m1.value[9] * m2.value[4] +
+										m1.value[10] * m2.value[8] + m1.value[11] * m2.value[12];
+	mat4.value[9] = m1.value[8] * m2.value[1] + m1.value[9] * m2.value[5] +
+										m1.value[10] * m2.value[9] + m1.value[11] * m2.value[13];
+	mat4.value[10] = m1.value[8] * m2.value[2] + m1.value[9] * m2.value[6] +
+										m1.value[10] * m2.value[10] + m1.value[11] * m2.value[14];
+	mat4.value[11] = m1.value[8] * m2.value[3] + m1.value[9] * m2.value[7] +
+										m1.value[10] * m2.value[11] + m1.value[11] * m2.value[15];
 
-	multed_matrix[8] = mat1[8] * mat2[0] + mat1[9] * mat2[4] +
-										mat1[10] * mat2[8] + mat1[11] * mat2[12];
-	multed_matrix[9] = mat1[8] * mat2[1] + mat1[9] * mat2[5] +
-										mat1[10] * mat2[9] + mat1[11] * mat2[13];
-	multed_matrix[10] = mat1[8] * mat2[2] + mat1[9] * mat2[6] +
-										mat1[10] * mat2[10] + mat1[11] * mat2[14];
-	multed_matrix[11] = mat1[8] * mat2[3] + mat1[9] * mat2[7] +
-										mat1[10] * mat2[11] + mat1[11] * mat2[15];
+	mat4.value[12] = m1.value[12] * m2.value[0] + m1.value[13] * m2.value[4] +
+										m1.value[14] * m2.value[8] + m1.value[15] * m2.value[12];
+	mat4.value[13] = m1.value[12] * m2.value[1] + m1.value[13] * m2.value[5] +
+										m1.value[14] * m2.value[9] + m1.value[15] * m2.value[13];
+	mat4.value[14] = m1.value[12] * m2.value[2] + m1.value[13] * m2.value[6] +
+										m1.value[14] * m2.value[10] + m1.value[15] * m2.value[14];
+	mat4.value[15] = m1.value[12] * m2.value[3] + m1.value[13] * m2.value[7] +
+										m1.value[14] * m2.value[11] + m1.value[15] * m2.value[15];
 
-	multed_matrix[12] = mat1[12] * mat2[0] + mat1[13] * mat2[4] +
-										mat1[15] * mat2[8] + mat1[15] * mat2[12];
-	multed_matrix[13] = mat1[12] * mat2[1] + mat1[13] * mat2[5] +
-										mat1[15] * mat2[9] + mat1[15] * mat2[13];
-	multed_matrix[14] = mat1[12] * mat2[2] + mat1[13] * mat2[6] +
-										mat1[15] * mat2[10] + mat1[15] * mat2[14];
-	multed_matrix[15] = mat1[12] * mat2[3] + mat1[13] * mat2[7] +
-										mat1[15] * mat2[11] + mat1[15] * mat2[15];
-
-
-	printf("\nmulted_matrix\n");
-	for (int i = 0; i < 16; i++) {
-		printf("multed_matrix[%d] = %f\n", i, multed_matrix[i]);
-	}
-	return (multed_matrix);
+	// printf("\nmulted_matrix\n");
+	// for (int i = 0; i < 16; i++) {
+	// 	printf("multed_matrix[%d] = %f\n", i, multed_matrix[i]);
+	// }
+	return (mat4);
 }
