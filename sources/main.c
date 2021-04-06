@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/04/06 19:19:26 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/06 20:39:04 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,11 @@ int		main(void)
 	create_triangle(scop);
 	create_model_matrix(scop->opengl);
 
-	create_view_matrix(scop->opengl, (t_vec3){1, 0, 0}, (t_vec3){0, 1, 0}, (t_vec3){0, 0, -1}, (t_vec3){0, 0, -3});
-	
+	get_camera_values(&scop->opengl->camera);								// will be input from keyboard in future
+	create_view_matrix(scop->opengl, scop->opengl->camera);
 	create_mvp_matrix(scop->opengl);
 
-	// const float radius = 10.0f;
-	// float camX = sin(glfwGetTime() * radius);
-	// float camZ = cos(glfwGetTime() * radius);
-	
+
 
 	scop->opengl->program_id = glCreateProgram();
 	create_shaders(scop);
@@ -62,3 +59,6 @@ int		main(void)
 // https://learnopengl.com/Getting-started/Transformations
 
 // https://www.cs.cornell.edu/courses/cs4620/2010fa/lectures/03transforms3d.pdf
+
+// code:
+// https://learnopengl.com/code_viewer_gh.php?code=src/1.getting_started/7.1.camera_circle/camera_circle.cpp

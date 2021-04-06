@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:05:07 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/06 19:17:53 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/06 19:47:05 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,6 @@ void	add_matrix_to_opengl(t_opengl *opengl);
 void	translate(t_vec3 translate_value, t_opengl *opengl);
 void	rotation(t_vec3 angle, t_opengl *opengl);
 void	create_model_matrix(t_opengl *opengl);
-void	create_view_matrix(t_opengl *opengl, t_vec3 right_vec, t_vec3 up_vec, t_vec3 dir_vec, t_vec3 cam_pos_vec);
+void	create_view_matrix(t_opengl *opengl, t_camera camera);
 void	create_mvp_matrix(t_opengl *opengl);
+void	get_camera_values(t_camera *camera);
