@@ -6,12 +6,15 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/04/04 18:26:50 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/06 19:19:26 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scop.h"
 #include "../libvector/include/libvector.h"
+
+
+// https://www.3dgep.com/understanding-the-view-matrix/
 
 int		main(void)
 {
@@ -31,19 +34,23 @@ int		main(void)
 	create_triangle(scop);
 	create_model_matrix(scop->opengl);
 
+	create_view_matrix(scop->opengl, (t_vec3){1, 0, 0}, (t_vec3){0, 1, 0}, (t_vec3){0, 0, -1}, (t_vec3){0, 0, -3});
+	
+	create_mvp_matrix(scop->opengl);
+
+	// const float radius = 10.0f;
+	// float camX = sin(glfwGetTime() * radius);
+	// float camZ = cos(glfwGetTime() * radius);
+	
+
 	scop->opengl->program_id = glCreateProgram();
 	create_shaders(scop);
 	glAttachShader(scop->opengl->program_id, scop->opengl->fragm_shader);
 	glAttachShader(scop->opengl->program_id, scop->opengl->vert_shader);
 	glLinkProgram(scop->opengl->program_id);
-	scop->opengl->model_location = glGetUniformLocation(scop->opengl->program_id, "modelmat");
+	scop->opengl->model_location = glGetUniformLocation(scop->opengl->program_id, "mv");
 	printf("model lok : %d\n", scop->opengl->model_location);
 	
-	printf("\nmodel mat\n");
-	for (int i = 0; i < 16; i++) {
-		printf("model = %f\n", scop->opengl->matrix->model.value[i]);
-	}
-
 	sc_gl_loop(scop);
 }
 

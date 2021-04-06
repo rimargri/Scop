@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 14:34:08 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/04 19:08:55 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/04 19:22:55 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,6 @@ void create_model_matrix(t_opengl *opengl)
 	
 	opengl->matrix->model = mult_matrix(mult_matrix(opengl->matrix->translate, opengl->matrix->rotate->xyzrotate), opengl->matrix->scale);
 }
-
 
 // SCALE MATRIX.x, .y, .z != 0 								!!!!
 // SOLUTION: add indentity matrix to mult.
