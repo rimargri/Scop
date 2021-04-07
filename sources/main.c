@@ -6,13 +6,14 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/04/06 20:39:04 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/07 15:22:20 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scop.h"
 #include "../libvector/include/libvector.h"
 
+// NDC - normalized device coordinates
 
 // https://www.3dgep.com/understanding-the-view-matrix/
 
@@ -32,10 +33,11 @@ int		main(void)
 		exit(99);
 
 	create_triangle(scop);
+
 	create_model_matrix(scop->opengl);
 
 	get_camera_values(&scop->opengl->camera);								// will be input from keyboard in future
-	create_view_matrix(scop->opengl, scop->opengl->camera);
+	create_view_matrix(scop->opengl->matrix, scop->opengl->camera);
 	create_mvp_matrix(scop->opengl);
 
 
@@ -45,8 +47,8 @@ int		main(void)
 	glAttachShader(scop->opengl->program_id, scop->opengl->fragm_shader);
 	glAttachShader(scop->opengl->program_id, scop->opengl->vert_shader);
 	glLinkProgram(scop->opengl->program_id);
-	scop->opengl->model_location = glGetUniformLocation(scop->opengl->program_id, "mv");
-	printf("model lok : %d\n", scop->opengl->model_location);
+	scop->opengl->mvp_location = glGetUniformLocation(scop->opengl->program_id, "mv");
+	printf("model lok : %d\n", scop->opengl->mvp_location);
 	
 	sc_gl_loop(scop);
 }

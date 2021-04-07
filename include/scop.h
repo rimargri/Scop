@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 19:33:37 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/04/06 19:40:18 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/07 15:20:32 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #endif
 
 #include <GLFW/glfw3.h>
+#include <math.h>
 
 # define DEG2RAD (M_PI / 180.f)
 
@@ -31,3 +32,5 @@
 // #define COUNT_VERTEX 3
 
 #define UP_AXIS (t_vec3){0.0f, 0.1f, 0.0f}
+
+#define FOV 30

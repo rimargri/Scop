@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 17:24:49 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/06 19:20:43 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/07 15:22:20 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		sc_gl_loop(t_scop *scop)
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glUseProgram(scop->opengl->program_id);
-		glUniformMatrix4fv(scop->opengl->model_location, 1, GL_FALSE, scop->opengl->matrix->mvp.value);			// FALSE or TRUE  (transparent matrix) -- ??
+		glUniformMatrix4fv(scop->opengl->mvp_location, 1, GL_FALSE, scop->opengl->matrix->mvp.value);			// FALSE or TRUE  (transparent matrix) -- ??
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 		glfwPollEvents();
 		glfwSwapBuffers(scop->opengl->window);

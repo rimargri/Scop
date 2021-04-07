@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 16:22:30 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/06 20:41:47 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/07 12:48:28 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,29 +70,17 @@ t_mat4 camera_position(t_vec3 camera_pos)
 
 void get_camera_values(t_camera *camera)
 {
-	// camera->pos = (t_vec3){0.0f, 0.0f, 3.0f}; 
+	camera->pos = (t_vec3){0.0f, 0.0f, -1.0f}; 
 	camera->target = (t_vec3){0.0f, 0.0f, 0.0f};
-
-	// t_vec3 up = (t_vec3){0.0f, 1.0f, 0.0f};
 }
 
-void create_view_matrix(t_opengl *opengl, t_camera camera)
+void create_view_matrix(t_transform_matrix *matrix, t_camera camera)
 {
-	
-	const float radius = 10.0f;
-	float camX = sin(glfwGetTime() * radius);
-	float camZ = cos(glfwGetTime() * radius);
-	opengl->camera.pos = (t_vec3){camX, 0.0f, camZ}; 
+	camera.reverse_dir = vec_normalize(vec_diff(camera.pos, camera.target));
+	camera.right = vec_normalize(cross(UP_AXIS, camera.reverse_dir));
+	camera.up = cross(camera.reverse_dir, camera.right);
 
-
-	opengl->camera.reverse_dir = vec_normalize(vec_diff(opengl->camera.pos, opengl->camera.target));
-	opengl->camera.right = vec_normalize(cross(UP_AXIS, opengl->camera.reverse_dir));
-	// opengl->camera.up = cross(opengl->camera.reverse_dir, opengl->camera.right);
-	opengl->camera.up = cross(opengl->camera.reverse_dir, opengl->camera.right);
-
-
-	opengl->matrix->look_at = mult_matrix(camera_space(opengl->camera.right, UP_AXIS, opengl->camera.reverse_dir), camera_position(opengl->camera.pos));
-	// opengl->matrix->look_at = mult_matrix(camera_space(opengl->camera.right, opengl->camera.up, opengl->camera.reverse_dir), camera_position(opengl->camera.pos));
+	matrix->look_at = mult_matrix(camera_space(camera.right, camera.up, camera.reverse_dir), camera_position(camera.pos));
 
 }
 

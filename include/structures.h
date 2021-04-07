@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/06 19:27:47 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/07 15:25:12 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct			s_transform_matrix
 	t_mat4				translate;						// model matrix
 	t_rotate			*rotate;						// model matrix
 	t_mat4				look_at;						// view matrix
+	t_mat4				projection;
 	t_mat4				mvp;
 }						t_transform_matrix;
 
@@ -62,10 +63,7 @@ typedef struct			s_opengl
 	// t_shader 	shader;
 	t_transform_matrix	*matrix;
 	GLuint				program_id;
-	GLint 				scale_location;
-	GLint 				translate_location;
-	GLint				model_location;
-	GLint				rotate_location;
+	GLint				mvp_location;
 	t_camera			camera;
 }						t_opengl;
 
