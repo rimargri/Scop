@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 16:22:30 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/07 12:48:28 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/11 18:12:06 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void get_camera_values(t_camera *camera)
 	camera->target = (t_vec3){0.0f, 0.0f, 0.0f};
 }
 
-void create_view_matrix(t_transform_matrix *matrix, t_camera camera)
+void create_view_matrix(t_matrix *matrix, t_camera camera)
 {
 	camera.reverse_dir = vec_normalize(vec_diff(camera.pos, camera.target));
 	camera.right = vec_normalize(cross(UP_AXIS, camera.reverse_dir));

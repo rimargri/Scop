@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:12:11 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/04 16:19:03 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/11 17:50:08 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	init_vertex_buffer_object(t_opengl *gl)
 void	init_vertex_attrib(void)
 {
 	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
+	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, NULL);
 }
 
 void	create_triangle(t_scop *s)

@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/07 15:25:12 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/11 18:13:48 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ typedef struct			s_rotate
 	t_mat4				xyzrotate;
 }						t_rotate;
 
-typedef struct			s_transform_matrix		
+typedef struct			s_matrix		
 {
 	t_mat4				model;							// model matrix
 	t_mat4				scale;							// model matrix
@@ -43,7 +43,7 @@ typedef struct			s_transform_matrix
 	t_mat4				look_at;						// view matrix
 	t_mat4				projection;
 	t_mat4				mvp;
-}						t_transform_matrix;
+}						t_matrix;
 
 // need to be upgraded
 // typedef struct	s_shader
@@ -61,7 +61,7 @@ typedef struct			s_opengl
 	GLuint				vert_shader;
 	GLuint				fragm_shader;
 	// t_shader 	shader;
-	t_transform_matrix	*matrix;
+	t_matrix	*matrix;
 	GLuint				program_id;
 	GLint				mvp_location;
 	t_camera			camera;

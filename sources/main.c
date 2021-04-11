@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/04/07 15:22:20 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/11 18:12:06 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		main(void)
 		exit(99);
 	if (!(scop->opengl = malloc(sizeof(t_opengl))))
 		exit(99);
-	if (!(scop->opengl->matrix = malloc(sizeof(t_transform_matrix))))
+	if (!(scop->opengl->matrix = malloc(sizeof(t_matrix))))
 		exit(99);
 	if (!(scop->opengl->matrix->rotate = malloc(sizeof(t_rotate))))
 		exit(99);
@@ -38,16 +38,15 @@ int		main(void)
 
 	get_camera_values(&scop->opengl->camera);								// will be input from keyboard in future
 	create_view_matrix(scop->opengl->matrix, scop->opengl->camera);
+	create_projection_matrix(scop->opengl);
 	create_mvp_matrix(scop->opengl);
-
-
 
 	scop->opengl->program_id = glCreateProgram();
 	create_shaders(scop);
 	glAttachShader(scop->opengl->program_id, scop->opengl->fragm_shader);
 	glAttachShader(scop->opengl->program_id, scop->opengl->vert_shader);
 	glLinkProgram(scop->opengl->program_id);
-	scop->opengl->mvp_location = glGetUniformLocation(scop->opengl->program_id, "mv");
+	scop->opengl->mvp_location = glGetUniformLocation(scop->opengl->program_id, "mvp");
 	printf("model lok : %d\n", scop->opengl->mvp_location);
 	
 	sc_gl_loop(scop);

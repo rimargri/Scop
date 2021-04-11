@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:03:54 by cvernius          #+#    #+#             */
-/*   Updated: 2020/10/05 17:25:10 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/10 12:41:19 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int		init_gl(t_opengl *opengl)
 		return (-1);
 	}
 	sc_gl_property();
-	opengl->window = glfwCreateWindow(700, 500, "scop", NULL, NULL);
+	opengl->window = glfwCreateWindow(WIN_W, WIN_H, "scop", NULL, NULL);
 	if (!opengl->window)
 	{
 		printf("Failed to open GLFW opengl window.\n");

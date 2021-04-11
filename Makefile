@@ -6,7 +6,7 @@
 #    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/17 19:22:37 by f0rsunka          #+#    #+#              #
-#    Updated: 2021/04/06 19:17:35 by cvernius         ###   ########.fr        #
+#    Updated: 2021/04/10 12:56:08 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,8 @@ C_FILES =	main.c \
 			rotate.c \
 			model_matrix.c \
 			view_matrix.c \
-			mvp_matrix.c
+			mvp_matrix.c \
+			projection_matrix.c
 			# add_matrix_to_opengl.c \
 
 OBJ_FILES = $(C_FILES:.c=.o)

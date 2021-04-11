@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 19:33:37 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/04/07 15:20:32 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/11 17:26:17 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 #include <math.h>
 
 # define DEG2RAD (M_PI / 180.f)
+# define RAD2DEG (1.0f / DEG2RAD)
 
 #include <stdlib.h>
 #include <stdio.h> //!---------------------------------------------------
@@ -33,4 +34,8 @@
 
 #define UP_AXIS (t_vec3){0.0f, 0.1f, 0.0f}
 
-#define FOV 30
+#define WIN_W (700)
+#define WIN_H (500)
+
+#define FOV (60)
+#define ASPECT ((float)WIN_W / (float)WIN_H)

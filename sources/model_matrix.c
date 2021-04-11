@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 14:34:08 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/04 19:22:55 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/11 17:53:19 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,8 +67,10 @@ void scale(t_vec3 scale_value, t_opengl *opengl)
 
 void create_model_matrix(t_opengl *opengl)
 {
-	translate((t_vec3){0.0, 0.0, 0.0}, opengl);
-	rotation((t_vec3){0, 0, 0}, opengl);
+	static float alpha = 0.0f;
+	alpha += 1.0f;
+	translate((t_vec3){0.0, 0.0, 1.0}, opengl);
+	rotation((t_vec3){0, alpha, 0}, opengl);
 	scale((t_vec3){1, 1, 1}, opengl);
 	
 	opengl->matrix->model = mult_matrix(mult_matrix(opengl->matrix->translate, opengl->matrix->rotate->xyzrotate), opengl->matrix->scale);
