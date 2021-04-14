@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/04/14 17:27:09 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/14 20:36:17 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,10 @@ int		main(void)
 
 	scop->opengl->program_id = glCreateProgram();
 
-	read_shaders(scop->opengl->shader);
-	
+	scop->opengl->shader->vertex_shader = read_shader("shaders/vertex_shader.vert", scop->opengl->shader->vertex_shader);
+	scop->opengl->shader->fragment_shader = read_shader("shaders/fragment_shader.frag", scop->opengl->shader->fragment_shader);
+
+
 	create_shaders(scop->opengl->shader);
 	
 	glAttachShader(scop->opengl->program_id, scop->opengl->shader->vert_id);

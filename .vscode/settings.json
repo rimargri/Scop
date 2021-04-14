@@ -22,6 +22,7 @@
 		"type_traits": "c",
 		"vector": "c",
 		"__config": "cpp",
-		"locale": "cpp"
+		"locale": "cpp",
+		"libft.h": "c"
 	}
 }
