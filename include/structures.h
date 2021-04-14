@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/11 18:13:48 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/14 17:24:41 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,23 @@ typedef struct			s_matrix
 // }				t_shader;
 // 
 
+#define MAX_SHADER 500
+
+typedef struct			s_shader
+{
+	GLuint				vert_id;
+	GLuint				fragm_id;
+	char			*vertex_shader;
+	char			*fragment_shader;
+}						t_shader;
+
 typedef struct			s_opengl
 {
 	GLFWwindow			*window;
 	GLuint				vbo;
 	GLuint				vao;
-	GLuint				vert_shader;
-	GLuint				fragm_shader;
-	// t_shader 	shader;
-	t_matrix	*matrix;
+	t_shader			*shader;
+	t_matrix			*matrix;
 	GLuint				program_id;
 	GLint				mvp_location;
 	t_camera			camera;

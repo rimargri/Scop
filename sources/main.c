@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/04/11 18:12:06 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/14 17:27:09 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,28 @@ int		main(void)
 		exit(99);
 	if (!(scop->opengl->matrix->rotate = malloc(sizeof(t_rotate))))
 		exit(99);
+	if (!(scop->opengl->shader = malloc(sizeof(t_shader))))
+		exit(99);
 	if (init_gl(scop->opengl) == 0)
 		exit(99);
 
 	create_triangle(scop);
-
 	create_model_matrix(scop->opengl);
 
 	get_camera_values(&scop->opengl->camera);								// will be input from keyboard in future
 	create_view_matrix(scop->opengl->matrix, scop->opengl->camera);
+
 	create_projection_matrix(scop->opengl);
 	create_mvp_matrix(scop->opengl);
 
 	scop->opengl->program_id = glCreateProgram();
-	create_shaders(scop);
-	glAttachShader(scop->opengl->program_id, scop->opengl->fragm_shader);
-	glAttachShader(scop->opengl->program_id, scop->opengl->vert_shader);
+
+	read_shaders(scop->opengl->shader);
+	
+	create_shaders(scop->opengl->shader);
+	
+	glAttachShader(scop->opengl->program_id, scop->opengl->shader->vert_id);
+	glAttachShader(scop->opengl->program_id, scop->opengl->shader->fragm_id);
 	glLinkProgram(scop->opengl->program_id);
 	scop->opengl->mvp_location = glGetUniformLocation(scop->opengl->program_id, "mvp");
 	printf("model lok : %d\n", scop->opengl->mvp_location);

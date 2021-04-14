@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 19:33:37 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/04/11 17:26:17 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/14 12:34:02 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,3 +39,5 @@
 
 #define FOV (60)
 #define ASPECT ((float)WIN_W / (float)WIN_H)
+
+#define MAX_SHADER 500

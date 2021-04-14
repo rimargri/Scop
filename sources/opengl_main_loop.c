@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 17:24:49 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/11 18:14:12 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/14 17:26:27 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		sc_gl_loop(t_scop *scop)
 		glUseProgram(scop->opengl->program_id);
 		create_model_matrix(scop->opengl);
 		create_mvp_matrix(scop->opengl);
-		glUniformMatrix4fv(scop->opengl->mvp_location, 1, GL_TRUE, scop->opengl->matrix->mvp.value);			// FALSE or TRUE  (transparent matrix) -- ??
+		glUniformMatrix4fv(scop->opengl->mvp_location, 1, GL_TRUE, scop->opengl->matrix->mvp.value);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 		glfwPollEvents();
 		glfwSwapBuffers(scop->opengl->window);
@@ -39,8 +39,8 @@ int		sc_gl_loop(t_scop *scop)
 	glDeleteBuffers(1, &scop->opengl->vbo);
 	glDeleteProgram(scop->opengl->program_id);
 	glDeleteVertexArraysAPPLE(1, &scop->opengl->vao);
-	glDeleteShader(scop->opengl->fragm_shader);
-	glDeleteShader(scop->opengl->vert_shader);
+	glDeleteShader(scop->opengl->shader->vert_id);
+	glDeleteShader(scop->opengl->shader->fragm_id);
 	glfwTerminate();
 	return (0);
 }

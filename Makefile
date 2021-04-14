@@ -6,7 +6,7 @@
 #    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/17 19:22:37 by f0rsunka          #+#    #+#              #
-#    Updated: 2021/04/10 12:56:08 by cvernius         ###   ########.fr        #
+#    Updated: 2021/04/14 14:09:36 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ C_FILES =	main.c \
 			model_matrix.c \
 			view_matrix.c \
 			mvp_matrix.c \
-			projection_matrix.c
+			projection_matrix.c \
+			read_shaders.c
 			# add_matrix_to_opengl.c \
 
 OBJ_FILES = $(C_FILES:.c=.o)
@@ -50,6 +51,8 @@ CFLAGS = -Wall -Wextra
 LIBVECTOR_FLAGS = -L ./libvector -lvector
 
 LMAT4_FLAGS = -L ./libmat4 -lmat4
+
+LIBFT_FLAGS = -L ./libft -lft
 
 OS = $(shell uname -s)
 
@@ -67,7 +70,7 @@ $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)
 
 $(NAME): $(RAW_OBJ_FILES)
-	@gcc $(RAW_OBJ_FILES) $(GL_LIBS) $(LIBVECTOR_FLAGS) $(LMAT4_FLAGS) -o $(NAME)
+	@gcc $(RAW_OBJ_FILES) $(GL_LIBS) $(LIBVECTOR_FLAGS) $(LMAT4_FLAGS) $(LIBFT_FLAGS) -o $(NAME)
 	@echo "$(PINK)(*≧ω≦*)  $(BLUE)Mama, ya peresobralsya  $(PINK)(*≧ω≦*)\033[0m"
 
 #### К о м п и л я ц и я ####
