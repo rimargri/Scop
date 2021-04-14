@@ -1,18 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_shaders.c                                     :+:      :+:    :+:   */
+/*   read_shader.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 19:03:25 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/14 20:37:14 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/14 20:52:26 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scop.h"
 # include "../libft/libft.h"
-
 # include <unistd.h>
 # include <sys/types.h>
 # include <sys/stat.h>
