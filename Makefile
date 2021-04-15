@@ -6,7 +6,7 @@
 #    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/17 19:22:37 by f0rsunka          #+#    #+#              #
-#    Updated: 2021/04/14 20:37:38 by cvernius         ###   ########.fr        #
+#    Updated: 2021/04/15 17:00:04 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,9 +43,9 @@ INCL_DIR = ./include
 INCLUDES = -I $(INCL_DIR)
 
 C_FILES =	main.c \
-			opengl_init.c \
+			glfw_init.c \
 			create_shaders.c \
-			opengl_main_loop.c \
+			render.c \
 			create_triangle.c \
 			rotate.c \
 			model_matrix.c \
@@ -53,7 +53,6 @@ C_FILES =	main.c \
 			mvp_matrix.c \
 			projection_matrix.c \
 			read_shader.c
-			# add_matrix_to_opengl.c \
 
 OBJ_FILES = $(C_FILES:.c=.o)
 

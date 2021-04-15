@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 19:33:37 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/04/14 12:34:02 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/15 16:17:17 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,10 @@
 #include "structures.h"
 #include "prototypes.h"
 
-#define COUNT_VERTEX 9
-// #define COUNT_VERTEX 3
+#define COUNT_POINTS 9
+// #define COUNT_POINTS 32
+
+// #define COUNT_POINTS 3
 
 #define UP_AXIS (t_vec3){0.0f, 0.1f, 0.0f}
 

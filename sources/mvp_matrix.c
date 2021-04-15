@@ -6,16 +6,19 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 19:15:00 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/11 18:11:30 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/15 17:23:09 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scop.h"
 
-void	create_mvp_matrix(t_opengl *opengl)
+// look_at doesn't added
+
+void	create_mvp_matrix(t_matrix *matrix)
 {
-	t_mat4 mvp = opengl->matrix->projection;
-	// mvp = mult_matrix(opengl->matrix->look_at, mvp);
-	mvp = mult_matrix(mvp, opengl->matrix->model);
-	opengl->matrix->mvp = mvp;
+	create_model_matrix(matrix);
+	// get_camera_values(&scop->camera);								// will be input from keyboard in future
+	// create_view_matrix(scop->matrix, gl->camera);
+	create_projection_matrix(matrix);
+	matrix->mvp = mult_matrix(matrix->projection, matrix->model);
 }

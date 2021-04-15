@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/03 17:07:18 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/04 17:26:53 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/15 17:06:17 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,10 @@ void	rotation_z(float angle_z, t_mat4 *z)
 	z->value[15] = 1.0f;
 }
 
-void	rotation(t_vec3 angle, t_opengl *opengl)
+void	rotate(t_vec3 angle, t_matrix *matrix)
 {
-	rotation_x(angle.x, &opengl->matrix->rotate->x);
-	rotation_y(angle.y, &opengl->matrix->rotate->y);
-	rotation_z(angle.z, &opengl->matrix->rotate->z);
-	opengl->matrix->rotate->xyzrotate = mult_matrix(mult_matrix(opengl->matrix->rotate->x, opengl->matrix->rotate->y), opengl->matrix->rotate->z);
+	rotation_x(angle.x, &matrix->rotate->x);
+	rotation_y(angle.y, &matrix->rotate->y);
+	rotation_z(angle.z, &matrix->rotate->z);
+	matrix->rotate->xyzrotate = mult_matrix(mult_matrix(matrix->rotate->x, matrix->rotate->y), matrix->rotate->z);
 }

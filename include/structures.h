@@ -6,15 +6,21 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/14 17:24:41 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/15 17:29:00 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libmat4/include/libmat4.h"
 
+typedef struct			s_mat32
+{
+	float				value[32];
+}						t_mat32;
+
 typedef struct			s_triangle
 {
 	float				*array_vertex;
+	// t_mat32				array_points;
 }						t_triangle;
 
 typedef struct			s_camera
@@ -45,37 +51,29 @@ typedef struct			s_matrix
 	t_mat4				mvp;
 }						t_matrix;
 
-// need to be upgraded
-// typedef struct	s_shader
-// {
-// 	GLuint		vertex;
-// 	GLuint		fragment;
-// }				t_shader;
-// 
-
-#define MAX_SHADER 500
-
 typedef struct			s_shader
 {
 	GLuint				vert_id;
 	GLuint				fragm_id;
-	char			*vertex_shader;
-	char			*fragment_shader;
+	char				*vertex_shader;
+	char				*fragment_shader;
 }						t_shader;
 
-typedef struct			s_opengl
+typedef struct			s_gl
 {
 	GLFWwindow			*window;
 	GLuint				vbo;
 	GLuint				vao;
-	t_shader			*shader;
-	t_matrix			*matrix;
 	GLuint				program_id;
 	GLint				mvp_location;
-	t_camera			camera;
-}						t_opengl;
+	GLint				color_location;
+}						t_gl;
 
 typedef struct			s_scop
 {
-	t_opengl			*opengl;
+	t_gl				*gl;
+	t_matrix			*matrix;
+	t_camera			camera;
+	t_shader			*shader;
+	
 }						t_scop;
