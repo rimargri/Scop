@@ -6,22 +6,16 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/15 17:29:00 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/15 17:32:58 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libmat4/include/libmat4.h"
 
-typedef struct			s_mat32
+typedef struct			s_texture
 {
-	float				value[32];
-}						t_mat32;
 
-typedef struct			s_triangle
-{
-	float				*array_vertex;
-	// t_mat32				array_points;
-}						t_triangle;
+}						t_texture;
 
 typedef struct			s_camera
 {
@@ -59,6 +53,12 @@ typedef struct			s_shader
 	char				*fragment_shader;
 }						t_shader;
 
+typedef struct			s_triangle
+{
+	float				*array_vertex;
+	// t_mat32				array_points;
+}						t_triangle;
+
 typedef struct			s_gl
 {
 	GLFWwindow			*window;
@@ -75,5 +75,5 @@ typedef struct			s_scop
 	t_matrix			*matrix;
 	t_camera			camera;
 	t_shader			*shader;
-	
+	t_texture			texture;
 }						t_scop;

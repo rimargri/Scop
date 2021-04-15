@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/04/15 17:24:23 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/15 17:42:28 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,6 @@ int		main(void)
 	create_triangle(scop);
 	create_mvp_matrix(scop->matrix);
 
-	float time_val = glfwGetTime();
-	float color_val = sin((time_val) / 2.0f) + 0.4f;
-	
 	create_shaders(scop->shader, scop->gl->program_id);
 
 	glLinkProgram(scop->gl->program_id);
