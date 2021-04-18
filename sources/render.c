@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 17:24:49 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/15 18:02:06 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/18 20:47:47 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,15 @@ int		render(t_scop *scop)
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glUseProgram(scop->gl->program_id);
+		
+		glBindTexture(GL_TEXTURE_2D, scop->texture.id);
+		
+		// glBindVertexArray(scop->gl->vao);
+		
 		create_mvp_matrix(scop->matrix);
+		scop->gl->mvp_location = glGetUniformLocation(scop->gl->program_id, "mvp");
+		// printf("model lok : %d\n", scop->gl->mvp_location);
+		create_shaders(scop->shader, scop->gl->program_id);
 		glUniformMatrix4fv(scop->gl->mvp_location, 1, GL_TRUE, scop->matrix->mvp.value);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 		glfwPollEvents();

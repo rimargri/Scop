@@ -6,15 +6,22 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/15 17:32:58 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/18 20:17:05 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef STRUCTURES_H
+#define STRUCTURES_H
+
 #include "../libmat4/include/libmat4.h"
+// #include "bmp_loader.h"
 
 typedef struct			s_texture
 {
-
+	int					width;
+	int					height;
+	unsigned char		*data;
+	unsigned int		id;
 }						t_texture;
 
 typedef struct			s_camera
@@ -76,4 +83,8 @@ typedef struct			s_scop
 	t_camera			camera;
 	t_shader			*shader;
 	t_texture			texture;
+	// t_bmp				bmp;
 }						t_scop;
+
+
+#endif

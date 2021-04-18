@@ -23,6 +23,8 @@
 		"vector": "c",
 		"__config": "cpp",
 		"locale": "cpp",
-		"libft.h": "c"
+		"libft.h": "c",
+		"bmp_loader.h": "c",
+		"stdlib.h": "c"
 	}
 }

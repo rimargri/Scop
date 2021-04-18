@@ -6,7 +6,7 @@
 #    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/17 19:22:37 by f0rsunka          #+#    #+#              #
-#    Updated: 2021/04/15 17:00:04 by cvernius         ###   ########.fr        #
+#    Updated: 2021/04/17 19:52:28 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,9 @@ C_FILES =	main.c \
 			view_matrix.c \
 			mvp_matrix.c \
 			projection_matrix.c \
-			read_shader.c
+			read_shader.c \
+			read_bmp.c \
+			texture.c
 
 OBJ_FILES = $(C_FILES:.c=.o)
 

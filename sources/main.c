@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/04/15 17:42:28 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/18 20:33:51 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,9 @@ int		main(void)
 // reading .obj
 
 	create_triangle(scop);
-	create_mvp_matrix(scop->matrix);
-
 	create_shaders(scop->shader, scop->gl->program_id);
-
+	load_texture(scop);
 	glLinkProgram(scop->gl->program_id);
-	scop->gl->mvp_location = glGetUniformLocation(scop->gl->program_id, "mvp");
-	printf("model lok : %d\n", scop->gl->mvp_location);
-	
 	render(scop);
 	return (0);
 }
