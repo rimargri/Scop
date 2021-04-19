@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 17:24:49 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/18 20:47:47 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/19 19:39:45 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,11 @@ int		render(t_scop *scop)
 		
 		create_mvp_matrix(scop->matrix);
 		scop->gl->mvp_location = glGetUniformLocation(scop->gl->program_id, "mvp");
-		// printf("model lok : %d\n", scop->gl->mvp_location);
-		create_shaders(scop->shader, scop->gl->program_id);
+		scop->gl->model_location = glGetUniformLocation(scop->gl->program_id, "model_matrix");
+		
+		// create_shaders(scop->shader, scop->gl->program_id);
 		glUniformMatrix4fv(scop->gl->mvp_location, 1, GL_TRUE, scop->matrix->mvp.value);
+		glUniformMatrix4fv(scop->gl->model_location, 1, GL_TRUE, scop->matrix->model.value);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 		glfwPollEvents();
 		glfwSwapBuffers(scop->gl->window);

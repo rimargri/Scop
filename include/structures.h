@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/18 20:17:05 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/19 19:36:59 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct			s_gl
 	GLuint				vao;
 	GLuint				program_id;
 	GLint				mvp_location;
+	GLint				model_location;
 	GLint				color_location;
 }						t_gl;
 
@@ -83,7 +84,6 @@ typedef struct			s_scop
 	t_camera			camera;
 	t_shader			*shader;
 	t_texture			texture;
-	// t_bmp				bmp;
 }						t_scop;
 
 

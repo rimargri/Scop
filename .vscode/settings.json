@@ -25,6 +25,9 @@
 		"locale": "cpp",
 		"libft.h": "c",
 		"bmp_loader.h": "c",
-		"stdlib.h": "c"
+		"stdlib.h": "c",
+		"array": "c",
+		"string": "c",
+		"string_view": "c"
 	}
 }
