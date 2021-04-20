@@ -6,7 +6,7 @@
 #    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/17 19:22:37 by f0rsunka          #+#    #+#              #
-#    Updated: 2021/04/17 19:52:28 by cvernius         ###   ########.fr        #
+#    Updated: 2021/04/20 18:07:06 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,7 @@ INCL_DIR = ./include
 INCLUDES = -I $(INCL_DIR)
 
 C_FILES =	main.c \
-			glfw_init.c \
+			init_glfw.c \
 			create_shaders.c \
 			render.c \
 			create_triangle.c \
@@ -54,7 +54,8 @@ C_FILES =	main.c \
 			projection_matrix.c \
 			read_shader.c \
 			read_bmp.c \
-			texture.c
+			texture.c \
+			log.c
 
 OBJ_FILES = $(C_FILES:.c=.o)
 

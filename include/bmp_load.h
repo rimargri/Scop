@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   bmp_loader.h                                       :+:      :+:    :+:   */
+/*   bmp_load.h                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/15 20:29:49 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/20 17:33:18 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/20 17:43:43 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef BMP_LOADER_H
-#define BMP_LOADER_H
+#ifndef BMP_LOAD_H
+#define BMP_LOAD_H
 
 #include <stdio.h>
 #include <stdlib.h>

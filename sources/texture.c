@@ -6,22 +6,22 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 20:51:05 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/20 13:55:27 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/20 18:38:01 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scop.h"
-#include "bmp_loader.h"
+#include "bmp_load.h"
+#include "log_scop.h"
 
 void	read_texture(t_texture *texture)
 {
 	t_bmp bmp;
 
-	// read_bmp("textures/wall.bmp", &bmp);
 	read_bmp("textures/marble.bmp", &bmp);
 	texture->data = malloc(bmp.size);
 	if (!(texture->data))
-		exit(88); // ERROR: MALLOC
+		log_scop("Texture::Malloc can't allocate memory\0", (enum errors)malloc_error);
 	texture->width = bmp.width;
 	texture->height = bmp.height;
 	texture->data = bmp.data;
@@ -43,7 +43,7 @@ void	load_texture(t_scop *scop)
 		glGenerateMipmap(GL_TEXTURE_2D);
 	}
 	else
-		exit(88); // ERROR: fail to load texture
+		log_scop("Texture::Empty data in bmp file\0", empty_data_tex);
 	free(scop->texture.data);
 
 	// glBindTexture(GL_TEXTURE_2D, scop->texture.data);

@@ -1,16 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   glfw_init.c                                        :+:      :+:    :+:   */
+/*   init_glfw.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:03:54 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/15 17:23:09 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/20 18:29:34 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scop.h"
+#include "log_scop.h"
 
 void	compatibility_settings(void)
 {
@@ -21,21 +22,14 @@ void	compatibility_settings(void)
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 }
 
-int		init_glfw(t_gl *gl)
+void	init_glfw(t_gl *gl)
 {
 	if (!glfwInit())
-	{
-		printf("failed to inicialize glfw!\n");
-		return (-1);
-	}
+		log_scop("GLFW::Failed to initalize GLFW.\0", (enum errors)glfw_not_init);
 	compatibility_settings();
 	gl->window = glfwCreateWindow(WIN_W, WIN_H, "scop", NULL, NULL);
 	if (!gl->window)
-	{
-		printf("Failed to open GLFW gl window.\n");
-		return (-1);
-	}
+		log_scop("GLFW::Failed to open GLFW gl window.\0", (enum errors)window_not_open);
 	glfwMakeContextCurrent(gl->window);
 	glfwSetInputMode(gl->window, GLFW_STICKY_KEYS, GL_TRUE); // esc work
-	return (1);
 }

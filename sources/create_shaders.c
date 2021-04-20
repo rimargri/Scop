@@ -6,12 +6,14 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 18:21:26 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/20 13:39:35 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/20 18:36:36 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scop.h"
 #include "../libft/libft.h"
+#include "log_scop.h"
+#include "shader_load.h"
 
 void	validate_compilation(GLint shader, const char *shader_name)
 {
@@ -23,9 +25,9 @@ void	validate_compilation(GLint shader, const char *shader_name)
 	if (!(success))
 	{
 		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
-		info = malloc(sizeof(char) * length + 1);
+		info = malloc(sizeof(char) * (length + 1));
 		if (!(info))
-			exit(88); // ERROR: MALLOC
+			log_scop("Shader::Malloc can't allocate memory\0", (enum errors)malloc_error);
 		glGetShaderInfoLog(shader, length, NULL, info);
 		ft_putstr_fd(shader_name, 2);
 		for (int i = 0; i < length; i++)

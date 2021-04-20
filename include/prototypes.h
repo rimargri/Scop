@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:05:07 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/18 19:17:48 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/20 18:34:00 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@
 ** *********************************** **
 */
 
-int		init_glfw(t_gl *gl);
+void	init_glfw(t_gl *gl);
 void	create_triangle(t_scop *s);
-char	*read_shader(const char *filename, char *shader);
 void	create_shaders(t_shader *shader, int program_id);
 int		render(t_scop *scop);
 void	get_camera_values(t_camera *camera);

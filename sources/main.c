@@ -6,12 +6,12 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/04/18 20:33:51 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/20 18:29:53 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "log_scop.h"
 #include "scop.h"
-#include "../libvector/include/libvector.h"
 
 // NDC - normalized device coordinates
 
@@ -20,13 +20,13 @@
 void	allocate_mem(t_scop *scop)
 {
 	if (!(scop->gl = malloc(sizeof(t_gl))))
-		exit(99);	// ERROR: MALLOC
+		log_scop("Main::Malloc can't allocate memory\n", (enum errors)malloc_error);
 	if (!(scop->matrix = malloc(sizeof(t_matrix))))
-		exit(99);	// ERROR: MALLOC
+		log_scop("Main::Malloc can't allocate memory\n", (enum errors)malloc_error);
 	if (!(scop->matrix->rotate = malloc(sizeof(t_rotate))))
-		exit(99);	// ERROR: MALLOC
+		log_scop("Main::Malloc can't allocate memory\n", (enum errors)malloc_error);
 	if (!(scop->shader = malloc(sizeof(t_shader))))
-		exit(99);	// ERROR: MALLOC
+		log_scop("Main::Malloc can't allocate memory\n", (enum errors)malloc_error);
 }
 
 int		main(void)
@@ -34,14 +34,14 @@ int		main(void)
 	t_scop *scop;
 
 	if (!(scop = malloc(sizeof(t_scop))))
-		exit(99);	// ERROR: MALLOC
+		log_scop("Main::Malloc can't allocate memory\n", (enum errors)malloc_error);
 	allocate_mem(scop);
-	if (init_glfw(scop->gl) == 0)
-		exit(99); // ERROR: init glfw
+	init_glfw(scop->gl);
 	scop->gl->program_id = glCreateProgram();
 
 // reading .obj
 
+	create_mvp_matrix(scop->matrix);
 	create_triangle(scop);
 	create_shaders(scop->shader, scop->gl->program_id);
 	load_texture(scop);

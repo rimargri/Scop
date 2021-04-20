@@ -6,16 +6,17 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:12:11 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/18 18:56:17 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/20 18:29:17 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scop.h"
+#include "log_scop.h"
 
-int	sc_get_vertex_triangle(t_triangle  *triangle)
+int		get_vertex_triangle(t_triangle  *triangle)
 {
 	if (!(triangle->array_vertex = malloc(sizeof(float) * COUNT_POINTS)))
-		exit(88); // ERROR: MALLOC
+		log_scop("Shape::Malloc can't allocate memory\n", (enum errors)malloc_error);
 
 	triangle->array_vertex[0] = -1.0f;
 	triangle->array_vertex[1] = -1.0f;
@@ -54,7 +55,7 @@ void	create_triangle(t_scop *s)
 {
 	t_triangle  triangle;
 
-	sc_get_vertex_triangle(&triangle);		
+	get_vertex_triangle(&triangle);		
 	init_vertex_array_object(s->gl, triangle.array_vertex);
 	init_vertex_buffer_object(s->gl);
 	init_vertex_attrib();

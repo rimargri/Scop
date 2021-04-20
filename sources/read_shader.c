@@ -6,17 +6,12 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 19:03:25 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/15 17:11:51 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/20 18:37:10 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "scop.h"
-# include "../libft/libft.h"
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-#define MAX_SHADER 500
+#include "shader_load.h"
+#include "log_scop.h"
 
 char	*read_shader(const char *filename, char *shader)
 {
@@ -29,13 +24,13 @@ char	*read_shader(const char *filename, char *shader)
 	returned_bytes = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd < 3)
-		exit(88); // ERROR: NOT A FILE
+		log_scop("Read shader::This is not a file\0", (enum errors)not_a_file);
 	if ((returned_bytes = read(fd, &buf, MAX_SHADER)) >= MAX_SHADER - 1)
-		exit(88); // ERROR: TOO BIG
+		log_scop("Read shader::This file is a giant\0", (enum errors)giant_file);
 	close(fd);
 	buf[returned_bytes] = '\0';
 	if (!(shader = malloc(sizeof(char) * (returned_bytes))))
-		exit(88); // ERROR: MALLOC
+		log_scop("Read shader::Malloc can't allocate memory\0", (enum errors)malloc_error);
 	while (i < returned_bytes) {
 		if (buf[i] == '\0' && i != returned_bytes)
 			buf[i] = '\n';
