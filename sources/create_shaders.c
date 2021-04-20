@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 18:21:26 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/19 18:29:24 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/20 13:39:35 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	validate_compilation(GLint shader, const char *shader_name)
 void	create_vertex_shader(t_shader *shader)
 {
 	shader->vert_id = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(shader->vert_id, 1, &shader->vertex_shader, NULL);	
+	glShaderSource(shader->vert_id, 1, (const GLchar *const *)&shader->vertex_shader, NULL);	
 	glCompileShader(shader->vert_id);
 	validate_compilation(shader->vert_id, "vertex shader\n");
 }
@@ -46,7 +46,7 @@ void	create_vertex_shader(t_shader *shader)
 void	create_fragment_shader(t_shader *shader)
 {
 	shader->fragm_id = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(shader->fragm_id, 1, &shader->fragment_shader, NULL);
+	glShaderSource(shader->fragm_id, 1, (const GLchar *const *)&shader->fragment_shader, NULL);
 	glCompileShader(shader->fragm_id);
 	validate_compilation(shader->fragm_id, "fragm shader\n");
 }

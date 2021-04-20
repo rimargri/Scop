@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 20:51:05 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/19 18:45:59 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/20 13:55:27 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	read_texture(t_texture *texture)
 {
 	t_bmp bmp;
 
-	read_bmp("textures/wall.bmp", &bmp);
+	// read_bmp("textures/wall.bmp", &bmp);
+	read_bmp("textures/marble.bmp", &bmp);
 	texture->data = malloc(bmp.size);
 	if (!(texture->data))
 		exit(88); // ERROR: MALLOC
