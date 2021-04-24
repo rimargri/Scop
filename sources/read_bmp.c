@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/18 16:25:17 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/20 18:33:40 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/22 20:33:12 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,12 +41,12 @@ void read_bmp(char* filename, t_bmp *bmp)
 
 	bmp_image = fopen(filename, "rb");
 	if (bmp_image == NULL)
-		log_scop("BMP::Failed to open supposed bmp image file.\0", (enum errors)bmp_file_not_open);
+		log_scop("BMP::Failed to open supposed bmp image file.\n", (enum errors)bmp_file_not_open);
 	fread(bmp->info, sizeof(unsigned char), SIZE_BMP_HEADER, bmp_image);
 	if (bmp->info[0] != 'B' || bmp->info[1] != 'M')
-		log_scop("BMP::This image is not bmp file.\0", (enum errors)image_is_not_bmp);
+		log_scop("BMP::This image is not bmp file.\n", (enum errors)image_is_not_bmp);
 	if (bmp->info[28] != COLOR_DEPTH)
-		log_scop("BMP::Color depth is not equal to 24.\0", (enum errors)color_depth_not_24);
+		log_scop("BMP::Color depth is not equal to 24.\n", (enum errors)color_depth_not_24);
 	bmp->offset_to_start_pixel_data = *(int*)&bmp->info[10];
 	bmp->width = *(int*)&bmp->info[18];
 	bmp->height = *(int*)&bmp->info[22];

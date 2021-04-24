@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 17:24:49 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/20 17:41:24 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/20 20:26:17 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,12 @@ int		render(t_scop *scop)
 		create_mvp_matrix(scop->matrix);
 
 		scop->gl->mvp_location = glGetUniformLocation(scop->gl->program_id, "mvp");
-		scop->gl->model_location = glGetUniformLocation(scop->gl->program_id, "model_matrix");
-		
+		// scop->gl->model_location = glGetUniformLocation(scop->gl->program_id, "model_matrix");
+		// printf("scop->gl->mvp_location = %d\n", scop->gl->mvp_location);
+		// printf("scop->gl->model_location = %d\n", scop->gl->model_location);
 		// create_shaders(scop->shader, scop->gl->program_id);
 		glUniformMatrix4fv(scop->gl->mvp_location, 1, GL_TRUE, scop->matrix->mvp.value);
-		glUniformMatrix4fv(scop->gl->model_location, 1, GL_TRUE, scop->matrix->model.value);
+		// glUniformMatrix4fv(scop->gl->model_location, 1, GL_TRUE, scop->matrix->model.value);
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 		glfwPollEvents();
 		glfwSwapBuffers(scop->gl->window);
@@ -58,3 +59,7 @@ int		render(t_scop *scop)
 	free_gl_attributies(scop);
 	return (0);
 }
+
+
+// glDrawArrays(GL_TRIANGLES, 0, 12*3); // 12*3 indices starting at 0 -> 12 triangles -> 6 squares
+// http://www.opengl-tutorial.org/beginners-tutorials/tutorial-4-a-colored-cube/

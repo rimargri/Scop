@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 20:51:05 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/20 18:38:01 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/22 20:33:21 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	read_texture(t_texture *texture)
 	read_bmp("textures/marble.bmp", &bmp);
 	texture->data = malloc(bmp.size);
 	if (!(texture->data))
-		log_scop("Texture::Malloc can't allocate memory\0", (enum errors)malloc_error);
+		log_scop("Texture::Malloc can't allocate memory\n", (enum errors)malloc_error);
 	texture->width = bmp.width;
 	texture->height = bmp.height;
 	texture->data = bmp.data;
@@ -43,23 +43,6 @@ void	load_texture(t_scop *scop)
 		glGenerateMipmap(GL_TEXTURE_2D);
 	}
 	else
-		log_scop("Texture::Empty data in bmp file\0", empty_data_tex);
+		log_scop("Texture::Empty data in bmp file\n", empty_data_tex);
 	free(scop->texture.data);
-
-	// glBindTexture(GL_TEXTURE_2D, scop->texture.data);
-	// glBindVertexArray(scop->gl->vao);
-
-	// float texture_coords[6] = {0.0f, 0.0f, 
-	// 							1.0f, 0.0f,
-	// 							0.5f, 1.0f};
-
-	// // float borderColor[] = {1.0f, 10.0f, 0.0f, 1.0f};
-	// // glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
-
-	// glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-
 }
-
-
-
-

@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/04/20 18:29:53 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/24 20:48:30 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,13 @@
 void	allocate_mem(t_scop *scop)
 {
 	if (!(scop->gl = malloc(sizeof(t_gl))))
-		log_scop("Main::Malloc can't allocate memory\n", (enum errors)malloc_error);
+		log_scop("Main(gl)::Malloc can't allocate memory\n", (enum errors)malloc_error);
 	if (!(scop->matrix = malloc(sizeof(t_matrix))))
-		log_scop("Main::Malloc can't allocate memory\n", (enum errors)malloc_error);
+		log_scop("Main(matrix)::Malloc can't allocate memory\n", (enum errors)malloc_error);
 	if (!(scop->matrix->rotate = malloc(sizeof(t_rotate))))
-		log_scop("Main::Malloc can't allocate memory\n", (enum errors)malloc_error);
+		log_scop("Main(rotate)::Malloc can't allocate memory\n", (enum errors)malloc_error);
 	if (!(scop->shader = malloc(sizeof(t_shader))))
-		log_scop("Main::Malloc can't allocate memory\n", (enum errors)malloc_error);
+		log_scop("Main(shader)::Malloc can't allocate memory\n", (enum errors)malloc_error);
 }
 
 int		main(void)
@@ -45,8 +45,9 @@ int		main(void)
 	create_triangle(scop);
 	create_shaders(scop->shader, scop->gl->program_id);
 	load_texture(scop);
+	read_obj("models/42.obj", &scop->obj);
 	glLinkProgram(scop->gl->program_id);
-	render(scop);
+	// render(scop);
 	return (0);
 }
 
@@ -72,3 +73,5 @@ int		main(void)
 
 // code:
 // https://learngl.com/code_viewer_gh.php?code=src/1.getting_started/7.1.camera_circle/camera_circle.cpp
+
+

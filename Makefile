@@ -6,7 +6,7 @@
 #    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/17 19:22:37 by f0rsunka          #+#    #+#              #
-#    Updated: 2021/04/20 18:07:06 by cvernius         ###   ########.fr        #
+#    Updated: 2021/04/24 21:13:55 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,9 @@ C_FILES =	main.c \
 			read_shader.c \
 			read_bmp.c \
 			texture.c \
-			log.c
+			log.c \
+			read_obj.c \
+			validate_attributes_obj.c
 
 OBJ_FILES = $(C_FILES:.c=.o)
 

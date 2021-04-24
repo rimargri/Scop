@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 19:03:25 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/20 18:37:10 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/22 20:34:39 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ char	*read_shader(const char *filename, char *shader)
 	returned_bytes = 0;
 	fd = open(filename, O_RDONLY);
 	if (fd < 3)
-		log_scop("Read shader::This is not a file\0", (enum errors)not_a_file);
+		log_scop("Read shader::This is not a file\n", (enum errors)not_a_file);
 	if ((returned_bytes = read(fd, &buf, MAX_SHADER)) >= MAX_SHADER - 1)
-		log_scop("Read shader::This file is a giant\0", (enum errors)giant_file);
+		log_scop("Read shader::This file is a giant\n", (enum errors)giant_file);
 	close(fd);
 	buf[returned_bytes] = '\0';
 	if (!(shader = malloc(sizeof(char) * (returned_bytes))))

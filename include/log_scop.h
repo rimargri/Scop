@@ -33,7 +33,10 @@ enum errors
 	color_depth_not_24,
 	not_a_file,
 	giant_file,
-	empty_data_tex
+	empty_data_tex,
+	null_count_vertexes,
+	point_not_correct_value,
+	null_count_indexes
 };
 
 void	log_scop(const char *error, enum errors code);

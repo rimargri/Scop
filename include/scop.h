@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 19:33:37 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/04/18 18:04:59 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/24 18:35:27 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,10 @@
 #include "structures.h"
 #include "prototypes.h"
 
-// #define COUNT_POINTS 9
-#define COUNT_POINTS 18
+#define COUNT_POINTS 9
+// #define COUNT_POINTS 18
+
+#define COUNT_VERTEX 3
 
 #define UP_AXIS (t_vec3){0.0f, 0.1f, 0.0f}
 
@@ -42,7 +44,5 @@
 
 #define FOV (60)
 #define ASPECT ((float)WIN_W / (float)WIN_H)
-
-#define MAX_SHADER 500
 
 #endif

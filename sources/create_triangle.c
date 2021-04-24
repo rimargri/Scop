@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:12:11 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/20 18:29:17 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/24 20:42:20 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int		get_vertex_triangle(t_triangle  *triangle)
 {
-	if (!(triangle->array_vertex = malloc(sizeof(float) * COUNT_POINTS)))
+	if (!(triangle->array_vertex = malloc(sizeof(float) * COUNT_VERTEX * 3)))
 		log_scop("Shape::Malloc can't allocate memory\n", (enum errors)malloc_error);
 
 	triangle->array_vertex[0] = -1.0f;
@@ -34,7 +34,7 @@ void	init_vertex_array_object(t_gl *gl, float *array_vertex)
 {
 	glGenBuffers(1, &gl->vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, gl->vbo);
-	glBufferData(GL_ARRAY_BUFFER, COUNT_POINTS * sizeof(float), array_vertex, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, COUNT_VERTEX * 3 * sizeof(float), array_vertex, GL_STATIC_DRAW);
 }
 
 void	init_vertex_buffer_object(t_gl *gl)
@@ -45,8 +45,6 @@ void	init_vertex_buffer_object(t_gl *gl)
 
 void	init_vertex_attrib(void)
 {
-	// glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, sizeof(float) * 8, (void*)sizeof(float) * 6);
-	// glEnableVertexAttribArray(2);
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, NULL);
 }
@@ -55,7 +53,8 @@ void	create_triangle(t_scop *s)
 {
 	t_triangle  triangle;
 
-	get_vertex_triangle(&triangle);		
+	get_vertex_triangle(&triangle);
+	// init_vertex_array_object(s->gl, triangle.array_vertex);
 	init_vertex_array_object(s->gl, triangle.array_vertex);
 	init_vertex_buffer_object(s->gl);
 	init_vertex_attrib();

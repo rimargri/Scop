@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/20 18:33:40 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/24 18:36:52 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #define STRUCTURES_H
 
 #include "../libmat4/include/libmat4.h"
-// #include "bmp_load.h"
+#include "obj_load.h"
 
 typedef struct			s_texture
 {
@@ -84,7 +84,7 @@ typedef struct			s_scop
 	t_camera			camera;
 	t_shader			*shader;
 	t_texture			texture;
+	t_obj				obj;
 }						t_scop;
-
 
 #endif
