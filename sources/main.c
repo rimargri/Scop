@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/04/24 20:48:30 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/25 20:26:55 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int		main(void)
 	load_texture(scop);
 	read_obj("models/42.obj", &scop->obj);
 	glLinkProgram(scop->gl->program_id);
-	// render(scop);
+	render(scop);
 	return (0);
 }
 

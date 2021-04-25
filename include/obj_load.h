@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 16:53:20 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/24 21:57:32 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/25 20:46:47 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@
 
 #define MAX_OBJ 5000000
 
-typedef struct s_vertex
-{
-	float		position;
-	float		text_coord;
-	float		normal;
-}				t_vertex;
+// typedef struct s_vertex
+// {
+// 	float		position;
+// 	float		text_coord;
+// 	float		normal;
+// }				t_vertex;
 
 typedef struct	s_obj
 {
@@ -36,12 +36,14 @@ typedef struct	s_obj
 	int			count_vertexes;
 	int			count_indexes;
 	float		*vertex_position;
-	float		*vertex_position_indexes;
-	t_vertex	*vertexes;
+	int			*vertex_position_indexes;
+	// t_vertex	*vertexes;
 }				t_obj;
 
 void	read_obj(const char *filename, t_obj *obj);
 void	validate_vertex(t_obj *obj, char *buf, int start, int finish);
 void	validate_index(t_obj *obj, char *buf, int start, int finish);
+int		get_count_attr_in_line(t_obj *obj, char *buf, int start, int finish);
+int		get_count_indexes(t_obj *obj, char *buf, int start, int finish);
 
 #endif

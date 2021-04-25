@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/24 18:36:52 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/25 20:53:17 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@ typedef struct			s_gl
 	GLFWwindow			*window;
 	GLuint				vbo;
 	GLuint				vao;
+	GLint				ebo;
 	GLuint				program_id;
 	GLint				mvp_location;
 	GLint				model_location;

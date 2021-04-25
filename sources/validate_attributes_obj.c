@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 21:13:21 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/24 21:54:07 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/25 20:47:39 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,38 @@ void	validate_vertex(t_obj *obj, char *buf, int start, int finish)
 	}
 }
 
+int		get_count_indexes(t_obj *obj, char *buf, int start, int finish)
+{
+	int			i;
+	float		index;
+	static int	j = 0;
+	int counter_faces = 0;
+	int			count_space;
+
+	i = start;
+	while (i < finish)
+	{
+		if (buf[i] == ' ')
+		{
+			index = atof(&buf[i]);
+			if (index)
+				counter_faces++;
+			j++;
+		}
+		i++;
+	}
+	return (counter_faces);
+}
+
 void	validate_index(t_obj *obj, char *buf, int start, int finish)
 {
 	int			i;
 	float		index;
 	static int	j = 0;
+	static int	counter_faces;
 	int			count_space;
-	char		*cur_ptr;
 
 	i = start;
-	count_space = 0;
-	cur_ptr = buf[start];
 	while (i < finish)
 	{
 		if (buf[i] == ' ')

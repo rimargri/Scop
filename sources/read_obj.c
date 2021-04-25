@@ -6,39 +6,13 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 16:52:41 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/24 22:34:06 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/25 20:47:55 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "obj_load.h"
 #include "log_scop.h"
 #include <stdio.h> //!---------------------------------------------------------
-
-int		get_count_attr_in_line(t_obj *obj, char *buf, int start, int finish)
-{
-	int			i;
-	float		index;
-	static int	j = 0;
-	char		*cur_ptr;
-	int			count_space;
-
-	cur_ptr = buf[start];
-	start = 0;
-	count_space = 0;
-	// while (buf[start] != '\0' && (cur_ptr = ft_strchr(cur_ptr, ' ')) != NULL)
-	// {
-	// 	count_space++;
-	// 	printf("%d %c\n", start);
-	// 	start = cur_ptr;
-	// 	printf("ddd\n");
-	// }
-
-	
-	if (count_space == 2)
-		return (3);
-	else if (count_space == 3)
-		return (4);
-}
 
 void	get_count_attributes(int buf_size, char *buf, t_obj *obj)
 {	
@@ -67,14 +41,13 @@ void	get_count_attributes(int buf_size, char *buf, t_obj *obj)
 			if (prefix == 'f')
 			{
 				obj->count_indexes += 1;
-				obj->count_attributes = get_count_attr_in_line(obj, buf, prefix_pos + 1, i);
+				obj->count_attributes += get_count_indexes(obj, buf, prefix_pos + 1, i);
 			}
 		}
 		i++;
 	}
 	printf("obj->count_vertexes = %d\n", obj->count_vertexes);
 	printf("obj->count_attributes = %d\n", obj->count_attributes);
-	// return obj->count_vertexes;
 }
 
 void	validate_attributes(int buf_size, char *buf, t_obj *obj)
@@ -121,25 +94,24 @@ void	read_obj(const char *filename, t_obj *obj)
 	close(fd);
 	buf[returned_bytes] = '\0';
 	get_count_attributes(returned_bytes, &buf[0], obj);
-	if (obj->count_vertexes <= 0)
+	if (obj->count_vertexes < 3)
 		log_scop("Read obj::Count vertexes is empty\n", (enum errors)null_count_vertexes);
 	if (obj->count_indexes <= 0)
 		log_scop("Read obj::Count indexes is empty\n", (enum errors)null_count_indexes);
 	obj->vertex_position = malloc(sizeof(float) * obj->count_vertexes * 3);
 	if (!obj->vertex_position)
 		log_scop("Read obj::Malloc can't allocate memory\n", (enum errors)malloc_error);
-	obj->vertex_position_indexes = malloc(sizeof(float) * obj->count_indexes * 3);
+	obj->vertex_position_indexes = malloc(sizeof(int) * obj->count_attributes);
+	printf("count_el_arr = %d\n",obj->count_indexes * obj->count_attributes);
 	if (!obj->vertex_position_indexes)
 		log_scop("Read obj::Malloc can't allocate memory\n", (enum errors)malloc_error);
 	validate_attributes(returned_bytes, &buf[0], obj);
 	printf("count ind = %d\n", obj->count_indexes);
-	for (int i = 0; i < obj->count_indexes * 3; i++)
+	for (int i = 0; i < obj->count_attributes; i++)
 	{
-		printf("%i  %f\n", i, obj->vertex_position_indexes[i]);
+		printf("%i  %d\n", i, obj->vertex_position_indexes[i]);
 	}
 }
-
-// нужно домножить на кол-во атр в строке
 
 // [0], [1], [2], [3], [4], [\n]
 
