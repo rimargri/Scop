@@ -6,7 +6,7 @@
 #    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/17 19:22:37 by f0rsunka          #+#    #+#              #
-#    Updated: 2021/04/24 21:13:55 by cvernius         ###   ########.fr        #
+#    Updated: 2021/04/26 18:08:47 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,28 +89,28 @@ $(OBJ_DIR):
 
 $(NAME): $(RAW_OBJ_FILES)
 	@echo $(LIGHT_PIRPLE)"*	*	*	*	*	*	*	*	*	*"$(DEFAULT)
-	@echo $(LIGHT_PIRPLE) "				Making libvector" $(DEFAULT)
+	@echo $(LIGHT_PIRPLE) "				Making libvector	" $(DEFAULT)
 	@echo $(LIGHT_PIRPLE)"*	*	*	*	*	*	*	*	*	*"$(DEFAULT)
 	@echo $(TURQUOISE)
 	$(MAKE) -C ./libvector
 	@echo $(DEFAULT)
 
 	@echo $(LIGHT_PIRPLE)"*	*	*	*	*	*	*	*	*	*"$(DEFAULT)
-	@echo $(LIGHT_PIRPLE) "				Making libmat4" $(DEFAULT)
+	@echo $(LIGHT_PIRPLE) "				Making libmat4		" $(DEFAULT)
 	@echo $(LIGHT_PIRPLE)"*	*	*	*	*	*	*	*	*	*"$(DEFAULT)
 	@echo $(TURQUOISE)
 	$(MAKE) -C ./libmat4
 	@echo $(DEFAULT)
 
 	@echo $(LIGHT_PIRPLE)"*	*	*	*	*	*	*	*	*	*"$(DEFAULT)
-	@echo $(LIGHT_PIRPLE) "				Making libft" $(DEFAULT)
+	@echo $(LIGHT_PIRPLE) "				Making libft		" $(DEFAULT)
 	@echo $(LIGHT_PIRPLE)"*	*	*	*	*	*	*	*	*	*"$(DEFAULT)
 	@echo $(TURQUOISE)
 	$(MAKE) -C ./libft
 	@echo $(DEFAULT)
 
 	@echo $(LIGHT_PIRPLE)"*	*	*	*	*	*	*	*	*	*"$(DEFAULT)
-	@echo $(LIGHT_PIRPLE) "				Making scop" $(DEFAULT)
+	@echo $(LIGHT_PIRPLE) "				Making scop			" $(DEFAULT)
 	@echo $(LIGHT_PIRPLE)"*	*	*	*	*	*	*	*	*	*"$(DEFAULT)
 	@echo $(LIGHT_BLUE)
 	gcc $(RAW_OBJ_FILES) $(GL_LIBS) $(LIBVECTOR_FLAGS) $(LMAT4_FLAGS) $(LIBFT_FLAGS) -o $(NAME)

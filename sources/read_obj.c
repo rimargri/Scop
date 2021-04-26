@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 16:52:41 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/25 20:47:55 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/26 18:02:11 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,10 +107,10 @@ void	read_obj(const char *filename, t_obj *obj)
 		log_scop("Read obj::Malloc can't allocate memory\n", (enum errors)malloc_error);
 	validate_attributes(returned_bytes, &buf[0], obj);
 	printf("count ind = %d\n", obj->count_indexes);
-	for (int i = 0; i < obj->count_attributes; i++)
-	{
-		printf("%i  %d\n", i, obj->vertex_position_indexes[i]);
-	}
+	// for (int i = 0; i < obj->count_attributes; i++)
+	// {
+	// 	printf("%i  %d\n", i, obj->vertex_position_indexes[i]);
+	// }
 }
 
 // [0], [1], [2], [3], [4], [\n]

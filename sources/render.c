@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 17:24:49 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/25 20:54:57 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/26 18:06:48 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,21 @@ int		render(t_scop *scop)
 		// printf("scop->gl->mvp_location = %d\n", scop->gl->mvp_location);
 		// printf("scop->gl->model_location = %d\n", scop->gl->model_location);
 		// create_shaders(scop->shader, scop->gl->program_id);
-		glUniformMatrix4fv(scop->gl->mvp_location, 1, GL_TRUE, scop->matrix->mvp.value);
-		// glUniformMatrix4fv(scop->gl->model_location, 1, GL_TRUE, scop->matrix->model.value);
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		
+		
+		
+		// glUniformMatrix4fv(scop->gl->mvp_location, 1, GL_TRUE, scop->matrix->mvp.value);
+		// // glUniformMatrix4fv(scop->gl->model_location, 1, GL_TRUE, scop->matrix->model.value);
+		// glDrawArrays(GL_TRIANGLES, 0, 3);
 
-// glUseProgram(shaderProgram);
-// glBindVertexArray(gl->vao);
-// glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0)
-// glBindVertexArray(0);
+
+
+
+		// glUseProgram(scop->gl->program_id);
+		glBindVertexArray(scop->gl->vao);
+		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+		// glBindVertexArray(0);
+
 
 		glfwPollEvents();
 		glfwSwapBuffers(scop->gl->window);

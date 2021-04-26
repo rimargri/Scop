@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/25 20:53:17 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/04/26 17:36:59 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ typedef struct			s_shader
 typedef struct			s_triangle
 {
 	float				*array_vertex;
-	// t_mat32				array_points;
+	int					*array_indexes;
 }						t_triangle;
 
 typedef struct			s_gl
