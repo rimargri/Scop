@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 16:52:41 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/26 18:02:11 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/05/17 19:58:13 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,3 +116,6 @@ void	read_obj(const char *filename, t_obj *obj)
 // [0], [1], [2], [3], [4], [\n]
 
 // [6], [7], [8], [9], [10], [\n]
+
+
+// https://www.youtube.com/watch?v=p6PqJPFOIm4
