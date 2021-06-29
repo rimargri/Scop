@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 21:13:21 by cvernius          #+#    #+#             */
-/*   Updated: 2021/06/29 20:28:09 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/06/29 20:41:57 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,13 +63,10 @@ void	validate_index(t_obj *obj, char *buf, int start, int finish)
 	int			count_space;
 
 	i = start;
-	printf("start = %d\n", i);
-	printf("finish = %d\n", finish);
 	while (i < finish)
 	{
 		if (buf[i] == ' ')
 		{
-			printf("buf[%d] = %c\n", i, buf[i + 1]);
 			index = atof(&buf[i + 1]);
 			obj->faces_vertexes[j] = index;
 			j++;
