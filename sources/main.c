@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/04/26 18:02:39 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/06/29 17:39:58 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,9 @@ int		main(void)
 	create_triangle(scop);
 	create_shaders(scop->shader, scop->gl->program_id);
 	load_texture(scop);
-	// read_obj("models/cube.obj", &scop->obj);
+// 
+	read_obj("models/cube.obj", &scop->obj);
+// 
 	glLinkProgram(scop->gl->program_id);
 	render(scop);
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 21:13:21 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/25 20:47:39 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/06/29 20:28:09 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		get_count_indexes(t_obj *obj, char *buf, int start, int finish)
 	int			i;
 	float		index;
 	static int	j = 0;
-	int counter_faces = 0;
+	int			counter_faces = 0;
 	int			count_space;
 
 	i = start;
@@ -63,13 +63,17 @@ void	validate_index(t_obj *obj, char *buf, int start, int finish)
 	int			count_space;
 
 	i = start;
+	printf("start = %d\n", i);
+	printf("finish = %d\n", finish);
 	while (i < finish)
 	{
 		if (buf[i] == ' ')
 		{
-			index = atof(&buf[i]);
-			obj->vertex_position_indexes[j] = index;
+			printf("buf[%d] = %c\n", i, buf[i + 1]);
+			index = atof(&buf[i + 1]);
+			obj->faces_vertexes[j] = index;
 			j++;
+			// printf("index[%d] = %f\n", j, obj->faces_vertexes[j]);
 		}
 		i++;
 	}

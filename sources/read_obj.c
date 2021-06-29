@@ -6,14 +6,18 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 16:52:41 by cvernius          #+#    #+#             */
-/*   Updated: 2021/05/17 19:58:13 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/06/29 20:29:00 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "obj_load.h"
 #include "log_scop.h"
+#include "scop.h"
 #include <stdio.h> //!---------------------------------------------------------
 
+// одновременно считаем количество вертексов и количество фэйсов
+// count_indexes - количество строк фейсов
+// count_atttributes - количество атрибутов в строке face
 void	get_count_attributes(int buf_size, char *buf, t_obj *obj)
 {	
 	int	i;
@@ -101,17 +105,34 @@ void	read_obj(const char *filename, t_obj *obj)
 	obj->vertex_position = malloc(sizeof(float) * obj->count_vertexes * 3);
 	if (!obj->vertex_position)
 		log_scop("Read obj::Malloc can't allocate memory\n", (enum errors)malloc_error);
-	obj->vertex_position_indexes = malloc(sizeof(int) * obj->count_attributes);
-	printf("count_el_arr = %d\n",obj->count_indexes * obj->count_attributes);
-	if (!obj->vertex_position_indexes)
+	obj->faces_vertexes = malloc(sizeof(int) * obj->count_attributes);
+
+	// printf("count_el_arr = %d\n",obj->count_indexes * obj->count_attributes);
+	if (!obj->faces_vertexes)
 		log_scop("Read obj::Malloc can't allocate memory\n", (enum errors)malloc_error);
 	validate_attributes(returned_bytes, &buf[0], obj);
-	printf("count ind = %d\n", obj->count_indexes);
-	// for (int i = 0; i < obj->count_attributes; i++)
+
+
+
+
+	
+	// printf("bj->faces_vertexes\n");
+	// for (int i = 0; i < sizeof(int) * obj->count_attributes; i++)
 	// {
-	// 	printf("%i  %d\n", i, obj->vertex_position_indexes[i]);
+	// 	printf("%f\n", obj->faces_vertexes[i]);
 	// }
+	
+	
+	printf("count indexes = %d\n", obj->count_indexes);
+	for (int i = 0; i < obj->count_attributes; i++)
+	{
+		printf("obj->faces_vertexes[%d]  %d\n", i, obj->faces_vertexes[i]);
+	}
 }
+
+// faces_vertexes - массив, в котором вертексы нахдятся в правильном порядке
+// vertex_position - записывается, всё ок
+
 
 // [0], [1], [2], [3], [4], [\n]
 

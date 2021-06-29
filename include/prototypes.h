@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:05:07 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/20 18:34:00 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/06/29 20:24:01 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	create_shaders(t_shader *shader, int program_id);
 int		render(t_scop *scop);
 void	get_camera_values(t_camera *camera);
 void	load_texture(t_scop *scop);
+void	validate_index(t_obj *obj, char *buf, int start, int finish);
 
 /*
 ** *********************************** **
