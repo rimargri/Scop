@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 20:45:56 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/02 19:39:50 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/02 20:00:45 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,21 +19,19 @@
 // obj->count_vertexes - количество вертексов
 // obj->vertex_position - массив с вертексами
 
-// делать шаг на i + 3
-
 void translate_readed_obj_to_struct(t_obj *obj)
 {
 	int count_vertexes = obj->count_attributes * 3;
 	int i = 0;
 
-	printf("%d\n", count_vertexes);
+	// printf("%d\n", count_vertexes);
 	obj->final_vertexes = malloc(sizeof(float) * count_vertexes);
 	if (!(obj->final_vertexes))
 		exit(88);
 	int j = 0;
 	while (i < count_vertexes)
 	{
-		printf("i = %d\n", i);
+		// printf("i = %d\n", i);
 		int number_face = obj->faces_vertexes[j];
 		int vertex_index = (number_face - 1) * 3;
 

@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 19:33:37 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/04/26 17:36:28 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/02 19:58:25 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,9 @@
 
 
 // #define COUNT_VERTEX 3
-#define COUNT_VERTEX 4
+// #define COUNT_VERTEX 4
+
+#define COUNT_VERTEX 36
 
 #define UP_AXIS (t_vec3){0.0f, 0.1f, 0.0f}
 

@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:12:11 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/02 20:23:33 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/05/17 19:32:36 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,24 +49,16 @@ void	init_vertex_attrib(void)
 	glEnableVertexAttribArray(0);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 	// glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 3, NULL);
-
-// glVertexPointer(3, GL_FLOAT, 0, vertices);
 }
 
 void	create_triangle(t_scop *s)
 {
 	t_triangle  triangle;
 
-	// get_vertex_triangle(&triangle);
-	init_vertex_array_object(s->gl, s->obj.final_vertexes);
+	get_vertex_triangle(&triangle);
+	init_vertex_array_object(s->gl, triangle.array_vertex);
 	init_vertex_buffer_object(s->gl);
 	init_vertex_attrib();
-
-
-	// get_vertex_triangle(&triangle);
-	// init_vertex_array_object(s->gl, triangle.array_vertex);
-	// init_vertex_buffer_object(s->gl);
-	// init_vertex_attrib();
 }
 
 
@@ -74,5 +66,3 @@ void	create_triangle(t_scop *s)
 // !!!
 // CHECK THE VALID WITH SUCCESS AND OUTPUT:
 // https://learnopengl.com/Getting-started/Hello-Triangle
-
-// http://www.opengl-tutorial.org/beginners-tutorials/tutorial-4-a-colored-cube/
