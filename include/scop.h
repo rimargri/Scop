@@ -18,6 +18,9 @@
 #include <GLUT/glut.h>
 #else
 #include <GL/glut.h>
+
+#include <X11/Xlib.h>
+#include <GL/glx.h>
 #endif
 
 #include <GLFW/glfw3.h>
@@ -33,13 +36,10 @@
 #include "prototypes.h"
 
 
-#define COUNT_POINTS 9
-
-
 // #define COUNT_VERTEX 3
-// #define COUNT_VERTEX 4
 
 #define COUNT_VERTEX 36
+
 
 #define UP_AXIS (t_vec3){0.0f, 0.1f, 0.0f}
 

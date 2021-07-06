@@ -11,25 +11,25 @@
 /* ************************************************************************** */
 
 #include "obj_load.h"
+#include "scop.h"
 
-#include <stdio.h>
 // obj->count_attributes - количество атрибутов в массиве
 // obj->faces_vertexes - массив с vertex_id, расположенные в правильном порядке
 
 // obj->count_vertexes - количество вертексов
 // obj->vertex_position - массив с вертексами
 
-void translate_readed_obj_to_struct(t_obj *obj)
+void translate_readed_obj_to_struct(t_obj *obj, t_gl *gl)
 {
-	int count_vertexes = obj->count_attributes * 3;
+	gl->count_vertexes = obj->count_attributes * 3;
 	int i = 0;
 
 	// printf("%d\n", count_vertexes);
-	obj->final_vertexes = malloc(sizeof(float) * count_vertexes);
+	obj->final_vertexes = malloc(sizeof(float) * gl->count_vertexes);
 	if (!(obj->final_vertexes))
 		exit(88);
 	int j = 0;
-	while (i < count_vertexes)
+	while (i < gl->count_vertexes)
 	{
 		// printf("i = %d\n", i);
 		int number_face = obj->faces_vertexes[j];

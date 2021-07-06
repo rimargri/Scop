@@ -30,7 +30,8 @@ int		render(t_scop *scop);
 void	get_camera_values(t_camera *camera);
 void	load_texture(t_scop *scop);
 void	validate_index(t_obj *obj, char *buf, int start, int finish);
-void	translate_readed_obj_to_struct(t_obj *obj);
+void	translate_readed_obj_to_struct(t_obj *obj, t_gl *gl);
+void	read_obj(const char *filename, t_obj *obj, t_gl *gl);
 
 /*
 ** *********************************** **

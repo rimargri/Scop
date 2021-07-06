@@ -46,7 +46,7 @@ C_FILES =	main.c \
 			init_glfw.c \
 			create_shaders.c \
 			render.c \
-			create_triangle.c \
+			create_mesh.c \
 			rotate.c \
 			model_matrix.c \
 			view_matrix.c \

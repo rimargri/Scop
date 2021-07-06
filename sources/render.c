@@ -46,7 +46,7 @@ int		render(t_scop *scop)
 
 		glUniformMatrix4fv(scop->gl->mvp_location, 1, GL_TRUE, scop->matrix->mvp.value);
 		glUniformMatrix4fv(scop->gl->model_location, 1, GL_TRUE, scop->matrix->model.value);
-		glDrawArrays(GL_TRIANGLES, 0, 36);
+		glDrawArrays(GL_TRIANGLES, 0, scop->gl->count_vertexes);
 		// glDrawArrays(GL_TRIANGLES, 0, 3);
 
 
@@ -54,6 +54,7 @@ int		render(t_scop *scop)
 		// glBindVertexArray(scop->gl->vao);
 		// glDrawElements(GL_TRIANGLES, COUNT_INDEXES, GL_UNSIGNED_INT, 0);
 		// glBindVertexArray(0);
+
 
 
 		glfwPollEvents();

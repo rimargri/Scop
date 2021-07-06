@@ -83,7 +83,7 @@ void	validate_attributes(int buf_size, char *buf, t_obj *obj)
 	}
 }
 
-void	read_obj(const char *filename, t_obj *obj)
+void	read_obj(const char *filename, t_obj *obj, t_gl *gl)
 {
 	int fd;
 	int returned_bytes;
@@ -123,7 +123,7 @@ void	read_obj(const char *filename, t_obj *obj)
 			printf("\n");
 	}
 
-	translate_readed_obj_to_struct(obj);
+	translate_readed_obj_to_struct(obj, gl);
 }
 
 // faces_vertexes - массив, в котором id вертексов нахдятся в правильном порядке

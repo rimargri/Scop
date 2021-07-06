@@ -13,29 +13,29 @@
 #include "scop.h"
 #include "log_scop.h"
 
-int		get_vertex_triangle(t_triangle  *triangle)
-{
-	if (!(triangle->array_vertex = malloc(sizeof(float) * COUNT_VERTEX * 3)))
-		log_scop("Shape::Malloc can't allocate memory\n", (enum errors)malloc_error);
+// int		get_vertex_triangle(t_triangle  *triangle)
+// {
+// 	if (!(triangle->array_vertex = malloc(sizeof(float) * COUNT_VERTEX * 3)))
+// 		log_scop("Shape::Malloc can't allocate memory\n", (enum errors)malloc_error);
 
-	triangle->array_vertex[0] = -1.0f;
-	triangle->array_vertex[1] = -1.0f;
-	triangle->array_vertex[2] = 0.0f;
-	triangle->array_vertex[3] = 1.0f;
-	triangle->array_vertex[4] = -1.0f;
-	triangle->array_vertex[5] = 0.0f;
-	triangle->array_vertex[6] = 0.0f;
-	triangle->array_vertex[7] = 1.0f;
-	triangle->array_vertex[8] = 0.0f;
+// 	triangle->array_vertex[0] = -1.0f;
+// 	triangle->array_vertex[1] = -1.0f;
+// 	triangle->array_vertex[2] = 0.0f;
+// 	triangle->array_vertex[3] = 1.0f;
+// 	triangle->array_vertex[4] = -1.0f;
+// 	triangle->array_vertex[5] = 0.0f;
+// 	triangle->array_vertex[6] = 0.0f;
+// 	triangle->array_vertex[7] = 1.0f;
+// 	triangle->array_vertex[8] = 0.0f;
 
-	return (1);
-}
+// 	return (1);
+// }
 
 void	init_vertex_array_object(t_gl *gl, float *array_vertex)
 {
 	glGenBuffers(1, &gl->vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, gl->vbo);
-	glBufferData(GL_ARRAY_BUFFER, COUNT_VERTEX * 3 * sizeof(float), array_vertex, GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER, gl->count_vertexes * sizeof(float), array_vertex, GL_STATIC_DRAW);
 }
 
 void	init_vertex_buffer_object(t_gl *gl)
@@ -53,11 +53,10 @@ void	init_vertex_attrib(void)
 // glVertexPointer(3, GL_FLOAT, 0, vertices);
 }
 
-void	create_triangle(t_scop *s)
+void	create_mesh(t_scop *s)
 {
 	t_triangle  triangle;
 
-	// get_vertex_triangle(&triangle);
 	init_vertex_array_object(s->gl, s->obj.final_vertexes);
 	init_vertex_buffer_object(s->gl);
 	init_vertex_attrib();

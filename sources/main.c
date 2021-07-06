@@ -29,7 +29,7 @@ void	allocate_mem(t_scop *scop)
 		log_scop("Main(shader)::Malloc can't allocate memory\n", (enum errors)malloc_error);
 }
 
-int		main(void)
+int		main(int argc, char **argv)
 {
 	t_scop *scop;
 
@@ -38,16 +38,11 @@ int		main(void)
 	allocate_mem(scop);
 	init_glfw(scop->gl);
 	scop->gl->program_id = glCreateProgram();
-
-// reading .obj
-
 	create_mvp_matrix(scop->matrix);
-	create_triangle(scop);
+	read_obj("models/42.obj", &scop->obj, scop->gl);
+	create_mesh(scop);
 	create_shaders(scop->shader, scop->gl->program_id);
 	load_texture(scop);
-// 
-	read_obj("models/cube.obj", &scop->obj);
-// 
 	glLinkProgram(scop->gl->program_id);
 	render(scop);
 	return (0);

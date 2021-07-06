@@ -76,6 +76,7 @@ typedef struct			s_gl
 	GLint				mvp_location;
 	GLint				model_location;
 	GLint				color_location;
+	int					count_vertexes;
 }						t_gl;
 
 typedef struct			s_scop

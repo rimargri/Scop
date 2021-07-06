@@ -21,6 +21,8 @@
 #include "../libft/libft.h"
 #include <stdlib.h>
 
+// #include "structures.h"
+
 #define MAX_OBJ 5000000
 
 // typedef struct s_vertex
@@ -38,10 +40,11 @@ typedef struct	s_obj
 	float		*vertex_position;
 	int			*faces_vertexes;
 	float		*final_vertexes;
+	int			count_final_vertexes;
 	// t_vertex	*vertexes;
 }				t_obj;
 
-void	read_obj(const char *filename, t_obj *obj);
+// void	read_obj(const char *filename, t_obj *obj, t_gl *gl);
 void	validate_vertex(t_obj *obj, char *buf, int start, int finish);
 void	validate_index(t_obj *obj, char *buf, int start, int finish);
 int		get_count_attr_in_line(t_obj *obj, char *buf, int start, int finish);
