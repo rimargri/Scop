@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 17:24:49 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/02 20:17:43 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/07 14:51:56 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,9 @@ void	free_gl_attributies(t_scop *scop)
 
 int		render(t_scop *scop)
 {
+	glEnable(GL_DEPTH_TEST);
+	glDepthFunc(GL_LESS);
+	
 	while (glfwWindowShouldClose(scop->gl->window) == 0)
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

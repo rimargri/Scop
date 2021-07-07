@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/24 21:13:21 by cvernius          #+#    #+#             */
-/*   Updated: 2021/06/29 20:41:57 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/07 15:25:53 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int		get_count_indexes(t_obj *obj, char *buf, int start, int finish)
 	float		index;
 	static int	j = 0;
 	int			counter_faces = 0;
-	int			count_space;
 
 	i = start;
 	while (i < finish)
@@ -51,6 +50,9 @@ int		get_count_indexes(t_obj *obj, char *buf, int start, int finish)
 		}
 		i++;
 	}
+	printf("get_count_indexes:: count faces = %d\n", counter_faces);
+	//! if (counter_faces > 4 || counter_faces < 3)
+		//! log_scop("Count faces is error");
 	return (counter_faces);
 }
 
@@ -59,8 +61,7 @@ void	validate_index(t_obj *obj, char *buf, int start, int finish)
 	int			i;
 	float		index;
 	static int	j = 0;
-	static int	counter_faces;
-	int			count_space;
+	// static int	counter_faces;
 
 	i = start;
 	while (i < finish)

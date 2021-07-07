@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 16:53:20 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/02 19:20:56 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/07 15:24:27 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,10 @@
 
 typedef struct	s_obj
 {
-	int			count_attributes;
+	int			count_faces;
 	int			count_vertexes;
 	int			count_indexes;
+	float		*count_digit_on_face_line;
 	float		*vertex_position;
 	int			*faces_vertexes;
 	float		*final_vertexes;
