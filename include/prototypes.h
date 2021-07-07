@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:05:07 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/02 19:13:19 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/07 18:03:47 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,11 @@ void	create_shaders(t_shader *shader, int program_id);
 int		render(t_scop *scop);
 void	get_camera_values(t_camera *camera);
 void	load_texture(t_scop *scop);
-void	validate_index(t_obj *obj, char *buf, int start, int finish);
+// void	validate_index(t_obj *obj, char *buf, int start, int finish);
 void	translate_readed_obj_to_struct(t_obj *obj, t_gl *gl);
 void	read_obj(const char *filename, t_obj *obj, t_gl *gl);
+
+int		get_count_faces_on_line(t_obj *obj, char *buf, int start, int finish);
 
 /*
 ** *********************************** **

@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 20:45:56 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/07 16:02:39 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/07 18:31:49 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,42 +19,90 @@
 // obj->count_vertexes - количество вертексов
 // obj->vertex_position - массив с вертексами
 
+void full_vertices_one_by_one(t_obj *obj, int i, int vertex_number)
+{
+	int first_vertex_index = (vertex_number - 1) * 3;		// получаем индекс первой точки нужного вертекса в массиве вертексов
+	obj->final_vertexes[i] = obj->vertex_position[first_vertex_index];
+	obj->final_vertexes[i + 1] = obj->vertex_position[first_vertex_index + 1];
+	obj->final_vertexes[i + 2] = obj->vertex_position[first_vertex_index + 2];
+	// printf("%f %f %f\n", obj->final_vertexes[i], obj->final_vertexes[i + 1], obj->final_vertexes[i + 2]);	
+}
+
 void translate_readed_obj_to_struct(t_obj *obj, t_gl *gl)
 {
-	gl->count_vertexes = obj->count_faces * 3;
+	for (int i = 0; i < obj->count_indexes; i++)
+	{
+		gl->count_vertexes += obj->count_digit_on_face_line[i] * 3;
+	}
+	printf("gl->count_vertexes final = %d\n", gl->count_vertexes);
+	
 	int i = 0;
 	int j = 0;
 	int k = 0;
 
-	// printf("%d\n", count_vertexes);
 	obj->final_vertexes = malloc(sizeof(float) * gl->count_vertexes);
 	if (!(obj->final_vertexes))
 		exit(88);
-	while (i < gl->count_vertexes)		// идём по финальному массиву вертексов и заполняем его
-	{
-		int count_faces_on_line = obj->count_digit_on_face_line[k];
-		
-			// printf("i = %d\n", i);
-			int number_face = obj->faces_vertexes[j];		// получаем номер вертекса, который нужно добавить
-			int vertex_index = (number_face - 1) * 3;		// получаем индекс вертекса в массиве вертексов
 
-			obj->final_vertexes[i] = obj->vertex_position[vertex_index];
-			obj->final_vertexes[i + 1] = obj->vertex_position[vertex_index + 1];
-			obj->final_vertexes[i + 2] = obj->vertex_position[vertex_index + 2];
-			printf("%f %f %f\n", obj->final_vertexes[i], obj->final_vertexes[i + 1], obj->final_vertexes[i + 2]);
-			
-			// если текущая строка содержит три вертекса, то:
-				// obj->final_vertexes[i] = obj->vertex_position[vertex_index];
-				// obj->final_vertexes[i + 1] = obj->vertex_position[vertex_index + 1];
-				// obj->final_vertexes[i + 2] = obj->vertex_position[vertex_index + 2];
-				// i += 3;
-			// если текущая строка содержит четыре вертекса, то:
+	while (i < gl->count_vertexes)											// идём по финальному массиву вертексов и заполняем его
+	{
+		int count_faces = j + obj->count_digit_on_face_line[k];
+		printf("%d %d\n", k, obj->count_digit_on_face_line[k]);
+		while (j < count_faces)												// проверяем, сколько в одной строчке фейсов, и разбиваем квадрат на тр-ик, если нужно
+		{
+			if (obj->count_digit_on_face_line[k] == 3)
+			{
+				while (j < count_faces)
+				{
+					int vertex_number = obj->faces_vertexes[j];				// получаем номер вертекса, который нужно добавить
+					full_vertices_one_by_one(obj, i, vertex_number);
+					j++;
+					i += 3;
+				}
+			}
+
+			else if (obj->count_digit_on_face_line[k] == 4)
+			{
+				// int vertex_number = obj->faces_vertexes[j]; 		// 16
+				// int vertex_number = obj->faces_vertexes[j + 1];	// 2
+				// int vertex_number = obj->faces_vertexes[j + 2];	// 3
+				// int vertex_number = obj->faces_vertexes[j + 3];	// 17
+
+
+
+				// int vertex_number = obj->faces_vertexes[j];		// 16
+				// int vertex_number = obj->faces_vertexes[j + 1];	// 2
+				// int vertex_number = obj->faces_vertexes[j + 2];	// 3
+				int i_1 = j + 3;
+				while (j < i_1)
+				{
+					int vertex_number = obj->faces_vertexes[j]; 		// 16
+					full_vertices_one_by_one(obj, i, vertex_number);
+					j++;
+					i += 3;
+				}
 				
-			
-			i += 3;
-			j++;
-		
-		printf("k = %d\tcount_faces_on_line = %d\n", k, count_faces_on_line);
+				
+				// int vertex_number = obj->faces_vertexes[j + 2];	// 3
+				// int vertex_number = obj->faces_vertexes[j + 3];	// 17
+				// int vertex_number = obj->faces_vertexes[j];		// 16
+				int i_2 = j + 2;
+				while (j < i_2)
+				{
+					int vertex_number = obj->faces_vertexes[j]; 		// 3
+					full_vertices_one_by_one(obj, i, vertex_number);
+					j++;
+					i += 3;
+				}
+				int vertex_number = obj->faces_vertexes[j - 3];
+				full_vertices_one_by_one(obj, i, vertex_number);
+				// i += 3;
+			}
+			// i += 3;											// 3, потому что в каждом вертексе по 3 точки
+			// j++;
+		}
+		k++;
+		printf("i = %d gl->count_vertexes = %d\n", i, gl->count_vertexes);
 	}
 }
 
@@ -103,10 +151,21 @@ void translate_readed_obj_to_struct(t_obj *obj, t_gl *gl)
 // 2	3	0
 
 
-
+////////////////////
 // ----------------
 // 16	2	3	17
 // ----------------
+///////////////////
+
+
+
+/////////////
+// ----------
+// 16	2	3
+
+// 3	17	16
+// ----------
+/////////////
 
 
 
@@ -116,8 +175,4 @@ void translate_readed_obj_to_struct(t_obj *obj, t_gl *gl)
 // 3		17
 // ----------
 
-// ----------
-// 16	2	3
-
-// 3	17	16
-// ----------
+// выделить память на вертексы больше
