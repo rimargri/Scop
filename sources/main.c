@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/07/07 18:21:59 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/09 18:10:14 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int		main(int argc, char **argv)
 	init_glfw(scop->gl);
 	scop->gl->program_id = glCreateProgram();
 	create_mvp_matrix(scop->matrix);
-	read_obj("models/42.obj", &scop->obj, scop->gl);
+	read_obj("models/cube.obj", &scop->obj, scop->gl);
 	create_mesh(scop);
 	create_shaders(scop->shader, scop->gl->program_id);
 	load_texture(scop);

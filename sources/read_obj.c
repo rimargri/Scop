@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 16:52:41 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/07 18:10:16 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/09 15:00:29 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	get_count_attributes(int buf_size, char *buf, t_obj *obj)
 			if (prefix == 'f')
 			{
 				obj->count_indexes += 1;
-				obj->count_faces += get_count_indexes(obj, buf, prefix_pos + 1, i);
+				obj->count_faces += get_count_faces_on_line(obj, buf, prefix_pos + 1, i);
 			}
 		}
 		i++;
@@ -61,6 +61,7 @@ void	validate_attributes(int buf_size, char *buf, t_obj *obj)
 	int length;
 	int prefix;
 	int prefix_pos;
+	int j = 0;
 
 	i = 0;
 	start_line = 0;
@@ -77,44 +78,49 @@ void	validate_attributes(int buf_size, char *buf, t_obj *obj)
 			if (prefix == 'v' && buf[prefix_pos + 1] == ' ')
 				validate_vertex(obj, buf, prefix_pos + 1, i);
 			if (prefix == 'f')
-				validate_faces(obj, buf, prefix_pos + 1, i);
-		}
-		i++;
-	}
-}
-
-void	get_count_digits_on_faces_line(int buf_size, char *buf, t_obj *obj)
-{
-	int	i;
-	int j;
-	int start_line;
-	int length;
-	int prefix;
-	int prefix_pos;
-
-	obj->count_digit_on_face_line = malloc(sizeof(int) * obj->count_indexes);
-	if (!(obj->count_digit_on_face_line))
-		exit(88);
-	j = 0;
-	i = 0;
-	start_line = 0;
-	while (i < buf_size)
-	{
-		if (buf[i] == '\n')
-		{
-			length = i - start_line;
-			start_line = i + 1;
-			prefix_pos = i - length;
-			prefix = buf[prefix_pos];
-			if (prefix == 'f')
 			{
-				obj->count_digit_on_face_line[j] = get_count_faces_on_line(obj, buf, prefix_pos + 1, i);
+				validate_faces(obj, buf, prefix_pos + 1, i);
+				obj->count_faces_on_line[j] = get_count_faces_line(obj, buf, prefix_pos + 1, i);
 				j++;
 			}
 		}
 		i++;
 	}
 }
+
+// void	get_count_digits_on_faces_line(int buf_size, char *buf, t_obj *obj)
+// {
+// 	int	i;
+// 	int j;
+// 	int start_line;
+// 	int length;
+// 	int prefix;
+// 	int prefix_pos;
+
+// 	obj->count_digit_on_face_line = malloc(sizeof(int) * obj->count_indexes);
+// 	if (!(obj->count_digit_on_face_line))
+// 		exit(88);
+// 	j = 0;
+// 	i = 0;
+// 	start_line = 0;
+// 	while (i < buf_size)
+// 	{
+// 		if (buf[i] == '\n')
+// 		{
+// 			length = i - start_line;
+// 			start_line = i + 1;
+// 			prefix_pos = i - length;
+// 			prefix = buf[prefix_pos];
+// 			if (prefix == 'f')
+// 			{
+// 				obj->count_digit_on_face_line[j] = get_count_faces_on_line_on_line(obj, buf, prefix_pos + 1, i);
+// 				j++;
+// 			}
+// 		}
+// 		i++;
+// 	}
+// }
+
 
 void	read_obj(const char *filename, t_obj *obj, t_gl *gl)
 {
@@ -138,29 +144,27 @@ void	read_obj(const char *filename, t_obj *obj, t_gl *gl)
 	obj->vertex_position = malloc(sizeof(float) * obj->count_vertexes * 3);
 	if (!obj->vertex_position)
 		log_scop("Read obj::Malloc can't allocate memory\n", (enum errors)malloc_error);
-	obj->faces_vertexes = malloc(sizeof(int) * obj->count_faces);
-	if (!obj->faces_vertexes)
+	obj->faces_array = malloc(sizeof(int) * obj->count_faces);
+	if (!obj->faces_array)
 		log_scop("Read obj::Malloc can't allocate memory\n", (enum errors)malloc_error);
 	
-	get_count_digits_on_faces_line(returned_bytes, &buf[0], obj);
+	// get_count_digits_on_faces_line(returned_bytes, &buf[0], obj);
 	
+	obj->count_faces_on_line = malloc(sizeof(int) * obj->count_indexes);
+	if (!(obj->count_faces_on_line))
+		exit(88);
+
 	validate_attributes(returned_bytes, &buf[0], obj);
 	
 	printf("count indexes = %d\n", obj->count_indexes);
 	printf("count_faces = %d\n", obj->count_faces);
 	printf("faces:\n");
-	// for (int i = 0; i < obj->count_faces; i++)
-	// {
-	// 	printf(" %d ", obj->faces_vertexes[i]);
-	// 	if ((i != 0) && ((i + 1) % 3 == 0))
-	// 		printf("\n");
-	// }
 	translate_readed_obj_to_struct(obj, gl);
 }
 
-// faces_vertexes - массив, в котором id вертексов нахдятся в правильном порядке
+// faces_array - массив, в котором id вертексов нахдятся в правильном порядке
 // vertex_position - записывается, всё ок
-// obj->faces_vertexes - записывается, всё ок
+// obj->faces_array - записывается, всё ок
 
 // [0], [1], [2], [3], [4], [\n]
 

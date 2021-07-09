@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 20:45:56 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/07 18:31:49 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/09 18:38:02 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,114 +14,96 @@
 #include "scop.h"
 
 // obj->count_faces - количество атрибутов в массиве
-// obj->faces_vertexes - массив с vertex_id, расположенные в правильном порядке
+// obj->faces_array - массив с vertex_id, расположенные в правильном порядке
 
 // obj->count_vertexes - количество вертексов
 // obj->vertex_position - массив с вертексами
 
-void full_vertices_one_by_one(t_obj *obj, int i, int vertex_number)
+
+
+void full_coords_vertex_one_by_one(t_obj *obj, int index_coord, int i_array_coord_vertex)
 {
-	int first_vertex_index = (vertex_number - 1) * 3;		// получаем индекс первой точки нужного вертекса в массиве вертексов
-	obj->final_vertexes[i] = obj->vertex_position[first_vertex_index];
-	obj->final_vertexes[i + 1] = obj->vertex_position[first_vertex_index + 1];
-	obj->final_vertexes[i + 2] = obj->vertex_position[first_vertex_index + 2];
-	// printf("%f %f %f\n", obj->final_vertexes[i], obj->final_vertexes[i + 1], obj->final_vertexes[i + 2]);	
+	obj->final_vertexes[i_array_coord_vertex] = obj->vertex_position[index_coord];
+	obj->final_vertexes[i_array_coord_vertex + 1] = obj->vertex_position[index_coord + 1];
+	obj->final_vertexes[i_array_coord_vertex + 2] = obj->vertex_position[index_coord + 2];
+	// printf("%f %f %f\n", obj->final_vertexes[i_array_coord_vertex], obj->final_vertexes[i_array_coord_vertex + 1], obj->final_vertexes[i_array_coord_vertex + 2]);
 }
+
+void get_count_coord_vertexes(t_obj *obj, t_gl *gl)
+{
+	// gl->count_vertexes = 0;
+	int i = 0;
+	while (i < obj->count_indexes)
+	{
+		if (obj->count_faces_on_line[i] == 3)
+			gl->count_vertexes += obj->count_faces_on_line[i];
+		if (obj->count_faces_on_line[i] == 4)
+			gl->count_vertexes += 6;
+		i++;
+	}
+	obj->count_coord_vertexes = gl->count_vertexes * 3;
+	// gl->count_vertexes = obj->count_coord_vertexes;									//! ATTENSION !!!!!!!!!!!!!!!!!
+	printf("gl->count_vertexes = %d\n", gl->count_vertexes);
+	obj->final_vertexes = malloc(sizeof(float) * obj->count_coord_vertexes);
+	if (!(obj->final_vertexes))
+		exit(99);
+}
+
 
 void translate_readed_obj_to_struct(t_obj *obj, t_gl *gl)
 {
-	for (int i = 0; i < obj->count_indexes; i++)
-	{
-		gl->count_vertexes += obj->count_digit_on_face_line[i] * 3;
-	}
-	printf("gl->count_vertexes final = %d\n", gl->count_vertexes);
-	
 	int i = 0;
+	int i_face = 0;
+	int index = 0;
+	int tmp = 0;
 	int j = 0;
-	int k = 0;
 
-	obj->final_vertexes = malloc(sizeof(float) * gl->count_vertexes);
-	if (!(obj->final_vertexes))
-		exit(88);
-
-	while (i < gl->count_vertexes)											// идём по финальному массиву вертексов и заполняем его
+	get_count_coord_vertexes(obj, gl);
+	printf("obj->count_coord_vertexes = %d\n", obj->count_coord_vertexes);
+	while (i < obj->count_coord_vertexes)
 	{
-		int count_faces = j + obj->count_digit_on_face_line[k];
-		printf("%d %d\n", k, obj->count_digit_on_face_line[k]);
-		while (j < count_faces)												// проверяем, сколько в одной строчке фейсов, и разбиваем квадрат на тр-ик, если нужно
+		int count_faces_on_line = obj->count_faces_on_line[index];
+		printf("i = %d\nindex = %d\n", i, index);
+		if (count_faces_on_line == 3)
 		{
-			if (obj->count_digit_on_face_line[k] == 3)
+			int tmp = i_face + count_faces_on_line;
+			while (i_face < tmp)
 			{
-				while (j < count_faces)
-				{
-					int vertex_number = obj->faces_vertexes[j];				// получаем номер вертекса, который нужно добавить
-					full_vertices_one_by_one(obj, i, vertex_number);
-					j++;
-					i += 3;
-				}
+				int face = obj->faces_array[i_face];
+				int fist_coord_array_vertex = (face - 1) * 3;
+				full_coords_vertex_one_by_one(obj, fist_coord_array_vertex, i);
+				i += 3;
+				// printf("i_face = %d\nface = %d\n", i_face, face);
+				i_face++;
 			}
-
-			else if (obj->count_digit_on_face_line[k] == 4)
-			{
-				// int vertex_number = obj->faces_vertexes[j]; 		// 16
-				// int vertex_number = obj->faces_vertexes[j + 1];	// 2
-				// int vertex_number = obj->faces_vertexes[j + 2];	// 3
-				// int vertex_number = obj->faces_vertexes[j + 3];	// 17
-
-
-
-				// int vertex_number = obj->faces_vertexes[j];		// 16
-				// int vertex_number = obj->faces_vertexes[j + 1];	// 2
-				// int vertex_number = obj->faces_vertexes[j + 2];	// 3
-				int i_1 = j + 3;
-				while (j < i_1)
-				{
-					int vertex_number = obj->faces_vertexes[j]; 		// 16
-					full_vertices_one_by_one(obj, i, vertex_number);
-					j++;
-					i += 3;
-				}
-				
-				
-				// int vertex_number = obj->faces_vertexes[j + 2];	// 3
-				// int vertex_number = obj->faces_vertexes[j + 3];	// 17
-				// int vertex_number = obj->faces_vertexes[j];		// 16
-				int i_2 = j + 2;
-				while (j < i_2)
-				{
-					int vertex_number = obj->faces_vertexes[j]; 		// 3
-					full_vertices_one_by_one(obj, i, vertex_number);
-					j++;
-					i += 3;
-				}
-				int vertex_number = obj->faces_vertexes[j - 3];
-				full_vertices_one_by_one(obj, i, vertex_number);
-				// i += 3;
-			}
-			// i += 3;											// 3, потому что в каждом вертексе по 3 точки
-			// j++;
 		}
-		k++;
-		printf("i = %d gl->count_vertexes = %d\n", i, gl->count_vertexes);
+		if (count_faces_on_line == 4)
+		{
+			int tmp = i_face + count_faces_on_line;
+			float arr1[3];
+			float arr2[3];
+			while (j < 3)
+			{
+				arr1[j] = obj->faces_array[i_face];
+				j++;
+				i_face++;
+			}
+			j = 0;
+			while (j < 2)
+			{
+				arr2[j] = obj->faces_array[i_face];
+				j++;
+				i_face++;
+			}
+		}
+		index++;
 	}
+
+	// for (int i = 0; i < obj->count_coord_vertexes; i++)
+	// {
+	// 	printf("%d %f\n", i, obj->final_vertexes[i]);
+	// }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
