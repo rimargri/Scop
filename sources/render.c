@@ -32,18 +32,14 @@ int		render(t_scop *scop)
 {
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
-	
 	while (glfwWindowShouldClose(scop->gl->window) == 0)
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glUseProgram(scop->gl->program_id);
 		glBindTexture(GL_TEXTURE_2D, scop->texture.id);
 		glBindVertexArray(scop->gl->vao);
-		create_mvp_matrix(scop->matrix);
+		create_mvp_matrix(scop->matrix, scop->input_transform);
 		scop->gl->mvp_location = glGetUniformLocation(scop->gl->program_id, "mvp");
-		// scop->gl->model_location = glGetUniformLocation(scop->gl->program_id, "model_matrix");
-		// printf("scop->gl->mvp_location = %d\n", scop->gl->mvp_location);
-		// printf("scop->gl->model_location = %d\n", scop->gl->model_location);
 		create_shaders(scop->shader, scop->gl->program_id);
 
 
@@ -53,19 +49,13 @@ int		render(t_scop *scop)
 		// glDrawArrays(GL_TRIANGLES, 0, 3);
 
 
-		// glUseProgram(scop->gl->program_id);
-		// glBindVertexArray(scop->gl->vao);
-		// glDrawElements(GL_TRIANGLES, COUNT_INDEXES, GL_UNSIGNED_INT, 0);
-		// glBindVertexArray(0);
-
-
-
 		glfwPollEvents();
 		glfwSwapBuffers(scop->gl->window);
 		if (glfwGetKey(scop->gl->window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
 		{
 			glfwSetWindowShouldClose(scop->gl->window, 1);
 		}
+		// events(scop);
 	}
 	free_gl_attributies(scop);
 	return (0);

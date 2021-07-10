@@ -34,6 +34,8 @@ void	translate_readed_obj_to_struct(t_obj *obj, t_gl *gl);
 void	read_obj(const char *filename, t_obj *obj, t_gl *gl);
 
 int		get_count_faces_on_line(t_obj *obj, char *buf, int start, int finish);
+void	change_texture(t_scop *s);
+void	events(t_scop *scop);
 
 /*
 ** *********************************** **
@@ -46,10 +48,10 @@ int		get_count_faces_on_line(t_obj *obj, char *buf, int start, int finish);
 void	scale(t_vec3 scale_value, t_matrix *matrix);
 void	translate(t_vec3 translate_value, t_matrix *matrix);
 void	rotate(t_vec3 angle, t_matrix *matrix);
-void	create_model_matrix(t_matrix *matrix);
+void	create_model_matrix(t_matrix *matrix, t_input_transform val);
 void	create_view_matrix(t_matrix *matrix, t_camera camera);
 void	create_projection_matrix(t_matrix *matrix);
-void	create_mvp_matrix(t_matrix *matrix);
+void	create_mvp_matrix(t_matrix *matrix,  t_input_transform val);
 
 
 #endif

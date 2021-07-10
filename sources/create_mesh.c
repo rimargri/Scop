@@ -55,13 +55,13 @@ void	init_vertex_attrib(void)
 
 void	create_mesh(t_scop *s)
 {
-	t_triangle  triangle;
 
 	init_vertex_array_object(s->gl, s->obj.final_vertexes);
 	init_vertex_buffer_object(s->gl);
 	init_vertex_attrib();
 
 
+	// t_triangle  triangle;
 	// get_vertex_triangle(&triangle);
 	// init_vertex_array_object(s->gl, triangle.array_vertex);
 	// init_vertex_buffer_object(s->gl);

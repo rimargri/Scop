@@ -24,14 +24,14 @@ typedef struct			s_texture
 	unsigned int		id;
 }						t_texture;
 
-typedef struct			s_camera
-{
-	t_vec3				pos;
-	t_vec3				target;
-	t_vec3				reverse_dir;
-	t_vec3				right;
-	t_vec3				up;
-}						t_camera;
+// typedef struct			s_camera
+// {
+// 	t_vec3				pos;
+// 	t_vec3				target;
+// 	t_vec3				reverse_dir;
+// 	t_vec3				right;
+// 	t_vec3				up;
+// }						t_camera;
 
 typedef struct			s_rotate
 {
@@ -40,6 +40,13 @@ typedef struct			s_rotate
 	t_mat4				z;
 	t_mat4				xyzrotate;
 }						t_rotate;
+
+typedef struct			s_input_transform
+{
+	t_vec3				translate;
+	t_vec3				rotate;
+	t_vec3				scale;
+}						t_input_transform;
 
 typedef struct			s_matrix		
 {
@@ -60,11 +67,11 @@ typedef struct			s_shader
 	char				*fragment_shader;
 }						t_shader;
 
-typedef struct			s_triangle
-{
-	float				*array_vertex;
-	int					*array_indexes;
-}						t_triangle;
+// typedef struct			s_triangle
+// {
+// 	float				*array_vertex;
+// 	int					*array_indexes;
+// }						t_triangle;
 
 typedef struct			s_gl
 {
@@ -85,8 +92,10 @@ typedef struct			s_scop
 	t_matrix			*matrix;
 	t_camera			camera;
 	t_shader			*shader;
-	t_texture			texture;
+	t_texture			texture; // remove
+	t_texture			*array_textures;
 	t_obj				obj;
+	t_input_transform	input_transform;
 }						t_scop;
 
 #endif

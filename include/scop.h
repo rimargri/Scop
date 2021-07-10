@@ -47,9 +47,8 @@
 #define WIN_H (500)
 
 #define FOV (60)
-#define ASPECT ((float)WIN_W / (float)WIN_H)
 
-
+#define COUNT_TEXTURES 1
 
 #define COUNT_INDEXES 6
 

@@ -65,13 +65,18 @@ void scale(t_vec3 scale_value, t_matrix *matrix)
 	matrix->scale.value[15] = 1.0f;
 }
 
-void create_model_matrix(t_matrix *matrix)
+void create_model_matrix(t_matrix *matrix, t_input_transform val)
 {
 	static float alpha = 0.0f;
 	alpha += 1.0f;
 	translate((t_vec3){0.0, 0.0, 3.0}, matrix);
 	rotate((t_vec3){0.0f, alpha, 0.0f}, matrix);
 	scale((t_vec3){1.0f, 1.0f, 1.0f}, matrix);
+
+	// translate((t_vec3){val.translate.x,val.translate.y, val.translate.z}, matrix);
+	// rotate((t_vec3){val.rotate.x, val.rotate.y, val.rotate.z}, matrix);
+	// scale((t_vec3){val.scale.x, val.scale.y, val.scale.z}, matrix);
+
 	matrix->model = mult_matrix(mult_matrix(matrix->translate, matrix->rotate->xyzrotate), matrix->scale);
 }
 

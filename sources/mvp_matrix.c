@@ -14,9 +14,9 @@
 
 // WARNING: look_at doesn't added
 
-void	create_mvp_matrix(t_matrix *matrix)
+void	create_mvp_matrix(t_matrix *matrix, t_input_transform val)
 {
-	create_model_matrix(matrix);
+	create_model_matrix(matrix, val);
 	// get_camera_values(&scop->camera);								// will be input from keyboard in future
 	// create_view_matrix(scop->matrix, gl->camera);
 	create_projection_matrix(matrix);

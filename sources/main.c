@@ -17,6 +17,19 @@
 
 // https://www.3dgep.com/understanding-the-view-matrix/
 
+void	init_input_transform_value(t_scop *transform_val)
+{
+	transform_val.translate.x = 0.0f;
+	transform_val.translate.y = 0.0f;
+	transform_val.translate.z = 3.0f;
+	transform_val.rotate.x = 0.0f;
+	transform_val.rotate.y = 0.0f;
+	transform_val.rotate.z = 0.0f;
+	transform_val.scale.x = 1.0f;
+	transform_val.scale.y = 1.0f;
+	transform_val.scale.z = 1.0f;
+}
+
 void	allocate_mem(t_scop *scop)
 {
 	if (!(scop->gl = malloc(sizeof(t_gl))))
@@ -38,6 +51,7 @@ int		main(int argc, char **argv)
 	allocate_mem(scop);
 	init_glfw(scop->gl);
 	scop->gl->program_id = glCreateProgram();
+	init_input_transform_value(&scop->input_transform);
 	create_mvp_matrix(scop->matrix);
 	read_obj("models/cube.obj", &scop->obj, scop->gl);
 	create_mesh(scop);

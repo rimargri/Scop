@@ -58,7 +58,8 @@ C_FILES =	main.c \
 			log.c \
 			read_obj.c \
 			validate_attributes_obj.c \
-			translate_readed_obj_to_struct.c
+			translate_readed_obj_to_struct.c \
+			events.c
 
 OBJ_FILES = $(C_FILES:.c=.o)
 
