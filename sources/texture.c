@@ -46,3 +46,44 @@ void	load_texture(t_scop *scop)
 		log_scop("Texture::Empty data in bmp file\n", empty_data_tex);
 	free(scop->texture.data);
 }
+
+void	new_load_texture(t_scop *scop)
+{
+	int i = 0;
+
+	glGenTextures(1, &scop->texture.id);
+	glBindTexture(GL_TEXTURE_2D, scop->texture.id);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	scop->array_textures = malloc(sizeof(t_texture) * COUNT_TEXTURES);
+	if (!(scop->array_textures))
+		exit(88);
+	while (i < COUNT_TEXTURES)
+	{
+		read_texture(scop->array_textures[i]);
+		i++;
+	}
+	if (scop->array_textures[0].data)
+	{
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, scop->array_textures[0].width, scop->array_textures[0].height, 0, GL_RGB, GL_UNSIGNED_BYTE, scop->array_textures[0].data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+	}
+	else
+		log_scop("Texture::Empty data in bmp file\n", empty_data_tex);
+	// free(scop->array_textures[0].data);
+}
+
+void	change_texture(t_scop *s, int n)
+{
+	int current_num = n % COUNT_TEXTURES;
+	if (scop->array_textures[current_num].data)
+	{
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, scop->array_textures[current_num].width, scop->array_textures[current_num].height, 0, GL_RGB, GL_UNSIGNED_BYTE, scop->array_textures[current_num].data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+	}
+	else
+		log_scop("Texture::Empty data in bmp file\n", empty_data_tex);
+	// free(scop->array_textures[current_num].data);
+}
