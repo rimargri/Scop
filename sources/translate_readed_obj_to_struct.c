@@ -21,12 +21,12 @@
 
 
 
-void full_coords_vertex_one_by_one(t_obj *obj, int index_coord, int i_array_coord_vertex)
+void full_coords_vertex_one_by_one(t_obj *obj, int i, int index_coord)
 {
-	obj->final_vertexes[i_array_coord_vertex] = obj->vertex_position[index_coord];
-	obj->final_vertexes[i_array_coord_vertex + 1] = obj->vertex_position[index_coord + 1];
-	obj->final_vertexes[i_array_coord_vertex + 2] = obj->vertex_position[index_coord + 2];
-	// printf("%f %f %f\n", obj->final_vertexes[i_array_coord_vertex], obj->final_vertexes[i_array_coord_vertex + 1], obj->final_vertexes[i_array_coord_vertex + 2]);
+	obj->final_vertexes[i] = obj->vertex_position[index_coord];
+	obj->final_vertexes[i + 1] = obj->vertex_position[index_coord + 1];
+	obj->final_vertexes[i + 2] = obj->vertex_position[index_coord + 2];
+	// printf("%f %f %f\n", obj->final_vertexes[i], obj->final_vertexes[i_array_coord_vertex + 1], obj->final_vertexes[i_array_coord_vertex + 2]);
 }
 
 void get_count_coord_vertexes(t_obj *obj, t_gl *gl)
@@ -71,30 +71,59 @@ void translate_readed_obj_to_struct(t_obj *obj, t_gl *gl)
 			{
 				int face = obj->faces_array[i_face];
 				int fist_coord_array_vertex = (face - 1) * 3;
-				full_coords_vertex_one_by_one(obj, fist_coord_array_vertex, i);
+				full_coords_vertex_one_by_one(obj, i, fist_coord_array_vertex);
 				i += 3;
 				// printf("i_face = %d\nface = %d\n", i_face, face);
 				i_face++;
 			}
 		}
-		if (count_faces_on_line == 4)
+		else if (count_faces_on_line == 4)
 		{
-			int tmp = i_face + count_faces_on_line;
-			float arr1[3];
-			float arr2[3];
-			while (j < 3)
-			{
-				arr1[j] = obj->faces_array[i_face];
-				j++;
-				i_face++;
-			}
-			j = 0;
-			while (j < 2)
-			{
-				arr2[j] = obj->faces_array[i_face];
-				j++;
-				i_face++;
-			}
+			int face = obj->faces_array[i_face];
+			int fist_coord_array_vertex = (face - 1) * 3;
+			obj->final_vertexes[i] = obj->vertex_position[fist_coord_array_vertex];
+			obj->final_vertexes[i + 1] = obj->vertex_position[fist_coord_array_vertex + 1];
+			obj->final_vertexes[i + 2] = obj->vertex_position[fist_coord_array_vertex + 2];
+
+			i_face++;
+			i += 3;
+			int face = obj->faces_array[i_face];
+			int fist_coord_array_vertex = (face - 1) * 3;
+			obj->final_vertexes[i] = obj->vertex_position[fist_coord_array_vertex];
+			obj->final_vertexes[i+ 1] = obj->vertex_position[fist_coord_array_vertex + 1];
+			obj->final_vertexes[i + 2] = obj->vertex_position[fist_coord_array_vertex + 2];
+			
+			i_face++;
+			i += 3;
+			int face = obj->faces_array[i_face];
+			int fist_coord_array_vertex = (face - 1) * 3;
+			obj->final_vertexes[i] = obj->vertex_position[fist_coord_array_vertex];
+			obj->final_vertexes[i+ 1] = obj->vertex_position[fist_coord_array_vertex + 1];
+			obj->final_vertexes[i + 2] = obj->vertex_position[fist_coord_array_vertex + 2];
+			
+			i += 3;
+			obj->final_vertexes[i] = obj->vertex_position[fist_coord_array_vertex];
+			obj->final_vertexes[i+ 1] = obj->vertex_position[fist_coord_array_vertex + 1];
+			obj->final_vertexes[i + 2] = obj->vertex_position[fist_coord_array_vertex + 2];
+			
+			i_face++;
+			i += 3;
+			int face = obj->faces_array[i_face];
+			int fist_coord_array_vertex = (face - 1) * 3;
+			obj->final_vertexes[i] = obj->vertex_position[fist_coord_array_vertex];
+			obj->final_vertexes[i+ 1] = obj->vertex_position[fist_coord_array_vertex + 1];
+			obj->final_vertexes[i + 2] = obj->vertex_position[fist_coord_array_vertex + 2];
+			
+			i_face -= 3;
+			i += 3;
+			int face = obj->faces_array[i_face];
+			int fist_coord_array_vertex = (face - 1) * 3;
+			obj->final_vertexes[i] = obj->vertex_position[fist_coord_array_vertex];
+			obj->final_vertexes[i+ 1] = obj->vertex_position[fist_coord_array_vertex + 1];
+			obj->final_vertexes[i + 2] = obj->vertex_position[fist_coord_array_vertex + 2];
+
+			i_face += 4; // or 3?
+			i += 3;
 		}
 		index++;
 	}
