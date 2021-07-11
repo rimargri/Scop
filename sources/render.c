@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 17:24:49 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/09 18:08:31 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/11 13:22:10 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int		render(t_scop *scop)
 		glUniformMatrix4fv(scop->gl->model_location, 1, GL_TRUE, scop->matrix->model.value);
 		glDrawArrays(GL_TRIANGLES, 0, scop->gl->count_vertexes);
 		// glDrawArrays(GL_TRIANGLES, 0, 3);
-
 
 		glfwPollEvents();
 		glfwSwapBuffers(scop->gl->window);

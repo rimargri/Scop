@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:05:07 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/09 14:45:45 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/11 12:47:56 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	translate_readed_obj_to_struct(t_obj *obj, t_gl *gl);
 void	read_obj(const char *filename, t_obj *obj, t_gl *gl);
 
 int		get_count_faces_on_line(t_obj *obj, char *buf, int start, int finish);
-void	change_texture(t_scop *s);
+void	change_texture(t_scop *s, int n);
 void	events(t_scop *scop);
 
 /*

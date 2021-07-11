@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/07 13:17:07 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/11 12:39:41 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ typedef struct			s_texture
 	unsigned int		id;
 }						t_texture;
 
-// typedef struct			s_camera
-// {
-// 	t_vec3				pos;
-// 	t_vec3				target;
-// 	t_vec3				reverse_dir;
-// 	t_vec3				right;
-// 	t_vec3				up;
-// }						t_camera;
+typedef struct			s_camera
+{
+	t_vec3				pos;
+	t_vec3				target;
+	t_vec3				reverse_dir;
+	t_vec3				right;
+	t_vec3				up;
+}						t_camera;
 
 typedef struct			s_rotate
 {

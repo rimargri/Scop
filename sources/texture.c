@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 20:51:05 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/22 20:33:21 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/11 12:50:55 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	new_load_texture(t_scop *scop)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	while (i < COUNT_TEXTURES)
 	{
-		read_texture(scop->array_textures[i]);
+		read_texture(&scop->array_textures[i]);
 		i++;
 	}
 	if (scop->array_textures[0].data)
@@ -75,16 +75,16 @@ void	new_load_texture(t_scop *scop)
 	// free(scop->array_textures[0].data);
 }
 
-void	change_texture(t_scop *s)
+void	change_texture(t_scop *s, int num_text)
 {
-	static int num_text = 0;
 	int current_num;
+	// static int num_text = 0;
 	
-	num_text += 1;
-	current_num = n % COUNT_TEXTURES;
-	if (scop->array_textures[current_num].data)
+	// num_text += 1;
+	current_num = num_text % COUNT_TEXTURES;
+	if (s->array_textures[current_num].data)
 	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, scop->array_textures[current_num].width, scop->array_textures[current_num].height, 0, GL_RGB, GL_UNSIGNED_BYTE, scop->array_textures[current_num].data);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, s->array_textures[current_num].width, s->array_textures[current_num].height, 0, GL_RGB, GL_UNSIGNED_BYTE, s->array_textures[current_num].data);
 		glGenerateMipmap(GL_TEXTURE_2D);
 	}
 	else
