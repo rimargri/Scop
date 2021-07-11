@@ -1,0 +1,56 @@
+obj->count_vertexes = 42
+obj->count_faces = 170
+read_obj
+count indexes = 47
+count_faces = 170
+translate_readed_obj_to_struct
+n = SIX  i = 0
+n = SIX  i = 1
+n = 3  i = 2
+n = SIX  i = 3
+n = 3  i = 4
+n = SIX  i = 5
+n = SIX  i = 6
+n = SIX  i = 7
+n = SIX  i = 8
+n = SIX  i = 9
+n = SIX  i = 10
+n = SIX  i = 11
+n = SIX  i = 12
+n = SIX  i = 13
+n = SIX  i = 14
+n = SIX  i = 15
+n = SIX  i = 16
+n = SIX  i = 17
+n = SIX  i = 18
+n = SIX  i = 19
+n = SIX  i = 20
+n = SIX  i = 21
+n = SIX  i = 22
+n = SIX  i = 23
+n = 3  i = 24
+n = 3  i = 25
+n = 3  i = 26
+n = 3  i = 27
+n = 3  i = 28
+n = 3  i = 29
+n = 3  i = 30
+n = 3  i = 31
+n = SIX  i = 32
+n = 3  i = 33
+n = 3  i = 34
+n = SIX  i = 35
+n = 3  i = 36
+n = SIX  i = 37
+n = 3  i = 38
+n = SIX  i = 39
+n = 3  i = 40
+n = SIX  i = 41
+n = 3  i = 42
+n = 3  i = 43
+n = 3  i = 44
+n = SIX  i = 45
+n = SIX  i = 46
+gl->count_vertexes = 684
+count coord vertexes: 684
+count vertexes: 684

@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 16:52:41 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/09 15:00:29 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/11 14:13:54 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ void	get_count_attributes(int buf_size, char *buf, t_obj *obj)
 	start_line = 0;
 	obj->count_vertexes = 0;
 	obj->count_indexes = 0;
+	obj->count_faces = 0;
 	while (i < buf_size)
 	{
 		if (buf[i] == '\n')
@@ -156,9 +157,9 @@ void	read_obj(const char *filename, t_obj *obj, t_gl *gl)
 
 	validate_attributes(returned_bytes, &buf[0], obj);
 	
+	printf("read_obj\n");
 	printf("count indexes = %d\n", obj->count_indexes);
 	printf("count_faces = %d\n", obj->count_faces);
-	printf("faces:\n");
 	translate_readed_obj_to_struct(obj, gl);
 }
 

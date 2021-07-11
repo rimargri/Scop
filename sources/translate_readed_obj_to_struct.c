@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/29 20:45:56 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/11 13:21:55 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/11 14:13:21 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void full_coords_vertex_one_by_one(t_obj *obj, int i, int index_coord)
 
 void get_count_coord_vertexes(t_obj *obj, t_gl *gl)
 {
-	// gl->count_vertexes = 0;
+	gl->count_vertexes = 0;
 	int i = 0;
 	while (i < obj->count_indexes)
 	{
@@ -43,7 +43,6 @@ void get_count_coord_vertexes(t_obj *obj, t_gl *gl)
 	}
 	obj->count_coord_vertexes = gl->count_vertexes * 3;
 	gl->count_vertexes = obj->count_coord_vertexes;
-	printf("gl->count_vertexes = %d\n", gl->count_vertexes);
 	obj->final_vertexes = malloc(sizeof(float) * obj->count_coord_vertexes);
 	if (!(obj->final_vertexes))
 		exit(99);
@@ -87,12 +86,13 @@ void translate_readed_obj_to_struct(t_obj *obj, t_gl *gl)
 	int face;
 	int fist_coord_array_vertex;
 
+	printf("translate_readed_obj_to_struct\n");
 	get_count_coord_vertexes(obj, gl);
-	printf("obj->count_coord_vertexes = %d\n", obj->count_coord_vertexes);
+	// printf("obj->count_coord_vertexes = %d\n", obj->count_coord_vertexes);
 	while (i < obj->count_coord_vertexes)
 	{
 		int count_faces_on_line = obj->count_faces_on_line[index];
-		printf("i = %d\nindex = %d\n", i, index);
+		// printf("i = %d\nindex = %d\n", i, index);
 		if (count_faces_on_line == 3)
 		{
 
@@ -186,10 +186,10 @@ void translate_readed_obj_to_struct(t_obj *obj, t_gl *gl)
 		index++;
 	}
 
-	for (int i = 0; i < obj->count_coord_vertexes; i++)
-	{
-		printf("%d %f\n", i, obj->final_vertexes[i]);
-	}
+	// for (int i = 0; i < obj->count_coord_vertexes; i++)
+	// {
+	// 	printf("%d %f\n", i, obj->final_vertexes[i]);
+	// }
 	printf("count coord vertexes: %d\n", obj->count_coord_vertexes);
 	printf("count vertexes: %d\n", gl->count_vertexes);
 }
