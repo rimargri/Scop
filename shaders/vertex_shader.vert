@@ -10,3 +10,6 @@ void main() {
 	// text_coord = model_matrix * vec4(vp, 1.0);
 	text_coord = vec4(vp, 1.0);
 }
+
+
+// https://learnopengl.com/Lighting/Basic-Lighting
