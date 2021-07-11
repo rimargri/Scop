@@ -8,3 +8,6 @@ void main() {
 	// frag_colour = vec4(0.5, 0.0, 0.5, 1.0);
  	frag_colour = texture(our_texture, text_coord.xy);
 }
+
+
+// https://gist.github.com/Volcanoscar/4a9500d240497d3c0228f663593d167a
