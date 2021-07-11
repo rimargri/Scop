@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 19:33:37 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/07/11 12:43:52 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/11 19:47:18 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@
 #define ASPECT ((float)WIN_W / (float)WIN_H)
 
 
-#define COUNT_TEXTURES 1
+#define COUNT_TEXTURES 2
 
 #define COUNT_INDEXES 6
 

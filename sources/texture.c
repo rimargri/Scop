@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 20:51:05 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/11 12:50:55 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/11 19:48:18 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,33 @@
 #include "bmp_load.h"
 #include "log_scop.h"
 
-void	read_texture(t_texture *texture)
+void	read_texture(t_texture *texture, char *filename)
 {
 	t_bmp bmp;
 
-	read_bmp("textures/marble.bmp", &bmp);
+	read_bmp(filename, &bmp);
 	texture->data = malloc(bmp.size);
 	if (!(texture->data))
 		log_scop("Texture::Malloc can't allocate memory\n", (enum errors)malloc_error);
 	texture->width = bmp.width;
 	texture->height = bmp.height;
 	texture->data = bmp.data;
+}
+
+void	change_texture(t_scop *s, int num_text)
+{
+	int current_num = 0;
+
+	current_num = num_text % COUNT_TEXTURES;
+	printf("current num = %d\n", current_num);
+	if (s->array_textures[current_num].data)
+	{
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, s->array_textures[current_num].width, s->array_textures[current_num].height, 0, GL_RGB, GL_UNSIGNED_BYTE, s->array_textures[current_num].data);
+		glGenerateMipmap(GL_TEXTURE_2D);
+	}
+	else
+		log_scop("Texture::Empty data in bmp file\n", empty_data_tex);
+	// free(scop->array_textures[current_num].data);
 }
 
 void	load_texture(t_scop *scop)
@@ -36,35 +52,12 @@ void	load_texture(t_scop *scop)
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
-	read_texture(&scop->texture);
-	if (scop->texture.data)
-	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, scop->texture.width, scop->texture.height, 0, GL_RGB, GL_UNSIGNED_BYTE, scop->texture.data);
-		glGenerateMipmap(GL_TEXTURE_2D);
-	}
-	else
-		log_scop("Texture::Empty data in bmp file\n", empty_data_tex);
-	free(scop->texture.data);
-}
-
-void	new_load_texture(t_scop *scop)
-{
-	int i = 0;
-
 	scop->array_textures = malloc(sizeof(t_texture) * COUNT_TEXTURES);
 	if (!(scop->array_textures))
 		exit(88);
-	glGenTextures(1, &scop->array_textures[0].id);
-	glBindTexture(GL_TEXTURE_2D, scop->array_textures[0].id);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_MIRRORED_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_MIRRORED_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	while (i < COUNT_TEXTURES)
-	{
-		read_texture(&scop->array_textures[i]);
-		i++;
-	}
+
+	read_texture(&scop->array_textures[0], "textures/marble.bmp");
+	read_texture(&scop->array_textures[1], "textures/wall.bmp");
 	if (scop->array_textures[0].data)
 	{
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, scop->array_textures[0].width, scop->array_textures[0].height, 0, GL_RGB, GL_UNSIGNED_BYTE, scop->array_textures[0].data);
@@ -73,21 +66,4 @@ void	new_load_texture(t_scop *scop)
 	else
 		log_scop("Texture::Empty data in bmp file\n", empty_data_tex);
 	// free(scop->array_textures[0].data);
-}
-
-void	change_texture(t_scop *s, int num_text)
-{
-	int current_num;
-	// static int num_text = 0;
-	
-	// num_text += 1;
-	current_num = num_text % COUNT_TEXTURES;
-	if (s->array_textures[current_num].data)
-	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, s->array_textures[current_num].width, s->array_textures[current_num].height, 0, GL_RGB, GL_UNSIGNED_BYTE, s->array_textures[current_num].data);
-		glGenerateMipmap(GL_TEXTURE_2D);
-	}
-	else
-		log_scop("Texture::Empty data in bmp file\n", empty_data_tex);
-	// free(scop->array_textures[current_num].data);
 }

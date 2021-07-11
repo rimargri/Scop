@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 17:24:49 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/11 13:22:10 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/11 15:19:14 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int		render(t_scop *scop)
 		glUseProgram(scop->gl->program_id);
 		glBindTexture(GL_TEXTURE_2D, scop->texture.id);
 		glBindVertexArray(scop->gl->vao);
-		create_mvp_matrix(scop->matrix, scop->input_transform);
+		create_mvp_matrix(scop->matrix, &scop->input_transform);
 		scop->gl->mvp_location = glGetUniformLocation(scop->gl->program_id, "mvp");
 		create_shaders(scop->shader, scop->gl->program_id);
 
@@ -54,7 +54,7 @@ int		render(t_scop *scop)
 		{
 			glfwSetWindowShouldClose(scop->gl->window, 1);
 		}
-		// events(scop);
+		events(scop);
 	}
 	free_gl_attributies(scop);
 	return (0);
