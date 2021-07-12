@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 18:21:26 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/20 18:36:36 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/12 13:58:34 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,7 @@ void	validate_compilation(GLint shader, const char *shader_name)
 			log_scop("Shader::Malloc can't allocate memory\0", (enum errors)malloc_error);
 		glGetShaderInfoLog(shader, length, NULL, info);
 		ft_putstr_fd(shader_name, 2);
-		for (int i = 0; i < length; i++)
-		{
-			ft_putstr_fd((const char*)info, 2);
-		}
+		ft_putstr_fd((const char*)info, 2);
 	}
 }
 
@@ -55,8 +52,8 @@ void	create_fragment_shader(t_shader *shader)
 
 void	create_shaders(t_shader *shader, int program_id)
 {
-	shader->vertex_shader = read_shader("shaders/vertex_shader.vert", shader->vertex_shader);
-	shader->fragment_shader = read_shader("shaders/fragment_shader.frag", shader->fragment_shader);
+	shader->vertex_shader = read_shader("shaders/vertex_shader.vert", NULL);
+	shader->fragment_shader = read_shader("shaders/fragment_shader.frag", NULL);
 	create_vertex_shader(shader);
 	create_fragment_shader(shader);
 	glAttachShader(program_id, shader->vert_id);

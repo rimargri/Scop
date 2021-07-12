@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   shader_load.h                                      :+:      :+:    :+:   */
+/*   cubemap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/20 18:31:20 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/12 11:07:48 by cvernius         ###   ########.fr       */
+/*   Created: 2021/07/12 19:42:15 by cvernius          #+#    #+#             */
+/*   Updated: 2021/07/12 19:53:05 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SHADER_LOAD_H
-#define SHADER_LOAD_H
+#include "scop.h"
+#include "bmp_load.h"
 
-# include <unistd.h>
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-#define MAX_SHADER 1000000
-
-char	*read_shader(const char *filename, char *shader);
-
-#endif
+void create_cubemap(t_scop *scop)
+{
+	unsigned int textureID;
+	glGenTextures(1, &textureID);
+	glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
+	
+	read_texture();
+}

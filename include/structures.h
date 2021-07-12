@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/11 12:39:41 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/12 19:57:20 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ typedef struct			s_input_transform
 	t_vec3				translate;
 	t_vec3				rotate;
 	t_vec3				scale;
+	float				mix_value;
 }						t_input_transform;
 
 typedef struct			s_matrix		
@@ -73,17 +74,33 @@ typedef struct			s_shader
 // 	int					*array_indexes;
 // }						t_triangle;
 
+typedef struct			s_skybox
+{
+	int					texture_id;
+	t_texture			*textures;
+	int					count_textures;
+}						t_skybox;
+
+typedef struct			s_color
+{
+	int					r;
+	int					g;
+	int					b;
+}						t_color;
+
 typedef struct			s_gl
 {
 	GLFWwindow			*window;
 	GLuint				vbo;
 	GLuint				vao;
-	GLint				ebo;
+	GLuint				color_buffer;
 	GLuint				program_id;
 	GLint				mvp_location;
 	GLint				model_location;
+	GLint				mix_value_location;
 	GLint				color_location;
 	int					count_vertexes;
+	float				*vertex_color;
 }						t_gl;
 
 typedef struct			s_scop
@@ -96,6 +113,7 @@ typedef struct			s_scop
 	t_texture			*array_textures;
 	t_obj				obj;
 	t_input_transform	input_transform;
+	t_skybox			skybox;
 }						t_scop;
 
 #endif

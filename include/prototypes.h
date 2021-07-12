@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:05:07 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/11 18:55:02 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/12 12:06:03 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,12 @@ void	load_texture(t_scop *scop);
 // void	validate_index(t_obj *obj, char *buf, int start, int finish);
 void	translate_readed_obj_to_struct(t_obj *obj, t_gl *gl);
 void	read_obj(const char *filename, t_obj *obj, t_gl *gl);
-
-int		get_count_faces_on_line(t_obj *obj, char *buf, int start, int finish);
+// int		get_count_faces_on_line(t_obj *obj, char *buf, int start, int finish);
 void	change_texture(t_scop *s, int n);
 void	events(t_scop *scop);
-
-void	new_load_texture(t_scop *scop);
-
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods);
+void	create_colors(t_scop *s);
+
 
 /*
 ** *********************************** **

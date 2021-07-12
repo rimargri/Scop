@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 17:24:49 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/11 15:19:14 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/12 16:06:15 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,17 +34,26 @@ int		render(t_scop *scop)
 	glDepthFunc(GL_LESS);
 	while (glfwWindowShouldClose(scop->gl->window) == 0)
 	{
+		glClearColor(0.388, 0.235, 0.376, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		glUseProgram(scop->gl->program_id);
 		glBindTexture(GL_TEXTURE_2D, scop->texture.id);
 		glBindVertexArray(scop->gl->vao);
 		create_mvp_matrix(scop->matrix, &scop->input_transform);
 		scop->gl->mvp_location = glGetUniformLocation(scop->gl->program_id, "mvp");
-		create_shaders(scop->shader, scop->gl->program_id);
+		if (scop->gl->mvp_location != -1)
+		{
+			glUniformMatrix4fv(scop->gl->mvp_location, 1, GL_TRUE, scop->matrix->mvp.value);
+		}
+		scop->gl->mix_value_location = glGetUniformLocation(scop->gl->program_id, "mix_value");
+		if (scop->gl->mix_value_location != -1)
+		{
+		   glUniform1f(scop->gl->mix_value_location, scop->input_transform.mix_value);
+		}
 
+		// scop->gl->mvp_location = glGetUniformLocation(scop->gl->program_id, "mvp");
 
-		glUniformMatrix4fv(scop->gl->mvp_location, 1, GL_TRUE, scop->matrix->mvp.value);
-		glUniformMatrix4fv(scop->gl->model_location, 1, GL_TRUE, scop->matrix->model.value);
+		
 		glDrawArrays(GL_TRIANGLES, 0, scop->gl->count_vertexes);
 		// glDrawArrays(GL_TRIANGLES, 0, 3);
 

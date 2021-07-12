@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 16:52:41 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/11 14:13:54 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/12 16:40:50 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,39 +89,6 @@ void	validate_attributes(int buf_size, char *buf, t_obj *obj)
 	}
 }
 
-// void	get_count_digits_on_faces_line(int buf_size, char *buf, t_obj *obj)
-// {
-// 	int	i;
-// 	int j;
-// 	int start_line;
-// 	int length;
-// 	int prefix;
-// 	int prefix_pos;
-
-// 	obj->count_digit_on_face_line = malloc(sizeof(int) * obj->count_indexes);
-// 	if (!(obj->count_digit_on_face_line))
-// 		exit(88);
-// 	j = 0;
-// 	i = 0;
-// 	start_line = 0;
-// 	while (i < buf_size)
-// 	{
-// 		if (buf[i] == '\n')
-// 		{
-// 			length = i - start_line;
-// 			start_line = i + 1;
-// 			prefix_pos = i - length;
-// 			prefix = buf[prefix_pos];
-// 			if (prefix == 'f')
-// 			{
-// 				obj->count_digit_on_face_line[j] = get_count_faces_on_line_on_line(obj, buf, prefix_pos + 1, i);
-// 				j++;
-// 			}
-// 		}
-// 		i++;
-// 	}
-// }
-
 
 void	read_obj(const char *filename, t_obj *obj, t_gl *gl)
 {
@@ -148,8 +115,6 @@ void	read_obj(const char *filename, t_obj *obj, t_gl *gl)
 	obj->faces_array = malloc(sizeof(int) * obj->count_faces);
 	if (!obj->faces_array)
 		log_scop("Read obj::Malloc can't allocate memory\n", (enum errors)malloc_error);
-	
-	// get_count_digits_on_faces_line(returned_bytes, &buf[0], obj);
 	
 	obj->count_faces_on_line = malloc(sizeof(int) * obj->count_indexes);
 	if (!(obj->count_faces_on_line))

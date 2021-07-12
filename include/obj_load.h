@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 16:53:20 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/09 15:12:36 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/12 16:47:16 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ typedef struct	s_obj
 	int			*faces_array;
 	float		*final_vertexes;
 	int			count_final_vertexes;
-	// t_vertex	*vertexes;
+	int			count_uv_vertexes;
+	float		*uv_coords;
 }				t_obj;
 
 // void	read_obj(const char *filename, t_obj *obj, t_gl *gl);

@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 19:33:37 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/07/11 19:47:18 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/12 12:11:03 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@
 
 #define COUNT_VERTEX 36
 
-
 #define UP_AXIS (t_vec3){0.0f, 0.1f, 0.0f}
 
 #define WIN_W (700)
@@ -49,9 +48,9 @@
 #define FOV (60)
 #define ASPECT ((float)WIN_W / (float)WIN_H)
 
-
 #define COUNT_TEXTURES 2
 
-#define COUNT_INDEXES 6
+
+// #define COUNT_INDEXES 6
 
 #endif

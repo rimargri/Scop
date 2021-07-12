@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 17:24:49 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/11 19:47:44 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/12 16:28:16 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,6 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 		num_text += 1;
 		change_texture(scop, num_text);
 	}
-
-	
 	// if (key == GLFW_KEY_SPACE && action != GLFW_PRESS)
 	// {
 	// 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -115,6 +113,12 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 
 void	events(t_scop *scop)
 {
+	if (glfwGetKey(scop->gl->window, GLFW_KEY_ENTER) == GLFW_PRESS)
+	{
+		scop->input_transform.mix_value += 0.01f;
+		if (scop->input_transform.mix_value > 1.0f)
+		scop->input_transform.mix_value = 1.0f;
+	}
 	events_translate(&scop->input_transform.translate, scop->gl->window);
 	events_scale(&scop->input_transform.scale, scop->gl->window);
 	events_rotate(&scop->input_transform.rotate, scop->gl->window);

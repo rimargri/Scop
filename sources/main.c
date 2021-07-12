@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/07/11 19:48:38 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/12 16:00:34 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	init_input_transform_value(t_input_transform *transform_val)
 	transform_val->scale.x = 1.0f;
 	transform_val->scale.y = 1.0f;
 	transform_val->scale.z = 1.0f;
+	transform_val->mix_value = 0.0f;
 }
 
 void	allocate_mem(t_scop *scop)
@@ -55,6 +56,7 @@ int		main(int argc, char **argv)
 	create_mvp_matrix(scop->matrix, &scop->input_transform);
 	read_obj("models/42.obj", &scop->obj, scop->gl);
 	create_mesh(scop);
+	// create_colors(scop);
 	create_shaders(scop->shader, scop->gl->program_id);
 	load_texture(scop);
 	glLinkProgram(scop->gl->program_id);
