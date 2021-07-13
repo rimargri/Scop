@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:05:07 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/13 17:39:25 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/13 19:31:10 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 void	init_glfw(t_gl *gl);
 void	create_triangle(t_scop *s);
-void	create_shaders(t_shader *shader, int program_id);
+void	create_shaders(t_shader *shader, int *program_id);
 int		render(t_scop *scop);
 void	get_camera_values(t_camera *camera);
 void	load_texture(t_scop *scop);
@@ -40,7 +40,7 @@ void	create_colors(t_scop *s);
 
 void create_cube_skybox(t_scop *s);
 
-void create_shaders_skybox(t_shader *shader, int program_id);
+void create_shaders_skybox(t_shader *shader, int *program_id);
 void	validate_compilation(GLint shader, const char *shader_name);
 char	*read_shader(const char *filename, char *shader);
 void create_cubemap(t_scop *scop);

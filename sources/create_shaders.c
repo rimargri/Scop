@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 18:21:26 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/12 13:58:34 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/13 19:31:29 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,12 +50,14 @@ void	create_fragment_shader(t_shader *shader)
 	validate_compilation(shader->fragm_id, "fragm shader\n");
 }
 
-void	create_shaders(t_shader *shader, int program_id)
+void	create_shaders(t_shader *shader, int *program_id)
 {
+	*program_id = glCreateProgram();
 	shader->vertex_shader = read_shader("shaders/vertex_shader.vert", NULL);
 	shader->fragment_shader = read_shader("shaders/fragment_shader.frag", NULL);
 	create_vertex_shader(shader);
 	create_fragment_shader(shader);
-	glAttachShader(program_id, shader->vert_id);
-	glAttachShader(program_id, shader->fragm_id);
+	glAttachShader(*program_id, shader->vert_id);
+	glAttachShader(*program_id, shader->fragm_id);
+	glLinkProgram(*program_id);
 }

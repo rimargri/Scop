@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/13 17:59:21 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/13 19:43:33 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ typedef struct			s_skybox
 	GLuint				vbo;
 	GLuint				vao;
 	int					id_shader;
+	GLint				projection_mat_location;
+	GLint				rotation_mat_location;
 }						t_skybox;
 
 typedef struct			s_color
