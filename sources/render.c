@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 17:24:49 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/12 16:06:15 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/13 18:29:14 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,39 @@ void	free_gl_attributies(t_scop *scop)
 
 int		render(t_scop *scop)
 {
+		printf("scop->skybox.id_shader = %d\n", scop->skybox.id_shader);
+		printf("scop->gl->program_id = %d\n", scop->gl->program_id);
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
 	while (glfwWindowShouldClose(scop->gl->window) == 0)
 	{
-		glClearColor(0.388, 0.235, 0.376, 1.0);
+		// glClearColor(0.388, 0.235, 0.376, 1.0);
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+
+		glDepthMask(GL_FALSE);
+		glUseProgram(scop->skybox.id_shader);
+		scop->gl->projection_location = glGetUniformLocation(scop->gl->program_id, "projection");
+		if (scop->gl->projection_location != -1)
+		{
+			glUniformMatrix4fv(scop->gl->projection_location, 1, GL_TRUE, scop->matrix->projection.value);
+		}
+		glBindVertexArray(scop->skybox.vao);
+		glBindTexture(GL_TEXTURE_CUBE_MAP, scop->skybox.texture_id);
+		glDrawArrays(GL_TRIANGLES, 0, 36);
+		glDepthMask(GL_TRUE);
+
+
+
+// glDepthMask(GL_FALSE);
+// glActiveTexture(GL_TEXTURE0);
+// glUseProgram(shader_programme);
+// glBindTexture(GL_TEXTURE_CUBE_MAP, tex_cube);
+// glBindVertexArray(vao);
+// glDrawArrays(GL_TRIANGLES, 0, 36);
+// glDepthMask(GL_TRUE);
+
+
 		glUseProgram(scop->gl->program_id);
 		glBindTexture(GL_TEXTURE_2D, scop->texture.id);
 		glBindVertexArray(scop->gl->vao);

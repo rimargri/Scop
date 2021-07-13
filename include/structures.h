@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/12 19:57:20 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/13 17:59:21 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 #include "../libmat4/include/libmat4.h"
 #include "obj_load.h"
+
+#define SKYBOX_TEXT 6
 
 typedef struct			s_texture
 {
@@ -66,6 +68,10 @@ typedef struct			s_shader
 	GLuint				fragm_id;
 	char				*vertex_shader;
 	char				*fragment_shader;
+	char				*vertex_shader_skybox;
+	char				*fragment_shader_skybox;
+	GLuint				vert_skybox_id;
+	GLuint				fragm_skybox_id;
 }						t_shader;
 
 // typedef struct			s_triangle
@@ -76,9 +82,12 @@ typedef struct			s_shader
 
 typedef struct			s_skybox
 {
-	int					texture_id;
-	t_texture			*textures;
+	unsigned int		texture_id;
+	t_texture			textures[SKYBOX_TEXT];
 	int					count_textures;
+	GLuint				vbo;
+	GLuint				vao;
+	int					id_shader;
 }						t_skybox;
 
 typedef struct			s_color
@@ -101,6 +110,7 @@ typedef struct			s_gl
 	GLint				color_location;
 	int					count_vertexes;
 	float				*vertex_color;
+	GLint				projection_location;
 }						t_gl;
 
 typedef struct			s_scop

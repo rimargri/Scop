@@ -6,7 +6,7 @@
 #    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/17 19:22:37 by f0rsunka          #+#    #+#              #
-#    Updated: 2021/07/12 13:01:37 by cvernius         ###   ########.fr        #
+#    Updated: 2021/07/13 17:39:00 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,6 +60,9 @@ C_FILES =	main.c \
 			validate_attributes_obj.c \
 			translate_readed_obj_to_struct.c \
 			events.c \
+			cubemap.c \
+			create_shaders_skybox.c \
+			create_cube_skybox.c
 			# create_colors.c
 
 OBJ_FILES = $(C_FILES:.c=.o)

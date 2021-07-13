@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/07/12 16:00:34 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/13 18:12:13 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,22 @@ int		main(int argc, char **argv)
 		log_scop("Main::Malloc can't allocate memory\n", (enum errors)malloc_error);
 	allocate_mem(scop);
 	init_glfw(scop->gl);
-	scop->gl->program_id = glCreateProgram();
 	init_input_transform_value(&scop->input_transform);
 	create_mvp_matrix(scop->matrix, &scop->input_transform);
 	read_obj("models/42.obj", &scop->obj, scop->gl);
 	create_mesh(scop);
 	// create_colors(scop);
+	scop->gl->program_id = glCreateProgram();
 	create_shaders(scop->shader, scop->gl->program_id);
-	load_texture(scop);
 	glLinkProgram(scop->gl->program_id);
+	
+	create_cube_skybox(scop);
+	create_cubemap(scop);
+	scop->skybox.id_shader = glCreateProgram();
+	create_shaders_skybox(scop->shader, scop->skybox.id_shader);
+	glLinkProgram(scop->skybox.id_shader);
+	
+	load_texture(scop);
 	glfwSetWindowUserPointer(scop->gl->window, scop);
 	glfwSetKeyCallback(scop->gl->window, key_callback);
 	render(scop);

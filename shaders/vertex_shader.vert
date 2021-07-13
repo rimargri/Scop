@@ -1,9 +1,6 @@
 #version 400
-// layout (location = 0) in vec3 vp;
 in vec3 vp;
-// layout(location = 1) in vec3 vertex_color;
 uniform mat4 mvp;
-uniform mat4 model_matrix;
 out vec4 text_coord;
 out float PrimitiveID;
 
@@ -18,3 +15,4 @@ void main() {
 
 // https://learnopengl.com/Lighting/Basic-Lighting
 // https://triplepointfive.github.io/ogltutor/tutorials/tutorial25.html
+// https://learnopengl.com/Advanced-OpenGL/Cubemaps
