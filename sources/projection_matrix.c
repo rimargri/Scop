@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/14 18:44:47 by cvernius          #+#    #+#             */
-/*   Updated: 2021/04/15 17:23:09 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/14 18:36:43 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,3 @@ void	create_projection_matrix(t_matrix *matrix)
 	matrix->projection.value[14] = 1.0f;
 	matrix->projection.value[15] = 1.0f;
 }
-
-// try to https://www.scratchapixel.com/lessons/3d-basic-rendering/perspective-and-orthographic-projection-matrix/gl-perspective-projection-matrix
-// In all OpenGL books and references, the perspective projection matrix used in OpenGL is defined as:

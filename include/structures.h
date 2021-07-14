@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:06:03 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/13 19:43:33 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/14 18:58:48 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,14 +26,14 @@ typedef struct			s_texture
 	unsigned int		id;
 }						t_texture;
 
-typedef struct			s_camera
-{
-	t_vec3				pos;
-	t_vec3				target;
-	t_vec3				reverse_dir;
-	t_vec3				right;
-	t_vec3				up;
-}						t_camera;
+// typedef struct			s_camera
+// {
+// 	t_vec3				pos;
+// 	t_vec3				target;
+// 	t_vec3				reverse_dir;
+// 	t_vec3				right;
+// 	t_vec3				up;
+// }						t_camera;
 
 typedef struct			s_rotate
 {
@@ -74,12 +74,6 @@ typedef struct			s_shader
 	GLuint				fragm_skybox_id;
 }						t_shader;
 
-// typedef struct			s_triangle
-// {
-// 	float				*array_vertex;
-// 	int					*array_indexes;
-// }						t_triangle;
-
 typedef struct			s_skybox
 {
 	unsigned int		texture_id;
@@ -119,7 +113,6 @@ typedef struct			s_scop
 {
 	t_gl				*gl;
 	t_matrix			*matrix;
-	t_camera			camera;
 	t_shader			*shader;
 	t_texture			texture; // remove
 	t_texture			*array_textures;

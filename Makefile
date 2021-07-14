@@ -6,7 +6,7 @@
 #    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/17 19:22:37 by f0rsunka          #+#    #+#              #
-#    Updated: 2021/07/13 17:39:00 by cvernius         ###   ########.fr        #
+#    Updated: 2021/07/14 19:09:39 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,16 +21,6 @@ TURQUOISE="\033[0;36m"
 PINKNESS="\033[38;2;130;50;250m"
 
 LIGHT_BLUE="\033[38;2;10;130;220m"
-
-# GREEN='\033[0;32m'
-# PURPLE='\033[0;35m'
-# BOLD='\033[1m'
-# NBOLD='\033[22m'
-# BLUE='\033[0;34m'
-# NORMAL='\033[0m'
-
-
-# CHECK_COLOR="\033[38;2;<r>;<g>;<b>m"     #Select RGB foreground color
 
 NAME = scop
 
@@ -49,7 +39,6 @@ C_FILES =	main.c \
 			create_mesh.c \
 			rotate.c \
 			model_matrix.c \
-			view_matrix.c \
 			mvp_matrix.c \
 			projection_matrix.c \
 			read_shader.c \
@@ -62,8 +51,8 @@ C_FILES =	main.c \
 			events.c \
 			cubemap.c \
 			create_shaders_skybox.c \
-			create_cube_skybox.c
-			# create_colors.c
+			create_cube_skybox.c \
+			print_micro_menu.c
 
 OBJ_FILES = $(C_FILES:.c=.o)
 

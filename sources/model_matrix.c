@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/13 14:34:08 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/11 15:20:31 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/14 18:36:28 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,16 @@
 #include "../libmat4/include/libmat4.h"
 #include "../libvector/include/libvector.h"
 
-// model matrix:
-// 1. translate
-// 2. rotate
-// 3. scale
+/*
+** *********************************** **
+** *********************************** **
+**           model matrix			   **
+**           1. translate			   **
+**           2. rotate	    		   **
+**           3. scale	    		   **
+** *********************************** **
+** *********************************** **
+*/
 
 void translate(t_vec3 translate_value, t_matrix *matrix)
 {
@@ -67,12 +73,6 @@ void scale(t_vec3 scale_value, t_matrix *matrix)
 
 void create_model_matrix(t_matrix *matrix, t_input_transform *val)
 {
-	// static float alpha = 0.0f;
-	// alpha += 1.0f;
-	// translate((t_vec3){0.0, 0.0, 3.0}, matrix);
-	// rotate((t_vec3){0.0f, alpha, 0.0f}, matrix);
-	// scale((t_vec3){1.0f, 1.0f, 1.0f}, matrix);
-
 	translate((t_vec3){val->translate.x, val->translate.y, val->translate.z}, matrix);
 	rotate((t_vec3){val->rotate.x, val->rotate.y, val->rotate.z}, matrix);
 	scale((t_vec3){val->scale.x, val->scale.y, val->scale.z}, matrix);

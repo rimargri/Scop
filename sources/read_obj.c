@@ -6,18 +6,24 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 16:52:41 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/12 16:40:50 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/14 18:47:46 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "obj_load.h"
 #include "log_scop.h"
 #include "scop.h"
-#include <stdio.h> //!---------------------------------------------------------
 
-// одновременно считаем количество вертексов и количество фэйсов
-// count_indexes - количество строк фейсов
-// count_atttributes - количество атрибутов в строке face
+/*
+** ****************************************************************	**
+** **************************************************************** **
+** одновременно считаем количество вертексов и количество фэйсов	**
+** count_indexes - количество строк фейсов							**
+** count_atttributes - количество атрибутов в строке face			**
+** **************************************************************** **
+** **************************************************************** **
+*/
+
 void	get_count_attributes(int buf_size, char *buf, t_obj *obj)
 {	
 	int	i;
@@ -46,13 +52,11 @@ void	get_count_attributes(int buf_size, char *buf, t_obj *obj)
 			if (prefix == 'f')
 			{
 				obj->count_indexes += 1;
-				obj->count_faces += get_count_faces_on_line(obj, buf, prefix_pos + 1, i);
+				obj->count_faces += get_count_faces_on_line(buf, prefix_pos + 1, i);
 			}
 		}
 		i++;
 	}
-	printf("obj->count_vertexes = %d\n", obj->count_vertexes);
-	printf("obj->count_faces = %d\n", obj->count_faces);
 }
 
 void	validate_attributes(int buf_size, char *buf, t_obj *obj)
@@ -81,14 +85,13 @@ void	validate_attributes(int buf_size, char *buf, t_obj *obj)
 			if (prefix == 'f')
 			{
 				validate_faces(obj, buf, prefix_pos + 1, i);
-				obj->count_faces_on_line[j] = get_count_faces_line(obj, buf, prefix_pos + 1, i);
+				obj->count_faces_on_line[j] = get_count_faces_line(buf, prefix_pos + 1, i);
 				j++;
 			}
 		}
 		i++;
 	}
 }
-
 
 void	read_obj(const char *filename, t_obj *obj, t_gl *gl)
 {
@@ -115,26 +118,9 @@ void	read_obj(const char *filename, t_obj *obj, t_gl *gl)
 	obj->faces_array = malloc(sizeof(int) * obj->count_faces);
 	if (!obj->faces_array)
 		log_scop("Read obj::Malloc can't allocate memory\n", (enum errors)malloc_error);
-	
 	obj->count_faces_on_line = malloc(sizeof(int) * obj->count_indexes);
 	if (!(obj->count_faces_on_line))
 		exit(88);
-
 	validate_attributes(returned_bytes, &buf[0], obj);
-	
-	printf("read_obj\n");
-	printf("count indexes = %d\n", obj->count_indexes);
-	printf("count_faces = %d\n", obj->count_faces);
 	translate_readed_obj_to_struct(obj, gl);
 }
-
-// faces_array - массив, в котором id вертексов нахдятся в правильном порядке
-// vertex_position - записывается, всё ок
-// obj->faces_array - записывается, всё ок
-
-// [0], [1], [2], [3], [4], [\n]
-
-// [6], [7], [8], [9], [10], [\n]
-
-
-// https://www.youtube.com/watch?v=p6PqJPFOIm4

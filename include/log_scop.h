@@ -36,7 +36,8 @@ enum errors
 	empty_data_tex,
 	null_count_vertexes,
 	point_not_correct_value,
-	null_count_indexes
+	null_count_indexes,
+	invalide_arguments
 };
 
 void	log_scop(const char *error, enum errors code);

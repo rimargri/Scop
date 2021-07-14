@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 19:33:37 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/07/12 12:11:03 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/14 18:16:01 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,6 @@
 #define FOV (60)
 #define ASPECT ((float)WIN_W / (float)WIN_H)
 
-#define COUNT_TEXTURES 2
-
-
-// #define COUNT_INDEXES 6
+#define COUNT_TEXTURES 10
 
 #endif

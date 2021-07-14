@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/20 18:31:20 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/12 11:07:48 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/14 16:55:46 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@
 # include <fcntl.h>
 #define MAX_SHADER 1000000
 
-char	*read_shader(const char *filename, char *shader);
+char	*read_shader(const char *filename);
 
 #endif

@@ -6,19 +6,21 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/11 19:03:25 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/12 15:42:00 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/14 18:43:03 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shader_load.h"
 #include "log_scop.h"
+#include "stdlib.h"
 
-char	*read_shader(const char *filename, char *shader)
+char	*read_shader(const char *filename)
 {
 	int		fd;
 	int		returned_bytes;
 	char	buf[MAX_SHADER];
 	int		i;
+	char	*shader;
 
 	i = 0;
 	returned_bytes = 0;

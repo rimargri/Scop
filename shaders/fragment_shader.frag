@@ -15,18 +15,3 @@ void main() {
 	vec3 result = mix(tri_color, tex_color, mix_value);
 	frag_colour = result;
 }
-
-
-
-
-
-// grayscale shader:
-// void main()										
-// {
-// 	vec4 color = texture(our_texture, text_coord.xy);
-// 	float gray = dot(color.rgb, vec3(0.299, 0.587, 0.114));
-//     vec3 grayscale = vec3(gray);
-// 	frag_colour = vec4(grayscale, color.a);
-// }
-
-// https://gist.github.com/Volcanoscar/4a9500d240497d3c0228f663593d167a

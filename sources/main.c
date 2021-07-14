@@ -6,16 +6,12 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 17:18:16 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/07/13 19:39:43 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/14 19:10:13 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "log_scop.h"
 #include "scop.h"
-
-// NDC - normalized device coordinates
-
-// https://www.3dgep.com/understanding-the-view-matrix/
 
 void	init_input_transform_value(t_input_transform *transform_val)
 {
@@ -47,49 +43,24 @@ int		main(int argc, char **argv)
 {
 	t_scop *scop;
 
+	if (argc < 2 || argc > 2)
+		log_scop("Main::Invalide arguments\n", (enum errors)invalide_arguments);
 	if (!(scop = malloc(sizeof(t_scop))))
 		log_scop("Main::Malloc can't allocate memory\n", (enum errors)malloc_error);
+	print_micro_menu();
 	allocate_mem(scop);
 	init_glfw(scop->gl);
 	init_input_transform_value(&scop->input_transform);
 	create_mvp_matrix(scop->matrix, &scop->input_transform);
-	read_obj("models/42.obj", &scop->obj, scop->gl);
+	read_obj(argv[1], &scop->obj, scop->gl);
 	create_mesh(scop);
-	// create_colors(scop);
 	create_shaders(scop->shader, &scop->gl->program_id);
-
 	create_cube_skybox(scop);
 	create_cubemap(scop);
 	create_shaders_skybox(scop->shader, &scop->skybox.id_shader);
-	
 	load_texture(scop);
 	glfwSetWindowUserPointer(scop->gl->window, scop);
 	glfwSetKeyCallback(scop->gl->window, key_callback);
 	render(scop);
 	return (0);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-// http://www.gl-tutorial.org/ru/beginners-tutorials/tutorial-3-matrices/
-
-// https://solarianprogrammer.com/2013/05/22/gl-101-matrices-projection-view-model/
-
-// https://learngl.com/Getting-started/Transformations
-
-// https://www.cs.cornell.edu/courses/cs4620/2010fa/lectures/03transforms3d.pdf
-
-// code:
-// https://learngl.com/code_viewer_gh.php?code=src/1.getting_started/7.1.camera_circle/camera_circle.cpp
-
-

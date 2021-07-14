@@ -6,17 +6,22 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 17:24:49 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/13 19:25:03 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/14 18:39:54 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scop.h"
 
-// glDrawArrays(GL_TRIANGLES, 0, 3) - draw points 0-3 from the
-// currently bound VAO with current in-use shader
-
-// glfwSwapBuffers(scop->gl.window) - put the stuff we've been drawing
-// onto the display
+/*
+** ******************************************************************* **
+** ******************************************************************* **
+** glDrawArrays(GL_TRIANGLES, 0, 3) - draw points 0-3 from the ******* **
+** currently bound VAO with current in-use shader ******************** **
+** glfwSwapBuffers(scop->gl.window) - put the stuff we've been drawing **
+** onto the display*************************************************** **
+** ******************************************************************* **
+** ******************************************************************* **
+*/
 
 void	free_gl_attributies(t_scop *scop)
 {
@@ -80,8 +85,3 @@ int		render(t_scop *scop)
 	free_gl_attributies(scop);
 	return (0);
 }
-
-
-// glDrawArrays(GL_TRIANGLES, 0, 12*3); // 12*3 indices starting at 0 -> 12 triangles -> 6 squares
-// http://www.opengl-tutorial.org/beginners-tutorials/tutorial-4-a-colored-cube/
-

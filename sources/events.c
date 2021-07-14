@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 17:24:49 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/12 16:28:16 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/14 18:50:56 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,6 @@ void	events_scale(t_vec3 *scale, GLFWwindow *window)
 
 void	events_rotate(t_vec3 *rotate, GLFWwindow *window)
 {
-	// static float alpha = 0.0f;
-
 	if (glfwGetKey(window, GLFW_KEY_RIGHT) != GLFW_PRESS)
 	{
 		rotate->y += 1.0f;
@@ -95,20 +93,14 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 	static int num_text = 0;
 	t_scop *scop;
 
+	(void)mods;
+	(void)scancode;
 	scop = (t_scop *)glfwGetWindowUserPointer(window);
     if (key == GLFW_KEY_T && action == GLFW_PRESS)
 	{
 		num_text += 1;
 		change_texture(scop, num_text);
 	}
-	// if (key == GLFW_KEY_SPACE && action != GLFW_PRESS)
-	// {
-	// 	glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	// }
-	// else if (key == GLFW_KEY_SPACE && action == GLFW_PRESS)
-	// {
-	// 	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-	// }
 }
 
 void	events(t_scop *scop)
@@ -124,5 +116,3 @@ void	events(t_scop *scop)
 	events_rotate(&scop->input_transform.rotate, scop->gl->window);
 	event_wireframe_mode(scop->gl->window);
 }
-
-// https://stackoverflow.com/questions/137629/how-do-you-render-primitives-as-wireframes-in-opengl

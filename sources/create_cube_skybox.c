@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/13 16:23:37 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/13 18:40:28 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/14 18:33:55 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,3 @@ void create_cube_skybox(t_scop *s)
 	glBindBuffer(GL_ARRAY_BUFFER, s->skybox.vbo);
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, NULL);
 }
-
-// https://antongerdelan.net/opengl/cubemaps.html

@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/14 20:51:05 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/11 19:48:18 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/14 18:33:46 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	change_texture(t_scop *s, int num_text)
 	int current_num = 0;
 
 	current_num = num_text % COUNT_TEXTURES;
-	printf("current num = %d\n", current_num);
 	if (s->array_textures[current_num].data)
 	{
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, s->array_textures[current_num].width, s->array_textures[current_num].height, 0, GL_RGB, GL_UNSIGNED_BYTE, s->array_textures[current_num].data);
@@ -40,7 +39,6 @@ void	change_texture(t_scop *s, int num_text)
 	}
 	else
 		log_scop("Texture::Empty data in bmp file\n", empty_data_tex);
-	// free(scop->array_textures[current_num].data);
 }
 
 void	load_texture(t_scop *scop)
@@ -56,8 +54,16 @@ void	load_texture(t_scop *scop)
 	if (!(scop->array_textures))
 		exit(88);
 
-	read_texture(&scop->array_textures[0], "textures/marble.bmp");
-	read_texture(&scop->array_textures[1], "textures/wall.bmp");
+	read_texture(&scop->array_textures[0], "textures/freeze.bmp");
+	read_texture(&scop->array_textures[1], "textures/pink.bmp");
+	read_texture(&scop->array_textures[2], "textures/gradient.bmp");
+	read_texture(&scop->array_textures[3], "textures/cats.bmp");
+	read_texture(&scop->array_textures[4], "textures/ponies.bmp");
+	read_texture(&scop->array_textures[5], "textures/ice.bmp");
+	read_texture(&scop->array_textures[6], "textures/carpet.bmp");
+	read_texture(&scop->array_textures[7], "textures/wall_red.bmp");
+	read_texture(&scop->array_textures[8], "textures/smiles.bmp");
+	read_texture(&scop->array_textures[9], "textures/pony.bmp");
 	if (scop->array_textures[0].data)
 	{
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, scop->array_textures[0].width, scop->array_textures[0].height, 0, GL_RGB, GL_UNSIGNED_BYTE, scop->array_textures[0].data);
@@ -65,5 +71,4 @@ void	load_texture(t_scop *scop)
 	}
 	else
 		log_scop("Texture::Empty data in bmp file\n", empty_data_tex);
-	// free(scop->array_textures[0].data);
 }

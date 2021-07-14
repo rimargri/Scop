@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/22 16:53:20 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/12 16:47:16 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/14 18:47:40 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ typedef struct	s_obj
 void	validate_vertex(t_obj *obj, char *buf, int start, int finish);
 void	validate_faces(t_obj *obj, char *buf, int start, int finish);
 // int		get_count_attr_in_line(t_obj *obj, char *buf, int start, int finish);
-int		get_count_faces_on_line(t_obj *obj, char *buf, int start, int finish);
-int		get_count_faces_line(t_obj *obj, char *buf, int start, int finish);
+int		get_count_faces_on_line(char *buf, int start, int finish);
+int		get_count_faces_line(char *buf, int start, int finish);
 
 #endif
