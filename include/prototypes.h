@@ -6,7 +6,7 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/04 20:05:07 by cvernius          #+#    #+#             */
-/*   Updated: 2021/07/14 19:09:48 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/14 20:06:28 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	create_cubemap(t_scop *scop);
 void	create_mesh(t_scop *s);
 void	read_texture(t_texture *texture, char *filename);
 void	print_micro_menu(void);
+char	*read_shader(const char *filename);
 
 /*
 ** *********************************** **

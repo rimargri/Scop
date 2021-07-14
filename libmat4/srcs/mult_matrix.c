@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libmat4.h"
-#include <stdio.h>
 
 t_mat4	mult_matrix(t_mat4 m1, t_mat4 m2)
 {

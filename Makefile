@@ -6,7 +6,7 @@
 #    By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/09/17 19:22:37 by f0rsunka          #+#    #+#              #
-#    Updated: 2021/07/14 19:09:39 by cvernius         ###   ########.fr        #
+#    Updated: 2021/07/14 20:05:13 by cvernius         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ OBJ_FILES = $(C_FILES:.c=.o)
 
 RAW_OBJ_FILES = $(addprefix $(OBJ_DIR)/,$(OBJ_FILES))
 
-CFLAGS = -Wall -Wextra 
+CFLAGS = -Wall -Wextra -g
 
 # CFLAGS += -Werror
 
@@ -73,7 +73,7 @@ OS = $(shell uname -s)
 ifeq ($(OS),Linux)
 	GL_LIBS	:= -lepoxy -lGL -lglfw `pkg-config --static --libs glfw3` `pkg-config --static --libs gl`
 else
-	GL_LIBS	:= -lm -L ~/.brew/lib -lglfw -framework OpenGL
+	GL_LIBS	:= -lm -L ~/.brew/lib -lglfw -framework OpenGL -lglew
 	INCLUDES += -I ~/.brew/include
 endif
 

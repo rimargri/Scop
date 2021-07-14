@@ -6,37 +6,38 @@
 /*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 19:33:37 by f0rsunka          #+#    #+#             */
-/*   Updated: 2021/07/14 18:16:01 by cvernius         ###   ########.fr       */
+/*   Updated: 2021/07/14 20:03:13 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SCOP_H
 #define SCOP_H
 
-#ifdef __APPLE_CC__
-#define GL_SILENCE_DEPRECATION
-#include <GLUT/glut.h>
-#else
-#include <GL/glut.h>
+// #ifdef __APPLE_CC__
+// #define GL_SILENCE_DEPRECATION
+// #include <GLUT/glut.h>
+// #else
+// #include <GL/glut.h>
 
-#include <X11/Xlib.h>
-#include <GL/glx.h>
-#endif
+// #include <X11/Xlib.h>
+// #include <GL/glx.h>
+// #endif
 
+// #include <GLFW/glfw3.h>
+
+
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
+
 #include <math.h>
 
 # define DEG2RAD (M_PI / 180.f)
 # define RAD2DEG (1.0f / DEG2RAD)
 
 #include <stdlib.h>
-#include <stdio.h> //!---------------------------------------------------
 
 #include "structures.h"
 #include "prototypes.h"
-
-
-// #define COUNT_VERTEX 3
 
 #define COUNT_VERTEX 36
 
