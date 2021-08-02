@@ -3,77 +3,61 @@
 /*                                                        :::      ::::::::   */
 /*   create_shaders.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 18:21:26 by cvernius          #+#    #+#             */
-/*   Updated: 2020/10/17 19:22:26 by f0rsunka         ###   ########.fr       */
+/*   Updated: 2021/08/02 15:46:11 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "scop.h"
+#include "../libft/libft.h"
+#include "log_scop.h"
+#include "shader_load.h"
 
-int	create_vertex_shader(t_scop *scop, const char *vertex_shader)
+void	validate_compilation(GLint shader, const char *shader_name)
 {
-	int lparams;
+	int success;
+	char *info;
+	int length;
 
-	lparams = -1;
-	scop->opengl.vert_shader = glCreateShader(GL_VERTEX_SHADER);
-	glShaderSource(scop->opengl.vert_shader, 1, &vertex_shader, NULL);
-	glCompileShader(scop->opengl.vert_shader);
-	glGetShaderiv(scop->opengl.vert_shader, GL_COMPILE_STATUS, &lparams);
-	if (GL_TRUE != lparams)
-		error_processing(ERROR_VERT_SHADER_INDEX, &scop->opengl.vert_shader);
-	return (0);
+	glGetShaderiv(shader, GL_COMPILE_STATUS, &success);
+	if (!(success))
+	{
+		glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &length);
+		info = malloc(sizeof(char) * (length + 1));
+		if (!(info))
+			log_scop("Shader::Malloc can't allocate memory\0", (enum errors)malloc_error);
+		glGetShaderInfoLog(shader, length, NULL, info);
+		ft_putstr_fd(shader_name, 2);
+		ft_putstr_fd((const char*)info, 2);
+	}
 }
 
-int create_fragment_shader(t_scop *scop, const char *fragment_shader)
+void	create_vertex_shader(t_shader *shader)
 {
-	int lparams;
-
-	lparams = -1;
-	scop->opengl.fragm_shader = glCreateShader(GL_FRAGMENT_SHADER);
-	glShaderSource(scop->opengl.fragm_shader, 1, &fragment_shader, NULL);
-	glCompileShader(scop->opengl.fragm_shader);
-	glGetShaderiv(scop->opengl.fragm_shader, GL_COMPILE_STATUS, &lparams);
-	if (GL_TRUE != lparams)
-		error_processing(ERROR_FRAGM_SHADER_INDEX, &scop->opengl.fragm_shader);
-	return (0);
+	shader->vert_id = glCreateShader(GL_VERTEX_SHADER);
+	glShaderSource(shader->vert_id, 1, (const GLchar *const *)&shader->vertex_shader, NULL);	
+	glCompileShader(shader->vert_id);
+	validate_compilation(shader->vert_id, "vertex shader\n");
 }
 
-void	sc_create_program(t_scop *scop)
+void	create_fragment_shader(t_shader *shader)
 {
-	int lparams;
-
-	lparams = -1;
-	scop->opengl.shader_programme = glCreateProgram();
-	glAttachShader(scop->opengl.shader_programme, scop->opengl.fragm_shader);
-	glAttachShader(scop->opengl.shader_programme, scop->opengl.vert_shader);
-	glLinkProgram(scop->opengl.shader_programme);
-	glDeleteShader(scop->opengl.vert_shader);
-	glDeleteShader(scop->opengl.fragm_shader);
-	glGetShaderiv(scop->opengl.shader_programme, GL_LINK_STATUS, &lparams);
-	// printf("%u %d\n", GL_TRUE, lparams);
-	// if (GL_TRUE != lparams)
-		// error_processing(LINK_ERROR, &scop->opengl.shader_programme);
+	shader->fragm_id = glCreateShader(GL_FRAGMENT_SHADER);
+	glShaderSource(shader->fragm_id, 1, (const GLchar *const *)&shader->fragment_shader, NULL);
+	glCompileShader(shader->fragm_id);
+	validate_compilation(shader->fragm_id, "fragm shader\n");
 }
 
-void	create_shaders(t_scop *scop)
+void	create_shaders(t_shader *shader, GLuint *program_id)
 {
-	const char* vertex_shader =
-	"#version 400\n"
-	"in vec3 vp;"
-	"void main() {"
-	"  gl_Position = vec4(vp, 1.0);"
-	"}";
-
-	const char* fragment_shader =
-	"#version 400\n"
-	"out vec4 frag_colour;"
-	"void main() {"
-	"  frag_colour = vec4(0.5, 0.4, 0.5, 1.0);"
-	"}";
-
-	create_vertex_shader(scop, vertex_shader);
-	create_fragment_shader(scop, fragment_shader);
-	sc_create_program(scop);
+	*program_id = glCreateProgram();
+	shader->vertex_shader = read_shader("shaders/vertex_shader.vert");
+	shader->fragment_shader = read_shader("shaders/fragment_shader.frag");
+	create_vertex_shader(shader);
+	create_fragment_shader(shader);
+	glAttachShader(*program_id, shader->vert_id);
+	glAttachShader(*program_id, shader->fragm_id);
+	glLinkProgram(*program_id);
 }

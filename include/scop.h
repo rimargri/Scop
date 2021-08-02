@@ -3,52 +3,52 @@
 /*                                                        :::      ::::::::   */
 /*   scop.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: f0rsunka <f0rsunka@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cvernius <cvernius@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/17 19:33:37 by f0rsunka          #+#    #+#             */
-/*   Updated: 2020/10/16 21:53:06 by f0rsunka         ###   ########.fr       */
+/*   Updated: 2021/08/02 15:45:40 by cvernius         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifdef __APPLE_CC__
-#define GL_SILENCE_DEPRECATION
-#include <GLUT/glut.h>
-#else
+#ifndef SCOP_H
+#define SCOP_H
+
+// #ifdef __APPLE_CC__
+// #define GL_SILENCE_DEPRECATION
+// #include <GLUT/glut.h>
+// #else
 // #include <GL/glut.h>
 
-#define GL_GLEXT_PROTOTYPES
-#include <GL/gl.h>
-#include <GL/glu.h>
-#include <GL/glx.h>
-#include <GL/glext.h>
-#endif
+// #include <X11/Xlib.h>
+// #include <GL/glx.h>
+// #endif
 
+// #include <GLFW/glfw3.h>
+
+
+#include <GL/glew.h>
 #include <GLFW/glfw3.h>
 
+#include <math.h>
+
+# define DEG2RAD (M_PI / 180.f)
+# define RAD2DEG (1.0f / DEG2RAD)
+
 #include <stdlib.h>
-#include <stdio.h> //!---------------------------------------------------
 
 #include "structures.h"
 #include "prototypes.h"
 
-#define COUNT_VERTEX 12
+#define COUNT_VERTEX 36
 
+#define UP_AXIS (t_vec3){0.0f, 0.1f, 0.0f}
 
+#define WIN_W (700)
+#define WIN_H (500)
 
-/*
-** *********************************** **
-** *********************************** **
-**            	errors		           **
-** *********************************** **
-** *********************************** **
-*/
+#define FOV (60)
+#define ASPECT ((float)WIN_W / (float)WIN_H)
 
+#define COUNT_TEXTURES 10
 
-#define MLX_ERROR 0
-#define INIT_GL_ERROR 1
-#define FAIL_GLFW 2
-#define FAIL_WIN_GLFW 3
-#define ERROR_VERT_SHADER_INDEX 4
-#define ERROR_FRAGM_SHADER_INDEX 5
-#define LINK_ERROR 6
-
+#endif
