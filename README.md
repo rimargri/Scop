@@ -20,6 +20,8 @@ The first step on OpenGL.
 
 ![wireframe](https://github.com/rimargri/Scop/raw/master/screenshots/wireframe_mode.png)
 
+![wireframe](https://github.com/rimargri/Scop/raw/master/screenshots/wireframe_dog.png)
+
 На модель можно наложить текстуру. В программе реализована возможность переключать разные текстуры путём нажатия на кнопку.
 
 ![wireframe](https://github.com/rimargri/Scop/raw/master/screenshots/texture_1.png)
@@ -29,6 +31,8 @@ The first step on OpenGL.
 ![wireframe](https://github.com/rimargri/Scop/raw/master/screenshots/texture_3.png)
 
 ![wireframe](https://github.com/rimargri/Scop/raw/master/screenshots/texture_4.png)
+
+![wireframe](https://github.com/rimargri/Scop/raw/master/screenshots/texture_5.png)
 
 Модель можно крутить в разные стороны, двигать, приближать и отдалять - для этого в программу встроена матрица перспективы (чем дальше объект, тем он меньше) и матрица модели, состоящая из перемножения матриц сдвига (translate), масштабирования (scale), поворота (rotate).
 
