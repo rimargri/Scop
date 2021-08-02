@@ -18,7 +18,7 @@ The first step on OpenGL.
 
 Каждая .obj модель состоит из треугольников. Программа считывает расположение вертексов и отрисовывает по ним модель - получаются треугольники. Это можно увидеть, включив Wireframe mode, а так же при запуске программы. 
 
-![wireframe](https://github.com/rimargri/Scop/raw/main/screenshots/wireframe_mode.png)
+![wireframe](https://github.com/rimargri/Scop/raw/master/screenshots/wireframe_mode.png)
 
 На модель можно наложить текстуру. В программе реализована возможность переключать разные текстуры путём нажатия на кнопку.
 
