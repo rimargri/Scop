@@ -22,21 +22,21 @@ The first step on OpenGL.
 
 На модель можно наложить текстуру. В программе реализована возможность переключать разные текстуры путём нажатия на кнопку.
 
-![wireframe](https://github.com/rimargri/Scop/raw/main/screenshots/texture_1.png)
+![wireframe](https://github.com/rimargri/Scop/raw/master/screenshots/texture_1.png)
 
-![wireframe](https://github.com/rimargri/Scop/raw/main/screenshots/texture_2.png)
+![wireframe](https://github.com/rimargri/Scop/raw/master/screenshots/texture_2.png)
 
-![wireframe](https://github.com/rimargri/Scop/raw/main/screenshots/texture_3.png)
+![wireframe](https://github.com/rimargri/Scop/raw/master/screenshots/texture_3.png)
 
-![wireframe](https://github.com/rimargri/Scop/raw/main/screenshots/texture_4.png)
+![wireframe](https://github.com/rimargri/Scop/raw/master/screenshots/texture_4.png)
 
 Модель можно крутить в разные стороны, двигать, приближать и отдалять - для этого в программу встроена матрица перспективы (чем дальше объект, тем он меньше) и матрица модели, состоящая из перемножения матриц сдвига (translate), масштабирования (scale), поворота (rotate).
 
-![wireframe](https://github.com/rimargri/Scop/raw/main/screenshots/rotate.png)
+![wireframe](https://github.com/rimargri/Scop/raw/master/screenshots/rotate.png)
 
-![wireframe](https://github.com/rimargri/Scop/raw/main/screenshots/scale.png)
+![wireframe](https://github.com/rimargri/Scop/raw/master/screenshots/scale.png)
 
 В программе присутствует Skybox - на него наложена текстура космоса.
 
-![wireframe](https://github.com/rimargri/Scop/raw/main/screenshots/skybox.png)
+![wireframe](https://github.com/rimargri/Scop/raw/master/screenshots/skybox.png)
 
