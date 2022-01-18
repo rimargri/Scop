@@ -71,7 +71,7 @@ LIBFT_FLAGS = -L ./libft -lft
 OS = $(shell uname -s)
 
 ifeq ($(OS),Linux)
-	GL_LIBS	:= -lepoxy -lGL -lglfw `pkg-config --static --libs glfw3` `pkg-config --static --libs gl`
+	GL_LIBS	:= -lepoxy -lGL -lglut -lGLEW -lm -lglfw `pkg-config --static --libs glfw3` `pkg-config --static --libs gl`
 else
 	GL_LIBS	:= -lm -L ~/.brew/lib -lglfw -framework OpenGL -lglew
 	INCLUDES += -I ~/.brew/include
