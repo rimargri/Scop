@@ -19,8 +19,9 @@ OBJ_DIR = ./obj
 INCL_DIR = ./include
 
 C_FILES =   mult_matrix.c \
-			identity_matrix.c
-			# rotation_matrix.c \
+			identity_matrix.c \
+			rotation_matrix.c \
+			mult_matrix_on_vertex.c
 
 OBJ_FILES = $(C_FILES:.c=.o)
 

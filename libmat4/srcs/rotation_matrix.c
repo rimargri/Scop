@@ -14,71 +14,71 @@
 
 void	rotation_x(float angle_x, t_mat4 *rotate_x)
 {
-	rotate_x->a = 1.0f;
-	rotate_x->b = 0.0f;
-	rotate_x->c = 0.0f;
-	rotate_x->d = 0.0f;
+	rotate_x->value[0] = 1.0f;
+	rotate_x->value[1] = 0.0f;
+	rotate_x->value[2] = 0.0f;
+	rotate_x->value[3] = 0.0f;
 
-	rotate_x->e = 0.0f;
-	rotate_x->f = cos(-angle_x);
-	rotate_x->g = -sin(-angle_x);
-	rotate_x->h = 0.0f;
+	rotate_x->value[4] = 0.0f;
+	rotate_x->value[5] = cos(-angle_x);
+	rotate_x->value[6] = -sin(-angle_x);
+	rotate_x->value[7] = 0.0f;
 
-	rotate_x->i = 0.0f;
-	rotate_x->j = sin(-angle_x);
-	rotate_x->k = cos(-angle_x);
-	rotate_x->l = 0.0f;
+	rotate_x->value[8] = 0.0f;
+	rotate_x->value[9] = sin(-angle_x);
+	rotate_x->value[10] = cos(-angle_x);
+	rotate_x->value[11] = 0.0f;
 
-	rotate_x->m = 0.0f;
-	rotate_x->n = 0.0f;
-	rotate_x->o = 0.0f;
-	rotate_x->p = 1.0f;
+	rotate_x->value[12] = 0.0f;
+	rotate_x->value[13] = 0.0f;
+	rotate_x->value[14] = 0.0f;
+	rotate_x->value[15] = 1.0f;
 }
 
 void	rotation_y(float angle_y, t_mat4 *rotate_y)
 {
-	rotate_y->a = cos(-angle_y);
-	rotate_y->b = 0.0f;
-	rotate_y->c = sin(-angle_y);
-	rotate_y->d = 0.0f;
+	rotate_y->value[0] = cos(-angle_y);
+	rotate_y->value[1] = 0.0f;
+	rotate_y->value[2] = sin(-angle_y);
+	rotate_y->value[3] = 0.0f;
 
-	rotate_y->e = 0.0f;
-	rotate_y->f = 1.0f;
-	rotate_y->g = 0.0f;
-	rotate_y->h = 0.0f;
+	rotate_y->value[4] = 0.0f;
+	rotate_y->value[5] = 1.0f;
+	rotate_y->value[6] = 0.0f;
+	rotate_y->value[7] = 0.0f;
 	
-	rotate_y->i = -sin(-angle_y);
-	rotate_y->j = 0.0f;
-	rotate_y->k = cos(-angle_y);
-	rotate_y->l = 0;
+	rotate_y->value[8] = -sin(-angle_y);
+	rotate_y->value[9] = 0.0f;
+	rotate_y->value[10] = cos(-angle_y);
+	rotate_y->value[11] = 0;
 	
-	rotate_y->m = 0.0f;
-	rotate_y->n = 0.0f;
-	rotate_y->o = 0.0f;
-	rotate_y->p = 1.0f;
+	rotate_y->value[12] = 0.0f;
+	rotate_y->value[13] = 0.0f;
+	rotate_y->value[14] = 0.0f;
+	rotate_y->value[15] = 1.0f;
 }
 
 void	rotation_z(float angle_z, t_mat4 *rotate_z)
 {
-	rotate_z->a = cos(-angle_z);
-	rotate_z->b = -sin(-angle_z);
-	rotate_z->c = 0.0f;
-	rotate_z->d = 0.0f;
+	rotate_z->value[0] = cos(-angle_z);
+	rotate_z->value[1] = -sin(-angle_z);
+	rotate_z->value[2] = 0.0f;
+	rotate_z->value[3] = 0.0f;
 
-	rotate_z->e = sin(-angle_z);
-	rotate_z->f = cos(-angle_z);
-	rotate_z->g = 0.0f;
-	rotate_z->h = 0.0f;
+	rotate_z->value[4] = sin(-angle_z);
+	rotate_z->value[5] = cos(-angle_z);
+	rotate_z->value[6] = 0.0f;
+	rotate_z->value[7] = 0.0f;
 	
-	rotate_z->i = 0.0f;
-	rotate_z->j = 0.0f;
-	rotate_z->k = 1.0f;
-	rotate_z->l = 0.0f;
+	rotate_z->value[8] = 0.0f;
+	rotate_z->value[9] = 0.0f;
+	rotate_z->value[10] = 1.0f;
+	rotate_z->value[11] = 0.0f;
 	
-	rotate_z->m = 0.0f;
-	rotate_z->n = 0.0f;
-	rotate_z->o = 0.0f;
-	rotate_z->p = 1.0f;
+	rotate_z->value[12] = 0.0f;
+	rotate_z->value[13] = 0.0f;
+	rotate_z->value[14] = 0.0f;
+	rotate_z->value[15] = 1.0f;
 }
 
 t_vec4	rotation_matrix(t_vec3 angle, t_vec4 vertex)

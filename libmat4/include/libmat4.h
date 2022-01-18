@@ -44,7 +44,7 @@ typedef struct		s_mat4
 ** *********************************** **
 */
 
-// t_vec4	mult_matrix_on_vertex(t_mat4 matrix, t_vec4 vertex);
+t_vec4	mult_matrix_on_vertex(t_mat4 matrix, t_vec4 vertex);
 t_mat4	mult_matrix(t_mat4 m1, t_mat4 m2);
 t_mat4	identity_matrix(void);
 
